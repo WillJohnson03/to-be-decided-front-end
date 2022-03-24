@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getBoardGameList } from '../../services/api-calls';
+import { getBoardGameList } from '../../services/boardgame-api-calls';
 
 const AllMedia = (props) => {
   const [boardGames, setBoardGames] = useState([])
