@@ -12,6 +12,7 @@ const NavBar = ({ user, handleLogout }) => {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02"></div>
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <li className='nav-link'>Welcome, {user.name}</li>
+            <li className="nav-item"><Link className='nav-link' to="/allmedia">All Media</Link></li>
             <li className="nav-item"><Link className='nav-link' to="/squads">Squads</Link></li>
             <li className="nav-item"><Link className='nav-link' to="/profiles">Profiles</Link></li>
             <li className="nav-item"><Link className='nav-link' to="" onClick={handleLogout}>LOG OUT</Link></li>
