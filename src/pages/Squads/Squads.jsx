@@ -1,8 +1,11 @@
+import React, { useState, useEffect } from 'react';
+
+
 const Squads = (props) => {
   return ( 
     <>
       <h1>
-        hi
+        All Squads
       </h1>
     </>
    );
