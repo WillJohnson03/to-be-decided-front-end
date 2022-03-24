@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import * as profileService from '../../services/profileService'
+import { NavLink } from 'react-router-dom'
 
 const Profiles = () => {
   const [profiles, setProfiles] = useState([])
@@ -14,7 +15,7 @@ const Profiles = () => {
     <>
       <div className="card" activeStyle={{width: 18}}>
           {/* <img class="card-img-top" src="..." alt="Card image cap"> */}
-        {profiles.length ? 
+        {profiles.length ?  
         <>
           {profiles.map(profile=>
             <>
