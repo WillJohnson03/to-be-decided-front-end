@@ -19,13 +19,12 @@ const Profiles = () => {
           {profiles.length ?  
           <>
             {profiles.map(profile=>
-              <>
-                <div className="card-body">
-                  <h5 cclassName="card-title"key={profile._id}>{profile.name}</h5>
+                <div key={profile._id} className="card-body">
+                  <h5 className="card-title" >{profile.name}</h5>
                   <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                   <NavLink to="/" className="btn btn-primary">View profile</NavLink>
                 </div>
-              </>
+              
             )}
           </>
         :
