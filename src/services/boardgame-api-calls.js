@@ -1,6 +1,9 @@
 const baseBoardGameUrl = 'https://api.boardgameatlas.com/api/'
 
 export function getBoardGameList() {
-  return fetch(`${baseBoardGameUrl}/search?name=&client_id=It4sstezqG`)
-  .then(res => res.json())
+  fetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/api/boardgames`)
+  .then(res => {
+    console.log(res)
+    res.json()
+  })
 }
