@@ -9,4 +9,15 @@ async function getAllProfiles() {
   return await res.json()
 }
 
+function addMovie(movie) {
+  return fetch(`${BASE_URL}/addMovie`, {
+    method: 'POST',
+    headers: {'Authorization': `Bearer ${tokenService.getToken()}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(movie)
+  })
+  .then(res => res.json())
+}
+
 export { getAllProfiles }
