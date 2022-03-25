@@ -8,6 +8,7 @@ import Profiles from './pages/Profiles/Profiles'
 import Squads from './pages/Squads/Squads'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import AllMedia from './pages/AllMedia/AllMedia'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -40,6 +41,9 @@ const App = () => {
           path="/profiles"
           element={user ? <Profiles /> : <Navigate to="/login" />}
         />
+        <Route
+          path="/AllMedia"
+          element={<AllMedia />} />
         <Route
           path="/squads"
           element={<Squads />}
