@@ -16,10 +16,43 @@ import AllMedia from './pages/AllMedia/AllMedia'
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [boardGames, setBoardGames] = useState([])
+  const [videoGames, setVideoGames] = useState([])
+  const [movies, setMovies] = useState([])
 
+  async function videoGameApi() {
+    try {
+      const vGames = await videoGameApiCalls.getVideoGameList() 
+      setVideoGames(vGames)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   useEffect(() => {
-    boardGameApiCalls.getBoardGameList()
-    .then(boardGameData => setBoardGames(boardGameData))
+    videoGameApi()
+  }, [])
+
+  async function boardGameApi() {
+    try {
+      const bGames = await boardGameApiCalls.getBoardGameList() 
+      setBoardGames(bGames)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(() => {
+    boardGameApi()
+  }, [])
+
+  async function moviesApi() {
+    try {
+      const movie = await movieApiCalls.getMoviesList() 
+      setMovies(movie)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(() => {
+    moviesApi()
   }, [])
 
   const navigate = useNavigate()
@@ -53,7 +86,7 @@ const App = () => {
         />
         <Route
           path="/AllMedia"
-          element={<AllMedia />} />
+          element={<AllMedia videoGames={videoGames} boardGames={boardGames} movies={movies}/>} />
         <Route
           path="/squads"
           element={<Squads />}
