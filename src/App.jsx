@@ -32,43 +32,6 @@ useEffect(() => {
   .then(movieData => setMovies(movieData))
 }, [])
 
-  // async function videoGameApi() {
-  //   try {
-  //     const vGames = await videoGameApiCalls.getVideoGameList() 
-  //     setVideoGames(vGames)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-  
-
-  
-
-  // async function boardGameApi() {
-  //   try {
-  //     const bGames = await boardGameApiCalls.getBoardGameList() 
-  //     setBoardGames(bGames)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-  
-
-  // async function moviesApi() {
-  //   try {
-  //     const movie = await movieApiCalls.getMoviesList() 
-  //     setMovies(movie)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   videoGameApi()
-  //   boardGameApi()
-  //   moviesApi()
-  // }, [])
-
   const navigate = useNavigate()
 
   const handleLogout = () => {
