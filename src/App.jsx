@@ -16,11 +16,58 @@ import AllMedia from './pages/AllMedia/AllMedia'
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [boardGames, setBoardGames] = useState([])
+  const [videoGames, setVideoGames] = useState([])
+  const [movies, setMovies] = useState([])
 
-  useEffect(() => {
-    boardGameApiCalls.getBoardGameList()
-    .then(boardGameData => setBoardGames(boardGameData))
-  }, [])
+
+const [search, setSearch] = useState({query: ''})
+const [searchResults, setSearchResults] = useState({boardGames: [], movies: [], videoGames: []})
+
+useEffect(() => {
+  videoGameApiCalls.getVideoGameList()
+  .then(videoGameData => setVideoGames(videoGameData))
+  boardGameApiCalls.getBoardGameList()
+  .then(boardGameData => setBoardGames(boardGameData))
+  movieApiCalls.getMoviesList()
+  .then(movieData => setMovies(movieData))
+}, [])
+
+  // async function videoGameApi() {
+  //   try {
+  //     const vGames = await videoGameApiCalls.getVideoGameList() 
+  //     setVideoGames(vGames)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+  
+
+  
+
+  // async function boardGameApi() {
+  //   try {
+  //     const bGames = await boardGameApiCalls.getBoardGameList() 
+  //     setBoardGames(bGames)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+  
+
+  // async function moviesApi() {
+  //   try {
+  //     const movie = await movieApiCalls.getMoviesList() 
+  //     setMovies(movie)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   videoGameApi()
+  //   boardGameApi()
+  //   moviesApi()
+  // }, [])
 
   const navigate = useNavigate()
 
@@ -53,7 +100,7 @@ const App = () => {
         />
         <Route
           path="/AllMedia"
-          element={<AllMedia />} />
+          element={<AllMedia videoGames={videoGames} boardGames={boardGames} movies={movies}/>} />
         <Route
           path="/squads"
           element={<Squads />}
