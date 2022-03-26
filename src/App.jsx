@@ -19,41 +19,55 @@ const App = () => {
   const [videoGames, setVideoGames] = useState([])
   const [movies, setMovies] = useState([])
 
-  async function videoGameApi() {
-    try {
-      const vGames = await videoGameApiCalls.getVideoGameList() 
-      setVideoGames(vGames)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  useEffect(() => {
-    videoGameApi()
-  }, [])
 
-  async function boardGameApi() {
-    try {
-      const bGames = await boardGameApiCalls.getBoardGameList() 
-      setBoardGames(bGames)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  useEffect(() => {
-    boardGameApi()
-  }, [])
+const [search, setSearch] = useState({query: ''})
+const [searchResults, setSearchResults] = useState({boardGames: [], movies: [], videoGames: []})
 
-  async function moviesApi() {
-    try {
-      const movie = await movieApiCalls.getMoviesList() 
-      setMovies(movie)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  useEffect(() => {
-    moviesApi()
-  }, [])
+useEffect(() => {
+  videoGameApiCalls.getVideoGameList()
+  .then(videoGameData => setVideoGames(videoGameData))
+  boardGameApiCalls.getBoardGameList()
+  .then(boardGameData => setBoardGames(boardGameData))
+  movieApiCalls.getMoviesList()
+  .then(movieData => setMovies(movieData))
+}, [])
+
+  // async function videoGameApi() {
+  //   try {
+  //     const vGames = await videoGameApiCalls.getVideoGameList() 
+  //     setVideoGames(vGames)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+  
+
+  
+
+  // async function boardGameApi() {
+  //   try {
+  //     const bGames = await boardGameApiCalls.getBoardGameList() 
+  //     setBoardGames(bGames)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+  
+
+  // async function moviesApi() {
+  //   try {
+  //     const movie = await movieApiCalls.getMoviesList() 
+  //     setMovies(movie)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   videoGameApi()
+  //   boardGameApi()
+  //   moviesApi()
+  // }, [])
 
   const navigate = useNavigate()
 
