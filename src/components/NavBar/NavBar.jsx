@@ -4,7 +4,7 @@ const NavBar = ({ user, handleLogout }) => {
   return (
     <>
       {user ?
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light">
           <NavLink className="navbar-brand" to="/">TBD</NavLink>
             <button 
               className="navbar-toggler" 
