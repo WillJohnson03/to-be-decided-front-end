@@ -15,9 +15,8 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import AllMedia from './pages/AllMedia/AllMedia'
-
 import Profile from './pages/Profile/Profile';
-//import BoardGame from './components/BoardGame/BoardGame'
+import CreateSquad from './pages/CreateSquad/CreateSquad';
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -83,6 +82,10 @@ const App = () => {
         <Route
           path="/squads"
           element={<Squads />}
+        />
+        <Route
+          path="/createsquad"
+          element={<CreateSquad profiles={profiles} />}
         />
         <Route
           path="/changePassword"
