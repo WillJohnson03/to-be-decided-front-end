@@ -1,3 +1,4 @@
+import './App.css'
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import * as boardGameApiCalls from './services/boardgame-api-calls'
@@ -14,8 +15,12 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import AllMedia from './pages/AllMedia/AllMedia'
+<<<<<<< HEAD
+import Profile from './pages/Profile/Profile';
+=======
 // import BoardGame from './components/BoardGame/BoardGame'
 
+>>>>>>> 8d1e96ce6bac4049d2405927739ed8322f9fff7b
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -71,6 +76,10 @@ const App = () => {
           path="/profile"
           element={user ? <ProfileDetails profiles={profiles}/> : <Navigate to="/login" />}
         />
+        <Route
+          path='/profile/:id' element={< Profile />} 
+          >
+        </Route>
         <Route
           path="/AllMedia"
           element={<AllMedia />} />
