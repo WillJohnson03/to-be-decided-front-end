@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 
 const Squads = (props) => {
   return ( 
@@ -7,6 +7,10 @@ const Squads = (props) => {
       <h1>
         All Squads
       </h1>
+      <Link 
+        to="/createsquad"
+      >
+      <h2>Create New Squad</h2></Link>
     </>
    );
 }
