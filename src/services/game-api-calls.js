@@ -1,9 +1,11 @@
-export function getVideoGameList() {
-  return fetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/api/videoGames`)
-  .then(res => res.json())
-}
+const BASE_URL = process.env.REACT_APP_BACKEND_SERVER_URL
 
-export function searchVideoGame(videoGame) {
-  return fetch(`${process.env.REACT_APP_BACKEND_SERVER_URL}/api/videoGames`)
+// export function getVideoGameList() {
+//   return fetch(`${BASE_URL}/api/videoGames`)
+//   .then(res => res.json())
+// }
+
+export function searchVideoGame(name) {
+  return fetch(`${BASE_URL}/api/videoGames/${name}`)
   .then(res => res.json())
 }

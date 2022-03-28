@@ -12,21 +12,22 @@ import Squads from './pages/Squads/Squads'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import AllMedia from './pages/AllMedia/AllMedia'
+// import BoardGame from './components/BoardGame/BoardGame'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
-  const [boardGames, setBoardGames] = useState([])
-  const [videoGames, setVideoGames] = useState([])
-  const [movies, setMovies] = useState([])
+  // const [boardGames, setBoardGames] = useState([])
+  // const [videoGames, setVideoGames] = useState([])
+  // const [movies, setMovies] = useState([])
 
-useEffect(() => {
-  videoGameApiCalls.getVideoGameList()
-  .then(videoGameData => setVideoGames(videoGameData))
-  boardGameApiCalls.getBoardGameList()
-  .then(boardGameData => setBoardGames(boardGameData))
-  movieApiCalls.getMoviesList()
-  .then(movieData => setMovies(movieData))
-}, [])
+// useEffect(() => {
+//   videoGameApiCalls.getVideoGameList()
+//   .then(videoGameData => setVideoGames(videoGameData))
+//   boardGameApiCalls.getBoardGameList()
+//   .then(boardGameData => setBoardGames(boardGameData))
+//   movieApiCalls.getMoviesList()
+//   .then(movieData => setMovies(movieData))
+// }, [])
 
   const navigate = useNavigate()
 
@@ -59,7 +60,7 @@ useEffect(() => {
         />
         <Route
           path="/AllMedia"
-          element={<AllMedia videoGames={videoGames} boardGames={boardGames} movies={movies}/>} />
+          element={<AllMedia />} />
         <Route
           path="/squads"
           element={<Squads />}
@@ -68,6 +69,10 @@ useEffect(() => {
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
         />
+        {/* <Route
+          path='/boardgames'
+          element={<BoardGame boardGames={boardGames}/>}
+        /> */}
       </Routes>
     </>
   )
