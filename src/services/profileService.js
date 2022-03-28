@@ -20,4 +20,66 @@ function addMovie(movie) {
   .then(res => res.json())
 }
 
-export { getAllProfiles }
+function addVideoGame(videoGame) {
+  return fetch(`${BASE_URL}/addVideoGame`, {
+    method: 'POST',
+    headers: {'Authorization': `Bearer ${tokenService.getToken()}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(videoGame)
+  })
+  .then(res => res.json())
+}
+
+function addBoardGame(boardGame) {
+  return fetch(`${BASE_URL}/addBoardGame`, {
+    method: 'POST',
+    headers: {'Authorization': `Bearer ${tokenService.getToken()}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(boardGame)
+  })
+  .then(res => res.json())
+}
+
+function removeMovie(movieName) {
+  return fetch(`${BASE_URL}/${movieName}`, {
+    method: "PATCH",
+    headers: { 
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    }
+  })
+  .then(res => res.json())
+}
+
+function removeVideoGame(videoGameName) {
+  return fetch(`${BASE_URL}/${videoGameName}`, {
+    method: "PATCH",
+    headers: { 
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    }
+  })
+  .then(res => res.json())
+}
+
+function removeBoardGame(boardGameName) {
+  return fetch(`${BASE_URL}/${boardGameName}`, {
+    method: "PATCH",
+    headers: { 
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    }
+  })
+  .then(res => res.json())
+}
+
+
+
+export { 
+  getAllProfiles,
+  addMovie,  
+  addVideoGame,
+  addBoardGame,
+  removeMovie,
+  removeVideoGame,
+  removeBoardGame,
+}
