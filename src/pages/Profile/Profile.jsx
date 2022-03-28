@@ -9,7 +9,7 @@ const Profile = () => {
 
   return ( 
     <>
-    <h3>profile</h3>
+    <h3>{profile.name}</h3>
     </>
   );
 }
