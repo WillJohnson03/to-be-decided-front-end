@@ -8,16 +8,25 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
+import ProfileDetails from './pages/ProfileDetails/ProfileDetails';
 import Squads from './pages/Squads/Squads'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import * as profileService from './services/profileService'
 import AllMedia from './pages/AllMedia/AllMedia'
+
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [boardGames, setBoardGames] = useState([])
   const [videoGames, setVideoGames] = useState([])
   const [movies, setMovies] = useState([])
+  const [profiles, setProfiles] = useState([])
+
+  useEffect(()=> {
+    profileService.getAllProfiles()
+    .then(profiles => setProfiles(profiles))
+  }, [])
 
 useEffect(() => {
   videoGameApiCalls.getVideoGameList()
@@ -55,7 +64,11 @@ useEffect(() => {
         />
         <Route
           path="/profiles"
-          element={user ? <Profiles /> : <Navigate to="/login" />}
+          element={user ? <Profiles profiles={profiles}/> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/profile"
+          element={user ? <ProfileDetails profiles={profiles}/> : <Navigate to="/login" />}
         />
         <Route
           path="/AllMedia"
