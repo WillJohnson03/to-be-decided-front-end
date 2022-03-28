@@ -63,7 +63,7 @@ function CreateSquad(props) {
 						className="btn btn-primary btn-fluid"
             disabled={!validForm}
 					>
-						Add Puppy
+						Add Squad
 					</button>
 				</div>
 			</form>
