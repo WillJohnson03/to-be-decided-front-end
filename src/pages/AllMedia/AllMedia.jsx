@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { VideoGame } from '../../components/VideoGame/VideoGame'
-import { Movie } from '../../components/Movie/Movie'
-import { BoardGame } from '../../components/BoardGame/BoardGame'
-import { getBoardGameList, searchBoardGame } from '../../services/boardgame-api-calls';
-import { getMoviesList, searchMovie } from '../../services/movies-api-calls';
-import { getVideoGameList, searchVideoGame } from '../../services/game-api-calls';
+import React, { useState } from 'react';
+// import { VideoGame } from '../../components/VideoGame/VideoGame'
+// import { Movie } from '../../components/Movie/Movie'
+// import { BoardGame } from '../../components/BoardGame/BoardGame'
+import {  searchBoardGame } from '../../services/boardgame-api-calls';
+import {  searchMovie } from '../../services/movies-api-calls';
+import { searchVideoGame } from '../../services/game-api-calls';
 
 const AllMedia = ({boardGames, movies, videoGames}) => {
-  const [search, setSearch] = useState({query: ''})
+  const [search, setSearch] = useState({name: ''})
   const [searchResults, setSearchResults] = useState([])
 
   const handleSearch = evt => {
@@ -17,19 +17,23 @@ const AllMedia = ({boardGames, movies, videoGames}) => {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      searchBoardGame(query)
-      .then(boardGameSearchData => setSearchResults(boardGameSearchData))
-      searchVideoGame(query)
-      .then(videoGameSearchData => setSearchResults(setSearchResults+videoGameSearchData))
-      searchMovie(query)
-      .then(movieSearchData => setSearchResults(setSearchResults+movieSearchData))
+      searchBoardGame(name)
+      .then(boardGameSearchData => {setSearchResults(boardGameSearchData)})
+      searchVideoGame(name)
+      .then(videoGameSearchData => {setSearchResults(setSearchResults+videoGameSearchData)})
+      searchMovie(name)
+      .then(movieSearchData => {setSearchResults(setSearchResults+movieSearchData)})
     }
     catch (error) {
       console.log(error)
     }
   }
 
-  const { query } = search
+  const isFormInvalid = () => {
+    return !(name)
+  }
+
+  const { name } = search
 
   return ( 
     <>
@@ -40,15 +44,15 @@ const AllMedia = ({boardGames, movies, videoGames}) => {
       >
       <input 
         type="text"
-        name="query" 
-        value={query}
+        name="name" 
+        value={name}
         onChange={handleSearch}
       />
-      <button>Search</button>
+      <button disabled={isFormInvalid()}>Search</button>
       </form>
-      {query ? 
+      {name ? 
       <div>
-        <h1> {query}</h1>
+        <h1> {name}</h1>
       </div>
       :
       <div>
