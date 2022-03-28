@@ -12,11 +12,31 @@ const AllMedia = () => {
     setSearch({...search, [evt.target.name]: evt.target.value})
   }
   
-  const handleSubmit = async e => {
+  const handleSubmitBoardGame = async e => {
     e.preventDefault()
     try {
       searchBoardGame(search.name)
       .then(boardGameSearchData => {setSearchResults(boardGameSearchData)})
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleSubmitVideoGame = async e => {
+    e.preventDefault()
+    try {
+      searchVideoGame(search.name)
+      .then(videoGameSearchData => {setSearchResults(videoGameSearchData)})
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleSubmitMovie = async e => {
+    e.preventDefault()
+    try {
+      searchMovie(search.name)
+      .then(movieSearchData => {setSearchResults(movieSearchData)})
     } catch (error) {
       console.log(error)
     }
@@ -33,7 +53,7 @@ const AllMedia = () => {
       <h1>Search for a videogame, movie, or board game.</h1>
       <form
       autoComplete='off'
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmitBoardGame}
       >
       <input 
         type="text"
@@ -41,7 +61,31 @@ const AllMedia = () => {
         value={name}
         onChange={handleSearch}
       />
-      <button disabled={isFormInvalid()}>Search</button>
+      <button disabled={isFormInvalid()}>Search Board Game</button>
+      </form>
+      <form
+      autoComplete='off'
+      onSubmit={handleSubmitMovie}
+      >
+      <input 
+        type="text"
+        name="name" 
+        value={name}
+        onChange={handleSearch}
+      />
+      <button disabled={isFormInvalid()}>Search Movie</button>
+      </form>
+      <form
+      autoComplete='off'
+      onSubmit={handleSubmitVideoGame}
+      >
+      <input 
+        type="text"
+        name="name" 
+        value={name}
+        onChange={handleSearch}
+      />
+      <button disabled={isFormInvalid()}>Search Video Game</button>
       </form>
     </>
   );
