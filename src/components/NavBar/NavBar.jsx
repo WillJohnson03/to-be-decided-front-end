@@ -19,6 +19,9 @@ const NavBar = ({ user, handleLogout }) => {
               <li className='nav-item'>
                 <NavLink className="nav-link" to='/allmedia'>All Media <span className='sr-only'>(current)</span></NavLink>
               </li>
+              {/* <li className="nav-item">
+                <NavLink className='nav-link' to="/boardgames">Board Games</NavLink>
+              </li> */}
               <li className="nav-item">
                 <NavLink className='nav-link' to="/squads">Squads</NavLink>
               </li>

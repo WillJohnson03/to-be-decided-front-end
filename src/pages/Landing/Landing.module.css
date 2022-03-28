@@ -3,3 +3,8 @@
   align-items: center;
   flex-direction: column;
 }
+
+#edit-btn {
+  width: 20px;
+  padding-left: 20px;
+}

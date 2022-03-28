@@ -1,60 +1,102 @@
-import React, { useState, useEffect } from 'react';
-import { VideoGame } from '../../components/VideoGame/VideoGame'
-import { Movie } from '../../components/Movie/Movie'
-import { BoardGame } from '../../components/BoardGame/BoardGame'
-import { getBoardGameList, searchBoardGame } from '../../services/boardgame-api-calls';
-import { getMoviesList, searchMovie } from '../../services/movies-api-calls';
-import { getVideoGameList, searchVideoGame } from '../../services/game-api-calls';
+import { useState } from 'react';
+import {  searchBoardGame } from '../../services/boardgame-api-calls';
+import {  searchMovie } from '../../services/movies-api-calls';
+import { searchVideoGame } from '../../services/game-api-calls';
 
-const AllMedia = ({boardGames, movies, videoGames}) => {
-  const [search, setSearch] = useState({query: ''})
-  const [searchResults, setSearchResults] = useState([])
 
-  const handleSearch = evt => {
-    setSearch({...search, [evt.target.name]: evt.target.value})
+const AllMedia = () => {
+  const [searchBG, setSearchBG] = useState({name: ''})
+  const [searchMV, setSearchMV] = useState({name: ''})
+  const [searchVG, setSearchVG] = useState({name: ''})
+  const [searchResultsBG, setSearchResultsBG] = useState([])
+  const [searchResultsMV, setSearchResultsMV] = useState([])
+  const [searchResultsVG, setSearchResultsVG] = useState([])
+
+  const handleSearchBoardGame = evt => {
+    setSearchBG({...searchBG, [evt.target.name]: evt.target.value})
+  }
+  const handleSearchMovie = evt => {
+    setSearchMV({...searchMV, [evt.target.name]: evt.target.value})
+  }
+
+  const handleSearchVideoGame = evt => {
+    setSearchVG({...searchVG, [evt.target.name]: evt.target.value})
   }
   
-  const handleSubmit = async e => {
+  const handleSubmitBoardGame = async e => {
     e.preventDefault()
     try {
-      searchBoardGame(query)
-      .then(boardGameSearchData => setSearchResults(boardGameSearchData))
-      searchVideoGame(query)
-      .then(videoGameSearchData => setSearchResults(setSearchResults+videoGameSearchData))
-      searchMovie(query)
-      .then(movieSearchData => setSearchResults(setSearchResults+movieSearchData))
-    }
-    catch (error) {
+      searchBoardGame(searchBG.name)
+      .then(boardGameSearchData => {setSearchResultsBG(boardGameSearchData)})
+    } catch (error) {
       console.log(error)
     }
   }
 
-  const { query } = search
+  const handleSubmitVideoGame = async e => {
+    e.preventDefault()
+    try {
+      searchVideoGame(searchVG.name)
+      .then(videoGameSearchData => {setSearchResultsVG(videoGameSearchData)})
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleSubmitMovie = async e => {
+    e.preventDefault()
+    try {
+      searchMovie(searchMV.name)
+      .then(movieSearchData => {setSearchResultsMV(movieSearchData)})
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+  const { BGname } = searchBG
+  const { MVname } = searchMV
+  const { VGname } = searchVG
 
   return ( 
     <>
       <h1>Search for a videogame, movie, or board game.</h1>
       <form
       autoComplete='off'
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmitBoardGame}
       >
       <input 
         type="text"
-        name="query" 
-        value={query}
-        onChange={handleSearch}
+        name="name" 
+        value={BGname}
+        onChange={handleSearchBoardGame}
       />
-      <button>Search</button>
+      <button>Search Board Game</button>
       </form>
-      {query ? 
-      <div>
-        <h1> {query}</h1>
-      </div>
-      :
-      <div>
-        <h1> Search for something!</h1>
-      </div>
-      }
+      <form
+      autoComplete='off'
+      onSubmit={handleSubmitMovie}
+      >
+      <input 
+        type="text"
+        name="name" 
+        value={MVname}
+        onChange={handleSearchMovie}
+      />
+      <button>Search Movie</button>
+      </form>
+      <form
+      autoComplete='off'
+      onSubmit={handleSubmitVideoGame}
+      >
+      <input 
+        type="text"
+        name="name" 
+        value={VGname}
+        onChange={handleSearchVideoGame}
+      />
+      <button>Search Video Game</button>
+      </form>
     </>
   );
 }

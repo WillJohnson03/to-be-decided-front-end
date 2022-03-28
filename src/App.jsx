@@ -15,13 +15,18 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import AllMedia from './pages/AllMedia/AllMedia'
+<<<<<<< HEAD
 import Profile from './pages/Profile/Profile';
+=======
+// import BoardGame from './components/BoardGame/BoardGame'
+
+>>>>>>> 8d1e96ce6bac4049d2405927739ed8322f9fff7b
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
-  const [boardGames, setBoardGames] = useState([])
-  const [videoGames, setVideoGames] = useState([])
-  const [movies, setMovies] = useState([])
+  // const [boardGames, setBoardGames] = useState([])
+  // const [videoGames, setVideoGames] = useState([])
+  // const [movies, setMovies] = useState([])
   const [profiles, setProfiles] = useState([])
 
   useEffect(()=> {
@@ -29,14 +34,14 @@ const App = () => {
     .then(profiles => setProfiles(profiles))
   }, [])
 
-useEffect(() => {
-  videoGameApiCalls.getVideoGameList()
-  .then(videoGameData => setVideoGames(videoGameData))
-  boardGameApiCalls.getBoardGameList()
-  .then(boardGameData => setBoardGames(boardGameData))
-  movieApiCalls.getMoviesList()
-  .then(movieData => setMovies(movieData))
-}, [])
+// useEffect(() => {
+//   videoGameApiCalls.getVideoGameList()
+//   .then(videoGameData => setVideoGames(videoGameData))
+//   boardGameApiCalls.getBoardGameList()
+//   .then(boardGameData => setBoardGames(boardGameData))
+//   movieApiCalls.getMoviesList()
+//   .then(movieData => setMovies(movieData))
+// }, [])
 
   const navigate = useNavigate()
 
@@ -77,7 +82,7 @@ useEffect(() => {
         </Route>
         <Route
           path="/AllMedia"
-          element={<AllMedia videoGames={videoGames} boardGames={boardGames} movies={movies}/>} />
+          element={<AllMedia />} />
         <Route
           path="/squads"
           element={<Squads />}
@@ -86,6 +91,10 @@ useEffect(() => {
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
         />
+        {/* <Route
+          path='/boardgames'
+          element={<BoardGame boardGames={boardGames}/>}
+        /> */}
       </Routes>
     </>
   )
