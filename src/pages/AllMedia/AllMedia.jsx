@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
-// import { VideoGame } from '../../components/VideoGame/VideoGame'
-// import { Movie } from '../../components/Movie/Movie'
-// import { BoardGame } from '../../components/BoardGame/BoardGame'
+import { useState } from 'react';
 import {  searchBoardGame } from '../../services/boardgame-api-calls';
 import {  searchMovie } from '../../services/movies-api-calls';
 import { searchVideoGame } from '../../services/game-api-calls';
+import { version } from 'react-dom/cjs/react-dom.development';
 
-const AllMedia = ({boardGames, movies, videoGames}) => {
+const AllMedia = () => {
   const [search, setSearch] = useState({name: ''})
   const [searchResults, setSearchResults] = useState([])
 
@@ -17,14 +15,9 @@ const AllMedia = ({boardGames, movies, videoGames}) => {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      searchBoardGame(name)
+      searchBoardGame(search.name)
       .then(boardGameSearchData => {setSearchResults(boardGameSearchData)})
-      searchVideoGame(name)
-      .then(videoGameSearchData => {setSearchResults(setSearchResults+videoGameSearchData)})
-      searchMovie(name)
-      .then(movieSearchData => {setSearchResults(setSearchResults+movieSearchData)})
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error)
     }
   }
@@ -50,15 +43,6 @@ const AllMedia = ({boardGames, movies, videoGames}) => {
       />
       <button disabled={isFormInvalid()}>Search</button>
       </form>
-      {name ? 
-      <div>
-        <h1> {name}</h1>
-      </div>
-      :
-      <div>
-        <h1> Search for something!</h1>
-      </div>
-      }
     </>
   );
 }
