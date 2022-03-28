@@ -15,12 +15,10 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import AllMedia from './pages/AllMedia/AllMedia'
-<<<<<<< HEAD
 import Profile from './pages/Profile/Profile';
-=======
+
 // import BoardGame from './components/BoardGame/BoardGame'
 
->>>>>>> 8d1e96ce6bac4049d2405927739ed8322f9fff7b
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -28,11 +26,21 @@ const App = () => {
   // const [videoGames, setVideoGames] = useState([])
   // const [movies, setMovies] = useState([])
   const [profiles, setProfiles] = useState([])
-
+  const [profile, setProfile] = useState({})
+  
   useEffect(()=> {
     profileService.getAllProfiles()
     .then(profiles => setProfiles(profiles))
   }, [])
+
+  useEffect(() => {
+    if (user) {
+      profileService.getProfile(user.profile)
+      .then(profileData => {
+        setProfile(profileData)
+      })
+    }
+  }, [user])
 
 // useEffect(() => {
 //   videoGameApiCalls.getVideoGameList()
@@ -73,11 +81,11 @@ const App = () => {
           element={user ? <Profiles profiles={profiles}/> : <Navigate to="/login" />}
         />
         <Route
-          path="/profile"
+          path="/profiles"
           element={user ? <ProfileDetails profiles={profiles}/> : <Navigate to="/login" />}
         />
         <Route
-          path='/profile/:id' element={< Profile />} 
+          path='/profile/:id' element={< Profile profile={profile} />} 
           >
         </Route>
         <Route
