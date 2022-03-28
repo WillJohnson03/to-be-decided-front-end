@@ -2,21 +2,32 @@ import { useState } from 'react';
 import {  searchBoardGame } from '../../services/boardgame-api-calls';
 import {  searchMovie } from '../../services/movies-api-calls';
 import { searchVideoGame } from '../../services/game-api-calls';
-import { version } from 'react-dom/cjs/react-dom.development';
+
 
 const AllMedia = () => {
-  const [search, setSearch] = useState({name: ''})
-  const [searchResults, setSearchResults] = useState([])
+  const [searchBG, setSearchBG] = useState({name: ''})
+  const [searchMV, setSearchMV] = useState({name: ''})
+  const [searchVG, setSearchVG] = useState({name: ''})
+  const [searchResultsBG, setSearchResultsBG] = useState([])
+  const [searchResultsMV, setSearchResultsMV] = useState([])
+  const [searchResultsVG, setSearchResultsVG] = useState([])
 
-  const handleSearch = evt => {
-    setSearch({...search, [evt.target.name]: evt.target.value})
+  const handleSearchBoardGame = evt => {
+    setSearchBG({...searchBG, [evt.target.name]: evt.target.value})
+  }
+  const handleSearchMovie = evt => {
+    setSearchMV({...searchMV, [evt.target.name]: evt.target.value})
+  }
+
+  const handleSearchVideoGame = evt => {
+    setSearchVG({...searchVG, [evt.target.name]: evt.target.value})
   }
   
   const handleSubmitBoardGame = async e => {
     e.preventDefault()
     try {
-      searchBoardGame(search.name)
-      .then(boardGameSearchData => {setSearchResults(boardGameSearchData)})
+      searchBoardGame(searchBG.name)
+      .then(boardGameSearchData => {setSearchResultsBG(boardGameSearchData)})
     } catch (error) {
       console.log(error)
     }
@@ -25,8 +36,8 @@ const AllMedia = () => {
   const handleSubmitVideoGame = async e => {
     e.preventDefault()
     try {
-      searchVideoGame(search.name)
-      .then(videoGameSearchData => {setSearchResults(videoGameSearchData)})
+      searchVideoGame(searchVG.name)
+      .then(videoGameSearchData => {setSearchResultsVG(videoGameSearchData)})
     } catch (error) {
       console.log(error)
     }
@@ -35,18 +46,17 @@ const AllMedia = () => {
   const handleSubmitMovie = async e => {
     e.preventDefault()
     try {
-      searchMovie(search.name)
-      .then(movieSearchData => {setSearchResults(movieSearchData)})
+      searchMovie(searchMV.name)
+      .then(movieSearchData => {setSearchResultsMV(movieSearchData)})
     } catch (error) {
       console.log(error)
     }
   }
 
-  const isFormInvalid = () => {
-    return !(name)
-  }
 
-  const { name } = search
+  const { BGname } = searchBG
+  const { MVname } = searchMV
+  const { VGname } = searchVG
 
   return ( 
     <>
@@ -58,10 +68,10 @@ const AllMedia = () => {
       <input 
         type="text"
         name="name" 
-        value={name}
-        onChange={handleSearch}
+        value={BGname}
+        onChange={handleSearchBoardGame}
       />
-      <button disabled={isFormInvalid()}>Search Board Game</button>
+      <button>Search Board Game</button>
       </form>
       <form
       autoComplete='off'
@@ -70,10 +80,10 @@ const AllMedia = () => {
       <input 
         type="text"
         name="name" 
-        value={name}
-        onChange={handleSearch}
+        value={MVname}
+        onChange={handleSearchMovie}
       />
-      <button disabled={isFormInvalid()}>Search Movie</button>
+      <button>Search Movie</button>
       </form>
       <form
       autoComplete='off'
@@ -82,10 +92,10 @@ const AllMedia = () => {
       <input 
         type="text"
         name="name" 
-        value={name}
-        onChange={handleSearch}
+        value={VGname}
+        onChange={handleSearchVideoGame}
       />
-      <button disabled={isFormInvalid()}>Search Video Game</button>
+      <button>Search Video Game</button>
       </form>
     </>
   );
