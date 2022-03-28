@@ -15,12 +15,9 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import AllMedia from './pages/AllMedia/AllMedia'
-<<<<<<< HEAD
-import Profile from './pages/Profile/Profile';
-=======
-// import BoardGame from './components/BoardGame/BoardGame'
 
->>>>>>> 8d1e96ce6bac4049d2405927739ed8322f9fff7b
+import Profile from './pages/Profile/Profile';
+//import BoardGame from './components/BoardGame/BoardGame'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
