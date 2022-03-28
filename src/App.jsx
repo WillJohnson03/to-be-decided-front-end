@@ -19,10 +19,6 @@ const App = () => {
   const [videoGames, setVideoGames] = useState([])
   const [movies, setMovies] = useState([])
 
-
-const [search, setSearch] = useState({query: ''})
-const [searchResults, setSearchResults] = useState({boardGames: [], movies: [], videoGames: []})
-
 useEffect(() => {
   videoGameApiCalls.getVideoGameList()
   .then(videoGameData => setVideoGames(videoGameData))
