@@ -18,7 +18,6 @@ import AllMedia from './pages/AllMedia/AllMedia'
 import Profile from './pages/Profile/Profile';
 import CreateSquad from './pages/CreateSquad/CreateSquad';
 
-
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   // const [boardGames, setBoardGames] = useState([])
