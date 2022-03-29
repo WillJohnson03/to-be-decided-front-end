@@ -13,13 +13,12 @@ const Squad = (props) => {
       })
   }, [])
 
-
   return (
     <>
       <div>
         <h3>{squad.name}</h3>
-        {
-          userEvent.profile === squad.owner?._id ?
+        <img src={squad.avatar} alt={squad.name} />
+        {props.user.profile === squad.creator ?
             <div>
               <Link
                 to={`/squad/${squad._id}/edit`}
@@ -35,9 +34,9 @@ const Squad = (props) => {
               </button>
             </div>
           :
-          <div>
-            <p>{squad.creator.name}'s squad</p>
-          </div>
+          <>
+            
+          </>
         }
       </div>
     </>
