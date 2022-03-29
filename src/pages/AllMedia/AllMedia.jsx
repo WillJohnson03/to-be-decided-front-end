@@ -4,7 +4,7 @@ import {  searchMovie } from '../../services/movies-api-calls';
 import { searchVideoGame } from '../../services/game-api-calls';
 
 
-const AllMedia = () => {
+const AllMedia = (props) => {
   const [searchBG, setSearchBG] = useState({name: ''})
   const [searchMV, setSearchMV] = useState({name: ''})
   const [searchVG, setSearchVG] = useState({name: ''})
@@ -57,6 +57,7 @@ const AllMedia = () => {
   const { BGname } = searchBG
   const { MVname } = searchMV
   const { VGname } = searchVG
+  console.log(searchResultsBG.games)
 
   return ( 
     <>
@@ -97,6 +98,15 @@ const AllMedia = () => {
       />
       <button>Search Video Game</button>
       </form>
+      <div>
+        {/* {searchResultsBG.games.map((result, index) => (
+          <div
+            key={result.id}
+          >
+            {result.title}
+          </div>
+        ))} */}
+      </div>
     </>
   );
 }
