@@ -10,7 +10,6 @@ export async function getAllSquads() {
 }
 
 export function getSquad(id) {
-  console.log(id);
   return fetch(`${BASE_URL}/${id}`, {
     headers: { Authorization: `Bearer ${tokenService.getToken()}` },
   })
@@ -28,3 +27,23 @@ export function create(squad) {
   .then(res => res.json())
 }
 
+export function deleteOne(id) {
+  return fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+  })
+  .then(res => res.json())
+}
+
+export function update(squad) {
+  return fetch(`${BASE_URL}/${squad.get('_id')}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: squad
+  })
+  .then(res => res.json())
+}

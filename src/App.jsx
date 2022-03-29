@@ -1,9 +1,9 @@
 import './App.css'
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, Navigate, useParams } from 'react-router-dom'
-import * as boardGameApiCalls from './services/boardgame-api-calls'
-import * as videoGameApiCalls from './services/game-api-calls'
-import * as movieApiCalls from './services/movies-api-calls'
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+// import * as boardGameApiCalls from './services/boardgame-api-calls'
+// import * as videoGameApiCalls from './services/game-api-calls'
+// import * as movieApiCalls from './services/movies-api-calls'
 import * as squadService from './services/squadService'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -18,7 +18,9 @@ import * as profileService from './services/profileService'
 import AllMedia from './pages/AllMedia/AllMedia'
 import Profile from './pages/Profile/Profile';
 import CreateSquad from './pages/CreateSquad/CreateSquad'
+import Squad from './pages/Squad/Squad';
 import VideoGameDetails from './pages/BoardGameDetails/BoardGameDetails'
+import EditSquad from './pages/EditSquad/EditSquad';
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -29,7 +31,7 @@ const App = () => {
   // const [boardGames, setBoardGames] = useState([])
   // const [videoGames, setVideoGames] = useState([])
   // const [movies, setMovies] = useState([])
-  const { id } = useParams()
+  // const { id } = useParams()
 
   useEffect(() => {
     profileService.getAllProfiles()
@@ -70,6 +72,21 @@ const App = () => {
   const handleAddSquad = async newSquadData => {
     const newSquad = await squadService.create(newSquadData)
     setSquads([...squads, newSquad])
+  }
+
+  const handleEditSquad = updatedSquadData => {
+    squadService.update(updatedSquadData)
+    .then(updatedSquad => {
+      const newSquadsArray = squads.map(squad => squad._id === updatedSquad._id ? updatedSquad : squad)
+      setSquads(newSquadsArray)
+      navigate('/squads')
+    })
+  }
+
+  const handleDeleteSquad = id => {
+    squadService.deleteOne(id)
+    .then(deletedSquad => setSquads(squads.filter(squad => squad._id !== deletedSquad._id)))
+    navigate('/squads')
   }
 
   // const handleAddBoardGame = boardGame => {
@@ -117,6 +134,17 @@ const App = () => {
         <Route
           path="/squads"
           element={<Squads squads={squads} />}
+        />
+        <Route
+          path='/squad/:id' element={<Squad squads={squads}                 handleDeleteSquad={handleDeleteSquad}/>}
+        ></Route>
+        <Route
+          path='/squad/:id/edit'
+          element={
+            <EditSquad
+              handleEditSquad={handleEditSquad}
+            />
+          }
         />
         <Route
           path="/createsquad"
