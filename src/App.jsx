@@ -1,9 +1,10 @@
 import './App.css'
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
-// import * as boardGameApiCalls from './services/boardgame-api-calls'
-// import * as videoGameApiCalls from './services/game-api-calls'
-// import * as movieApiCalls from './services/movies-api-calls'
+import { Routes, Route, useNavigate, Navigate, useParams } from 'react-router-dom'
+import * as boardGameApiCalls from './services/boardgame-api-calls'
+import * as videoGameApiCalls from './services/game-api-calls'
+import * as movieApiCalls from './services/movies-api-calls'
+import * as squadService from './services/squads'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
@@ -20,36 +21,30 @@ import CreateSquad from './pages/CreateSquad/CreateSquad'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [squads, setSquads] = useState([])
+  const [profiles, setProfiles] = useState({})
+  const navigate = useNavigate()
   // const [boardGames, setBoardGames] = useState([])
   // const [videoGames, setVideoGames] = useState([])
   // const [movies, setMovies] = useState([])
-  const [profiles, setProfiles] = useState([])
-  const [profile, setProfile] = useState({})
-  
-  useEffect(()=> {
-    profileService.getAllProfiles()
-    .then(profiles => setProfiles(profiles))
-  }, [])
+  const { id } = useParams()
 
   useEffect(() => {
-    if (user) {
-      profileService.getProfile(user.profile)
-      .then(profileData => {
-        setProfile(profileData)
-      })
-    }
-  }, [user])
+    profileService.getAllProfiles()
+      .then(profiles => setProfiles(profiles))
+  }, [])
 
-// useEffect(() => {
-//   videoGameApiCalls.getVideoGameList()
-//   .then(videoGameData => setVideoGames(videoGameData))
-//   boardGameApiCalls.getBoardGameList()
-//   .then(boardGameData => setBoardGames(boardGameData))
-//   movieApiCalls.getMoviesList()
-//   .then(movieData => setMovies(movieData))
-// }, [])
+ 
 
-  const navigate = useNavigate()
+  // useEffect(() => {
+  //   videoGameApiCalls.getVideoGameList()
+  //   .then(videoGameData => setVideoGames(videoGameData))
+  //   boardGameApiCalls.getBoardGameList()
+  //   .then(boardGameData => setBoardGames(boardGameData))
+  //   movieApiCalls.getMoviesList()
+  //   .then(movieData => setMovies(movieData))
+  // }, [])
+
 
   const handleLogout = () => {
     authService.logout()
@@ -59,6 +54,11 @@ const App = () => {
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddSquad = async newSquadData => {
+    const newSquad = await squadService.create(newSquadData)
+    setSquads([...squads, newSquad])
   }
 
   return (
@@ -76,15 +76,15 @@ const App = () => {
         />
         <Route
           path="/profiles"
-          element={user ? <Profiles profiles={profiles}/> : <Navigate to="/login" />}
+          element={user ? <Profiles profiles={profiles} /> : <Navigate to="/login" />}
         />
         <Route
           path="/profiles"
-          element={user ? <ProfileDetails profiles={profiles}/> : <Navigate to="/login" />}
+          element={user ? <ProfileDetails profiles={profiles} /> : <Navigate to="/login" />}
         />
         <Route
-          path='/profile/:id' element={< Profile profile={profile} />} 
-          >
+          path='/profile/:id' element={< Profile profile={profile} />}
+        >
         </Route>
         <Route
           path="/AllMedia"
@@ -95,16 +95,12 @@ const App = () => {
         />
         <Route
           path="/createsquad"
-          element={<CreateSquad profiles={profiles} />}
+          element={<CreateSquad handleAddSquad={handleAddSquad} />}
         />
         <Route
           path="/changePassword"
-          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
+          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
         />
-        {/* <Route
-          path='/boardgames'
-          element={<BoardGame boardGames={boardGames}/>}
-        /> */}
       </Routes>
     </>
   )

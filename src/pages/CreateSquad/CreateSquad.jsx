@@ -19,12 +19,12 @@ function CreateSquad(props) {
     evt.preventDefault()
     const squadFormData = new FormData()
     squadFormData.append('name', formData.name)
-    squadFormData.append('photo', formData.photo)
+    squadFormData.append('avatar', formData.avatar)
     props.handleAddSquad(squadFormData)
   }
 
 	const handleChangePhoto = (evt) => {
-		setFormData({...formData, photo: evt.target.files[0]})
+		setFormData({...formData, avatar: evt.target.files[0]})
 	}
 
 	return (
@@ -46,14 +46,14 @@ function CreateSquad(props) {
 					/>
 				</div>
 					<div className="form-group mb-4">
-						<label htmlFor="photo-upload" className="form-label">
+						<label htmlFor="avatar-upload" className="form-label">
 						Upload Photo
 						</label>
 						<input
 						type="file"
 						className="form-control"
-						id="photo-upload"
-						name="photo"
+						id="avatar-upload"
+						name="avatar"
 						onChange={handleChangePhoto}
 						/>
 				</div>
