@@ -1,7 +1,7 @@
 import './VideoGameDetails.css'
 import { useParams, useRef, useState, useLocation } from "react-router-dom";
 
-const VideoGameDetails = (handleRemoveVideoGame, handleAddVideoGame) => {
+const VideoGameDetails = ({handleRemoveVideoGame, handleAddVideoGame}) => {
   const location = useLocation()
   const videoGame = location.state.result
   console.log(videoGame)
