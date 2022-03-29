@@ -7,7 +7,6 @@ import ProfileDetails from '../ProfileDetails/ProfileDetails'
 
 const Profiles = (props) => {
   
-
   return (
     <div>
       <div className='card-container'>
