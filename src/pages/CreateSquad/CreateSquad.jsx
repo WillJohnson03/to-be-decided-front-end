@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react"
+import { useNavigate, Navigate } from 'react-router-dom'
 
 function CreateSquad(props) {
+	const navigate = useNavigate()
   const formElement = useRef()
   const [validForm, setValidForm] = useState(false)
   const [formData, setFormData] = useState({
@@ -21,6 +23,7 @@ function CreateSquad(props) {
     squadFormData.append('name', formData.name)
     squadFormData.append('avatar', formData.avatar)
     props.handleAddSquad(squadFormData)
+		navigate('/squads')
   }
 
 	const handleChangePhoto = (evt) => {

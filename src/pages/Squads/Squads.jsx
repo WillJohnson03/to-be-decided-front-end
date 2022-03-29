@@ -10,9 +10,16 @@ function Squads(props) {
         All Squads
       </h1>
       <Link 
-        path="/createsquad"
+        to="/createsquad"
         >
       <h2>Create New Squad</h2></Link>
+      <div>
+      <div className='card-container'>
+        {props.squads.map(squad=>(
+          console.log(squad)
+        ))}
+      </div>
+    </div>
     </>
    );
 }
