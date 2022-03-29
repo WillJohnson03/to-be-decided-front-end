@@ -16,7 +16,7 @@ const Squad = (props) => {
 
   return (
     <>
-      <h3>{squad.name}</h3>
+      <h3>test</h3>
     </>
   );
 }

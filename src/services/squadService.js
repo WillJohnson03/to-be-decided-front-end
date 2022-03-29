@@ -10,7 +10,6 @@ export async function getAllSquads() {
 }
 
 export function getSquad(id) {
-  console.log(id);
   return fetch(`${BASE_URL}/${id}`, {
     headers: { Authorization: `Bearer ${tokenService.getToken()}` },
   })

@@ -18,6 +18,7 @@ import * as profileService from './services/profileService'
 import AllMedia from './pages/AllMedia/AllMedia'
 import Profile from './pages/Profile/Profile';
 import CreateSquad from './pages/CreateSquad/CreateSquad'
+import Squad from './pages/Squad/Squad';
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -95,6 +96,9 @@ const App = () => {
           path="/squads"
           element={<Squads squads={squads} />}
         />
+        <Route
+          path='/squad/:id' element={<Squad squads={squads} />}
+        ></Route>
         <Route
           path="/createsquad"
           element={<CreateSquad handleAddSquad={handleAddSquad} navigate={navigate}/>}
