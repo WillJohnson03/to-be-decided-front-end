@@ -2,16 +2,16 @@ import { useState } from 'react';
 import {  searchBoardGame } from '../../services/boardgame-api-calls';
 import {  searchMovie } from '../../services/movies-api-calls';
 import { searchVideoGame } from '../../services/game-api-calls';
+import { NavLink } from 'react-router-dom';
 
-
-const AllMedia = () => {
+const AllMedia = (props) => {
   const [searchBG, setSearchBG] = useState({name: ''})
   const [searchMV, setSearchMV] = useState({name: ''})
   const [searchVG, setSearchVG] = useState({name: ''})
   const [searchResultsBG, setSearchResultsBG] = useState([])
   const [searchResultsMV, setSearchResultsMV] = useState([])
   const [searchResultsVG, setSearchResultsVG] = useState([])
-
+  
   const handleSearchBoardGame = evt => {
     setSearchBG({...searchBG, [evt.target.name]: evt.target.value})
   }
@@ -57,7 +57,7 @@ const AllMedia = () => {
   const { BGname } = searchBG
   const { MVname } = searchMV
   const { VGname } = searchVG
-
+  console.log(searchResultsVG.results)
   return ( 
     <>
       <h1>Search for a videogame, movie, or board game.</h1>
@@ -97,6 +97,49 @@ const AllMedia = () => {
       />
       <button>Search Video Game</button>
       </form>
+        {searchResultsBG?.games?.length ?
+      <div>
+        <h1>Board Game Results:</h1>
+        {searchResultsBG?.games?.map((result, index) => (
+          <div
+            key={result.id}
+          >
+            {result.name} 
+            <img src={result.image_url} alt={result.name} />
+          </div>
+        ))}
+      </div>
+        :
+        <></>
+      }   
+      {searchResultsMV?.results?.length ?
+      <div>
+          <h1>Movie Results:</h1>
+        {searchResultsMV?.results?.map((result) => (
+          <div key={result.id}>
+            {result.title}
+            <img src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${result.poster_path}`} alt={result.title}/>
+          </div>
+        ))}
+      </div>
+      :
+      <></>
+      }
+      {searchResultsVG?.results?.length ?
+      <div>
+        <h1>Video Game results:</h1>
+        {searchResultsVG?.results?.map((result) => (
+          <div key={result.id}>
+            {result.name}
+            <NavLink 
+            to='/VideoGameDetails'
+            state={{result}}><img src={result.background_image} alt={result.name} /></NavLink>
+          </div>
+        ))}
+      </div>
+      :
+      <></>
+      }
     </>
   );
 }
