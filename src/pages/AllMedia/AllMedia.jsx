@@ -97,7 +97,9 @@ const AllMedia = (props) => {
       />
       <button>Search Video Game</button>
       </form>
+        {searchResultsBG?.games?.length ?
       <div>
+        <h1>Board Game Results:</h1>
         {searchResultsBG?.games?.map((result, index) => (
           <div
             key={result.id}
@@ -107,6 +109,35 @@ const AllMedia = (props) => {
           </div>
         ))}
       </div>
+        :
+        <></>
+      }   
+      {searchResultsMV?.results?.length ?
+      <div>
+          <h1>Movie Results:</h1>
+        {searchResultsMV?.results?.map((result) => (
+          <div key={result.id}>
+            {result.title}
+            <img src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${result.poster_path}`} alt={result.title}/>
+          </div>
+        ))}
+      </div>
+      :
+      <></>
+      }
+      {searchResultsVG?.results?.lenght ?
+      <div>
+        <h1>Video Game results:</h1>
+        {searchResultsVG?.results?.map((result) => (
+          <div key={result.id}>
+            {result.name}
+            <img src={result.background_image} alt={result.name} />
+          </div>
+        ))}
+      </div>
+      :
+      <></>
+      }
     </>
   );
 }
