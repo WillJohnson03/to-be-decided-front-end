@@ -1,6 +1,6 @@
 import './App.css'
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { Routes, Route, useNavigate, Navigate, useParams } from 'react-router-dom'
 import * as boardGameApiCalls from './services/boardgame-api-calls'
 import * as videoGameApiCalls from './services/game-api-calls'
 import * as movieApiCalls from './services/movies-api-calls'
@@ -25,29 +25,23 @@ const App = () => {
   // const [movies, setMovies] = useState([])
   const [profiles, setProfiles] = useState([])
   const [profile, setProfile] = useState({})
-  
-  useEffect(()=> {
-    profileService.getAllProfiles()
-    .then(profiles => setProfiles(profiles))
-  }, [])
+  const { id } = useParams()
 
   useEffect(() => {
-    if (user) {
-      profileService.getProfile(user.profile)
-      .then(profileData => {
-        setProfile(profileData)
-      })
-    }
-  }, [user])
+    profileService.getAllProfiles()
+      .then(profiles => setProfiles(profiles))
+  }, [])
 
-// useEffect(() => {
-//   videoGameApiCalls.getVideoGameList()
-//   .then(videoGameData => setVideoGames(videoGameData))
-//   boardGameApiCalls.getBoardGameList()
-//   .then(boardGameData => setBoardGames(boardGameData))
-//   movieApiCalls.getMoviesList()
-//   .then(movieData => setMovies(movieData))
-// }, [])
+ 
+
+  // useEffect(() => {
+  //   videoGameApiCalls.getVideoGameList()
+  //   .then(videoGameData => setVideoGames(videoGameData))
+  //   boardGameApiCalls.getBoardGameList()
+  //   .then(boardGameData => setBoardGames(boardGameData))
+  //   movieApiCalls.getMoviesList()
+  //   .then(movieData => setMovies(movieData))
+  // }, [])
 
   const navigate = useNavigate()
 
@@ -76,15 +70,15 @@ const App = () => {
         />
         <Route
           path="/profiles"
-          element={user ? <Profiles profiles={profiles}/> : <Navigate to="/login" />}
+          element={user ? <Profiles profiles={profiles} /> : <Navigate to="/login" />}
         />
         <Route
           path="/profiles"
-          element={user ? <ProfileDetails profiles={profiles}/> : <Navigate to="/login" />}
+          element={user ? <ProfileDetails profiles={profiles} /> : <Navigate to="/login" />}
         />
         <Route
-          path='/profile/:id' element={< Profile profile={profile} />} 
-          >
+          path='/profile/:id' element={< Profile profile={profile} />}
+        >
         </Route>
         <Route
           path="/AllMedia"
@@ -99,7 +93,7 @@ const App = () => {
         />
         <Route
           path="/changePassword"
-          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
+          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
         />
         {/* <Route
           path='/boardgames'
