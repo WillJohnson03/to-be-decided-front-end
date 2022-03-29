@@ -25,7 +25,7 @@ const Squad = (props) => {
           userEvent.profile === squad.owner?._id ?
             <div>
               <Link
-                to='/edit'
+                to='/squad/edit'
                 state={{squad}}
               >
                 Edit

@@ -20,6 +20,7 @@ import Profile from './pages/Profile/Profile';
 import CreateSquad from './pages/CreateSquad/CreateSquad'
 import Squad from './pages/Squad/Squad';
 import VideoGameDetails from './pages/BoardGameDetails/BoardGameDetails'
+import EditSquad from './pages/EditSquad/EditSquad';
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -71,6 +72,15 @@ const App = () => {
   const handleAddSquad = async newSquadData => {
     const newSquad = await squadService.create(newSquadData)
     setSquads([...squads, newSquad])
+  }
+
+  const handleEditSquad = updatedSquadData => {
+    squadService.update(updatedSquadData)
+    .then(updatedSquad => {
+      const newSquadsArray = squads.map(squad => squad._id === updatedSquad._id ? updatedSquad : squad)
+      setSquads(newSquadsArray)
+      navigate('/squads/:id')
+    })
   }
 
   const handleDeleteSquad = id => {
@@ -128,6 +138,14 @@ const App = () => {
         <Route
           path='/squad/:id' element={<Squad squads={squads}                 handleDeleteSquad={handleDeleteSquad}/>}
         ></Route>
+        <Route
+          path='/squad/edit'
+          element={
+            <EditSquad
+              handleEditSquad={handleEditSquad}
+            />
+          }
+        />
         <Route
           path="/createsquad"
           element={<CreateSquad handleAddSquad={handleAddSquad} navigate={navigate}/>}

@@ -36,3 +36,14 @@ export function deleteOne(id) {
   })
   .then(res => res.json())
 }
+
+export function update(squad) {
+  return fetch(`${BASE_URL}/${squad.get('_id')}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: squad
+  })
+  .then(res => res.json())
+}
