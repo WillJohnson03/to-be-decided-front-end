@@ -17,7 +17,10 @@ const Squad = (props) => {
     <>
       <div>
         <h3>{squad.name}</h3>
+        {squad.avatar ?
         <img src={squad.avatar} alt={squad.name} />
+        : <img className="card-img-top" src="https://picsum.photos/286/180" alt="https://picsum.photos/179/200" />
+        }
         {props.user.profile === squad.creator ?
             <div>
               <Link
