@@ -1,8 +1,8 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SquadDetails from '../SquadDetails/SquadDetails';
 
 function Squads(props) {
-
 
   return ( 
     <>
@@ -16,7 +16,7 @@ function Squads(props) {
       <div>
       <div className='card-container'>
         {props.squads.map(squad=>(
-          console.log(squad)
+          <SquadDetails squad={squad} key={squad._id} />
         ))}
       </div>
     </div>

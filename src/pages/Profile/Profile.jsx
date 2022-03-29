@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate, Navigate, useParams, useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getProfile } from '../../services/profileService'
 import { useState, useEffect } from 'react'
 
