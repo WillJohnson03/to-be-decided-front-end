@@ -9,6 +9,14 @@ async function getAllProfiles() {
   return await res.json()
 }
 
+function getProfile(id) {
+  console.log(id);
+  return fetch(`${BASE_URL}/${id}`, {
+    headers: { Authorization: `Bearer ${tokenService.getToken()}` },
+  })
+  .then(res => res.json())
+}
+
 function addMovie(movie) {
   return fetch(`${BASE_URL}/addMovie`, {
     method: 'POST',
@@ -82,4 +90,5 @@ export {
   removeMovie,
   removeVideoGame,
   removeBoardGame,
+  getProfile,
 }

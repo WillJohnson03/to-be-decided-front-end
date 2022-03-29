@@ -1,6 +1,6 @@
 import './App.css'
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+import { Routes, Route, useNavigate, Navigate, useParams } from 'react-router-dom'
 import * as boardGameApiCalls from './services/boardgame-api-calls'
 import * as videoGameApiCalls from './services/game-api-calls'
 import * as movieApiCalls from './services/movies-api-calls'
@@ -17,31 +17,33 @@ import * as authService from './services/authService'
 import * as profileService from './services/profileService'
 import AllMedia from './pages/AllMedia/AllMedia'
 import Profile from './pages/Profile/Profile';
-import CreateSquad from './pages/CreateSquad/CreateSquad';
-
+import CreateSquad from './pages/CreateSquad/CreateSquad'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [squads, setSquads] = useState([])
-  const [profiles, setProfiles] = useState([])
+  const [profiles, setProfiles] = useState({})
   const navigate = useNavigate()
   // const [boardGames, setBoardGames] = useState([])
   // const [videoGames, setVideoGames] = useState([])
   // const [movies, setMovies] = useState([])
+  const { id } = useParams()
 
-  useEffect(()=> {
+  useEffect(() => {
     profileService.getAllProfiles()
-    .then(profiles => setProfiles(profiles))
+      .then(profiles => setProfiles(profiles))
   }, [])
 
-// useEffect(() => {
-//   videoGameApiCalls.getVideoGameList()
-//   .then(videoGameData => setVideoGames(videoGameData))
-//   boardGameApiCalls.getBoardGameList()
-//   .then(boardGameData => setBoardGames(boardGameData))
-//   movieApiCalls.getMoviesList()
-//   .then(movieData => setMovies(movieData))
-// }, [])
+ 
+
+  // useEffect(() => {
+  //   videoGameApiCalls.getVideoGameList()
+  //   .then(videoGameData => setVideoGames(videoGameData))
+  //   boardGameApiCalls.getBoardGameList()
+  //   .then(boardGameData => setBoardGames(boardGameData))
+  //   movieApiCalls.getMoviesList()
+  //   .then(movieData => setMovies(movieData))
+  // }, [])
 
 
   const handleLogout = () => {
@@ -74,15 +76,15 @@ const App = () => {
         />
         <Route
           path="/profiles"
-          element={user ? <Profiles profiles={profiles}/> : <Navigate to="/login" />}
+          element={user ? <Profiles profiles={profiles} /> : <Navigate to="/login" />}
         />
         <Route
-          path="/profile"
-          element={user ? <ProfileDetails profiles={profiles}/> : <Navigate to="/login" />}
+          path="/profiles"
+          element={user ? <ProfileDetails profiles={profiles} /> : <Navigate to="/login" />}
         />
         <Route
-          path='/profile/:id' element={< Profile />} 
-          >
+          path='/profile/:id' element={< Profile profile={profile} />}
+        >
         </Route>
         <Route
           path="/AllMedia"
@@ -97,7 +99,7 @@ const App = () => {
         />
         <Route
           path="/changePassword"
-          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin}/> : <Navigate to="/login" />}
+          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
         />
       </Routes>
     </>
