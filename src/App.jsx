@@ -19,7 +19,7 @@ import AllMedia from './pages/AllMedia/AllMedia'
 import Profile from './pages/Profile/Profile';
 import CreateSquad from './pages/CreateSquad/CreateSquad'
 import Squad from './pages/Squad/Squad';
-import VideoGameDetails from './pages/BoardGameDetails/BoardGameDetails'
+import VideoGameDetails from './pages/VideoGameDetails/VideoGameDetails.jsx'
 import EditSquad from './pages/EditSquad/EditSquad';
 
 const App = () => {
@@ -89,19 +89,19 @@ const App = () => {
     navigate('/squads')
   }
 
-  // const handleAddBoardGame = boardGame => {
-  //   profileService.addBoardGame(boardGame)
-  //   .then(updatedProfile => {
-  //     setProfile(updatedProfile)
-  //   })
-  // }
+  const handleAddVideoGame = videoGame => {
+    profileService.addVideoGame(videoGame)
+    .then(updatedProfile => {
+      setProfile(updatedProfile)
+    })
+  }
 
-  // const handleRemoveBoardGame = id => {
-  //   profileService.removeBoardGame(id)
-  //   .then(updatedProfile => {
-  //     setProfile(updatedProfile)
-  //   })
-  // }
+  const handleRemoveVideoGame = id => {
+    profileService.removeVideoGame(id)
+    .then(updatedProfile => {
+      setProfile(updatedProfile)
+    })
+  }
 
   return (
     <>
@@ -156,7 +156,15 @@ const App = () => {
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
         />
-        <Route path='/VideoGameDetails' element={<VideoGameDetails/>}/>
+        <Route path='/VideoGameDetails' 
+          element={
+            <VideoGameDetails 
+              handleAddVideoGame={handleAddVideoGame} 
+              handleRemoveVideoGame={handleRemoveVideoGame}
+              profiles={profiles}
+            />
+          }
+        />
       </Routes>
     </>
   )

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {  searchBoardGame } from '../../services/boardgame-api-calls';
 import {  searchMovie } from '../../services/movies-api-calls';
 import { searchVideoGame } from '../../services/game-api-calls';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const AllMedia = (props) => {
   const [searchBG, setSearchBG] = useState({name: ''})
@@ -130,10 +130,10 @@ const AllMedia = (props) => {
         <h1>Video Game results:</h1>
         {searchResultsVG?.results?.map((result) => (
           <div key={result.id}>
-            {result.name}
-            <NavLink 
+            {result.name}: {result.slug}
+            <Link 
             to='/VideoGameDetails'
-            state={{result}}><img src={result.background_image} alt={result.name} /></NavLink>
+            state={{result}}><img src={result.background_image} alt={result.slug} /></Link>
           </div>
         ))}
       </div>
