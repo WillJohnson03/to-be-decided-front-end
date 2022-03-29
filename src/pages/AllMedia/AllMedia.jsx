@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {  searchBoardGame } from '../../services/boardgame-api-calls';
 import {  searchMovie } from '../../services/movies-api-calls';
 import { searchVideoGame } from '../../services/game-api-calls';
-
+import { NavLink } from 'react-router-dom';
 
 const AllMedia = (props) => {
   const [searchBG, setSearchBG] = useState({name: ''})
@@ -11,7 +11,7 @@ const AllMedia = (props) => {
   const [searchResultsBG, setSearchResultsBG] = useState([])
   const [searchResultsMV, setSearchResultsMV] = useState([])
   const [searchResultsVG, setSearchResultsVG] = useState([])
-
+  
   const handleSearchBoardGame = evt => {
     setSearchBG({...searchBG, [evt.target.name]: evt.target.value})
   }
@@ -57,7 +57,7 @@ const AllMedia = (props) => {
   const { BGname } = searchBG
   const { MVname } = searchMV
   const { VGname } = searchVG
-
+  console.log(searchResultsVG.results)
   return ( 
     <>
       <h1>Search for a videogame, movie, or board game.</h1>
@@ -131,7 +131,9 @@ const AllMedia = (props) => {
         {searchResultsVG?.results?.map((result) => (
           <div key={result.id}>
             {result.name}
-            <img src={result.background_image} alt={result.name} />
+            <NavLink 
+            to='/VideoGameDetails'
+            state={{result}}><img src={result.background_image} alt={result.name} /></NavLink>
           </div>
         ))}
       </div>

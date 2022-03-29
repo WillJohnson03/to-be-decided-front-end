@@ -18,12 +18,14 @@ import * as profileService from './services/profileService'
 import AllMedia from './pages/AllMedia/AllMedia'
 import Profile from './pages/Profile/Profile';
 import CreateSquad from './pages/CreateSquad/CreateSquad'
+import VideoGameDetails from './pages/BoardGameDetails/BoardGameDetails'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [squads, setSquads] = useState([])
   const [profiles, setProfiles] = useState([])
   const navigate = useNavigate()
+  const [profile, setProfile] = useState({})
   // const [boardGames, setBoardGames] = useState([])
   // const [videoGames, setVideoGames] = useState([])
   // const [movies, setMovies] = useState([])
@@ -36,7 +38,14 @@ const App = () => {
     .then(squads => setSquads(squads))
   }, [])
 
- 
+  // useEffect(() => {
+  //   if (user) {
+  //     profileService.getProfile(user.profile)
+  //     .then(profileData => {
+  //       setProfile(profileData)
+  //     })
+  //   }
+  // }, [user])  
 
   // useEffect(() => {
   //   videoGameApiCalls.getVideoGameList()
@@ -62,6 +71,20 @@ const App = () => {
     const newSquad = await squadService.create(newSquadData)
     setSquads([...squads, newSquad])
   }
+
+  // const handleAddBoardGame = boardGame => {
+  //   profileService.addBoardGame(boardGame)
+  //   .then(updatedProfile => {
+  //     setProfile(updatedProfile)
+  //   })
+  // }
+
+  // const handleRemoveBoardGame = id => {
+  //   profileService.removeBoardGame(id)
+  //   .then(updatedProfile => {
+  //     setProfile(updatedProfile)
+  //   })
+  // }
 
   return (
     <>
@@ -103,6 +126,7 @@ const App = () => {
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
         />
+        <Route path='/VideoGameDetails' element={<VideoGameDetails/>}/>
       </Routes>
     </>
   )
