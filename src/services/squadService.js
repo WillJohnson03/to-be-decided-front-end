@@ -2,6 +2,14 @@ import * as tokenService from './tokenService'
 
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/squads`
 
+export async function getAllSquads() {
+  const res = await fetch(BASE_URL, {
+    headers: { Authorization: `Bearer ${tokenService.getToken()}` },
+  })
+  return await res.json()
+}
+
+
 export function create(squad) {
   return fetch(BASE_URL, {
     method: 'POST',
@@ -12,3 +20,4 @@ export function create(squad) {
   })
   .then(res => res.json())
 }
+

@@ -4,7 +4,7 @@ import { Routes, Route, useNavigate, Navigate, useParams } from 'react-router-do
 import * as boardGameApiCalls from './services/boardgame-api-calls'
 import * as videoGameApiCalls from './services/game-api-calls'
 import * as movieApiCalls from './services/movies-api-calls'
-import * as squadService from './services/squads'
+import * as squadService from './services/squadService'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
@@ -32,6 +32,8 @@ const App = () => {
   useEffect(() => {
     profileService.getAllProfiles()
       .then(profiles => setProfiles(profiles))
+    squadService.getAllSquads()
+    .then(squads => setSquads(squads))
   }, [])
 
  
@@ -83,7 +85,7 @@ const App = () => {
           element={user ? <ProfileDetails profiles={profiles} /> : <Navigate to="/login" />}
         />
         <Route
-          path='/profile/:id' element={< Profile profile={profile} />}
+          path='/profile/:id' element={< Profile profiles={profiles} />}
         >
         </Route>
         <Route
@@ -91,11 +93,11 @@ const App = () => {
           element={<AllMedia />} />
         <Route
           path="/squads"
-          element={<Squads />}
+          element={<Squads squads={squads} />}
         />
         <Route
           path="/createsquad"
-          element={<CreateSquad handleAddSquad={handleAddSquad} />}
+          element={<CreateSquad handleAddSquad={handleAddSquad} navigate={navigate}/>}
         />
         <Route
           path="/changePassword"
