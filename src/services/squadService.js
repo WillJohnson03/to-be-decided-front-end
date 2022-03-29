@@ -9,6 +9,13 @@ export async function getAllSquads() {
   return await res.json()
 }
 
+export function getSquad(id) {
+  console.log(id);
+  return fetch(`${BASE_URL}/${id}`, {
+    headers: { Authorization: `Bearer ${tokenService.getToken()}` },
+  })
+  .then(res => res.json())
+}
 
 export function create(squad) {
   return fetch(BASE_URL, {

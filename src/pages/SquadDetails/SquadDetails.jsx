@@ -8,9 +8,9 @@ const SquadDetails = (props) => {
         <div className='card-body'>
           <h5 className="card-title" >{props.squad.name}</h5>
           <p className="card-text">
-            Some quick example text to build on the card title and make up the bulk of the card's content.
+          {props.squad._id}
           </p>
-          <NavLink to={`/squad/${props.squad._id}`} className="btn btn-secondary" state={props.squad}>View squad</NavLink>
+          <NavLink to={`/squad/${props.squad._id}`} className="btn btn-secondary" state={props.squad}>View Squad</NavLink>
         </div>
       </div>
     </div>
