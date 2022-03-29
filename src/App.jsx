@@ -22,7 +22,7 @@ import CreateSquad from './pages/CreateSquad/CreateSquad'
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [squads, setSquads] = useState([])
-  const [profiles, setProfiles] = useState({})
+  const [profiles, setProfiles] = useState([])
   const navigate = useNavigate()
   // const [boardGames, setBoardGames] = useState([])
   // const [videoGames, setVideoGames] = useState([])
@@ -83,7 +83,7 @@ const App = () => {
           element={user ? <ProfileDetails profiles={profiles} /> : <Navigate to="/login" />}
         />
         <Route
-          path='/profile/:id' element={< Profile profile={profile} />}
+          path='/profile/:id' element={< Profile profiles={profiles} />}
         >
         </Route>
         <Route
