@@ -3,7 +3,7 @@ import { getProfile } from '../../services/profileService'
 import { useState, useEffect } from 'react'
 
 const Profile = (props) => {
-  const [profile, setProfile] = useState({})
+  const [profile, setProfile] = useState([])
   const { id } = useParams()
 
   useEffect(() => {
@@ -12,8 +12,7 @@ const Profile = (props) => {
         setProfile(profileData)
       })
   }, [])
- 
-
+  
   return (
     <>
       <h3>{profile.name}</h3>
