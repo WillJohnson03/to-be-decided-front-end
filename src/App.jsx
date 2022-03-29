@@ -118,14 +118,14 @@ const App = () => {
         />
         <Route
           path="/profiles"
-          element={user ? <Profiles profiles={profiles} /> : <Navigate to="/login" />}
+          element={user ? <Profiles profiles={profiles} user={user} /> : <Navigate to="/login" />}
         />
         <Route
           path="/profiles"
-          element={user ? <ProfileDetails profiles={profiles} /> : <Navigate to="/login" />}
+          element={user ? <ProfileDetails profiles={profiles} user={user} /> : <Navigate to="/login" />}
         />
         <Route
-          path='/profile/:id' element={< Profile profiles={profiles} />}
+          path='/profile/:id' element={< Profile profiles={profiles} user={user} />}
         >
         </Route>
         <Route
@@ -133,22 +133,24 @@ const App = () => {
           element={<AllMedia />} />
         <Route
           path="/squads"
-          element={<Squads squads={squads} />}
+          element={<Squads squads={squads} user={user} />}
         />
         <Route
-          path='/squad/:id' element={<Squad squads={squads}                 handleDeleteSquad={handleDeleteSquad}/>}
+          path='/squad/:id' 
+          element={<Squad squads={squads} user={user} handleDeleteSquad={handleDeleteSquad} />}
         ></Route>
         <Route
           path='/squad/:id/edit'
           element={
             <EditSquad
               handleEditSquad={handleEditSquad}
+              user={user}
             />
           }
         />
         <Route
           path="/createsquad"
-          element={<CreateSquad handleAddSquad={handleAddSquad} navigate={navigate}/>}
+          element={<CreateSquad user={user} handleAddSquad={handleAddSquad} navigate={navigate}/>}
         />
         <Route
           path="/changePassword"
