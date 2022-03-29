@@ -57,7 +57,6 @@ const AllMedia = (props) => {
   const { BGname } = searchBG
   const { MVname } = searchMV
   const { VGname } = searchVG
-  console.log(searchResultsBG.games)
 
   return ( 
     <>
@@ -99,13 +98,14 @@ const AllMedia = (props) => {
       <button>Search Video Game</button>
       </form>
       <div>
-        {/* {searchResultsBG.games.map((result, index) => (
+        {searchResultsBG?.games?.map((result, index) => (
           <div
             key={result.id}
           >
-            {result.title}
+            {result.name} 
+            <img src={result.image_url} alt={result.name} />
           </div>
-        ))} */}
+        ))}
       </div>
     </>
   );
