@@ -125,7 +125,7 @@ const AllMedia = (props) => {
       :
       <></>
       }
-      {searchResultsVG?.results?.lenght ?
+      {searchResultsVG?.results?.length ?
       <div>
         <h1>Video Game results:</h1>
         {searchResultsVG?.results?.map((result) => (
