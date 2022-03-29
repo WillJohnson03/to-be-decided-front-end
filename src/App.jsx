@@ -73,6 +73,12 @@ const App = () => {
     setSquads([...squads, newSquad])
   }
 
+  const handleDeleteSquad = id => {
+    squadService.deleteOne(id)
+    .then(deletedSquad => setSquads(squads.filter(squad => squad._id !== deletedSquad._id)))
+    navigate('/squads')
+  }
+
   // const handleAddBoardGame = boardGame => {
   //   profileService.addBoardGame(boardGame)
   //   .then(updatedProfile => {
@@ -120,7 +126,7 @@ const App = () => {
           element={<Squads squads={squads} />}
         />
         <Route
-          path='/squad/:id' element={<Squad squads={squads} />}
+          path='/squad/:id' element={<Squad squads={squads}                 handleDeleteSquad={handleDeleteSquad}/>}
         ></Route>
         <Route
           path="/createsquad"
