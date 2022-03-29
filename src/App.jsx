@@ -1,9 +1,9 @@
 import './App.css'
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
-import * as boardGameApiCalls from './services/boardgame-api-calls'
-import * as videoGameApiCalls from './services/game-api-calls'
-import * as movieApiCalls from './services/movies-api-calls'
+// import * as boardGameApiCalls from './services/boardgame-api-calls'
+// import * as videoGameApiCalls from './services/game-api-calls'
+// import * as movieApiCalls from './services/movies-api-calls'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
