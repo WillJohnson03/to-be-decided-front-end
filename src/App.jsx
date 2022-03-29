@@ -1,9 +1,9 @@
 import './App.css'
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate, Navigate, useParams } from 'react-router-dom'
-import * as boardGameApiCalls from './services/boardgame-api-calls'
-import * as videoGameApiCalls from './services/game-api-calls'
-import * as movieApiCalls from './services/movies-api-calls'
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+// import * as boardGameApiCalls from './services/boardgame-api-calls'
+// import * as videoGameApiCalls from './services/game-api-calls'
+// import * as movieApiCalls from './services/movies-api-calls'
 import * as squadService from './services/squadService'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
@@ -31,7 +31,7 @@ const App = () => {
   // const [boardGames, setBoardGames] = useState([])
   // const [videoGames, setVideoGames] = useState([])
   // const [movies, setMovies] = useState([])
-  const { id } = useParams()
+  // const { id } = useParams()
 
   useEffect(() => {
     profileService.getAllProfiles()
@@ -79,7 +79,7 @@ const App = () => {
     .then(updatedSquad => {
       const newSquadsArray = squads.map(squad => squad._id === updatedSquad._id ? updatedSquad : squad)
       setSquads(newSquadsArray)
-      navigate('/squads/:id')
+      navigate('/squads')
     })
   }
 
@@ -139,7 +139,7 @@ const App = () => {
           path='/squad/:id' element={<Squad squads={squads}                 handleDeleteSquad={handleDeleteSquad}/>}
         ></Route>
         <Route
-          path='/squad/edit'
+          path='/squad/:id/edit'
           element={
             <EditSquad
               handleEditSquad={handleEditSquad}

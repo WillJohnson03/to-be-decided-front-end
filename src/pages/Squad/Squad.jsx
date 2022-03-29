@@ -1,14 +1,11 @@
 import { Link, useParams } from 'react-router-dom'
 import { getSquad } from '../../services/squadService'
-import { useNavigate, Navigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import userEvent from '@testing-library/user-event'
 
 const Squad = (props) => {
   const [squad, setSquad] = useState({})
   const { id } = useParams()
-	const navigate = useNavigate()
-
   useEffect(() => {
     getSquad(id)
       .then(squadData => {
@@ -25,7 +22,7 @@ const Squad = (props) => {
           userEvent.profile === squad.owner?._id ?
             <div>
               <Link
-                to='/squad/edit'
+                to={`/squad/${squad._id}/edit`}
                 state={{squad}}
               >
                 Edit
