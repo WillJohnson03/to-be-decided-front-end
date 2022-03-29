@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { Link } from 'react-router-dom';
 
-const Squads = (props) => {
+function Squads(props) {
+
+
   return ( 
     <>
       <h1>
         All Squads
       </h1>
       <Link 
-        to="/createsquad"
-      >
+        path="/createsquad"
+        >
       <h2>Create New Squad</h2></Link>
     </>
    );

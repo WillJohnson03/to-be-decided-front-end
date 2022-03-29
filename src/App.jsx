@@ -4,6 +4,7 @@ import { Routes, Route, useNavigate, Navigate, useParams } from 'react-router-do
 import * as boardGameApiCalls from './services/boardgame-api-calls'
 import * as videoGameApiCalls from './services/game-api-calls'
 import * as movieApiCalls from './services/movies-api-calls'
+import * as squadService from './services/squads'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
@@ -20,11 +21,12 @@ import CreateSquad from './pages/CreateSquad/CreateSquad'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [squads, setSquads] = useState([])
+  const [profiles, setProfiles] = useState({})
+  const navigate = useNavigate()
   // const [boardGames, setBoardGames] = useState([])
   // const [videoGames, setVideoGames] = useState([])
   // const [movies, setMovies] = useState([])
-  const [profiles, setProfiles] = useState([])
-  const [profile, setProfile] = useState({})
   const { id } = useParams()
 
   useEffect(() => {
@@ -43,7 +45,6 @@ const App = () => {
   //   .then(movieData => setMovies(movieData))
   // }, [])
 
-  const navigate = useNavigate()
 
   const handleLogout = () => {
     authService.logout()
@@ -53,6 +54,11 @@ const App = () => {
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
+  }
+
+  const handleAddSquad = async newSquadData => {
+    const newSquad = await squadService.create(newSquadData)
+    setSquads([...squads, newSquad])
   }
 
   return (
@@ -89,16 +95,12 @@ const App = () => {
         />
         <Route
           path="/createsquad"
-          element={<CreateSquad profiles={profiles} />}
+          element={<CreateSquad handleAddSquad={handleAddSquad} />}
         />
         <Route
           path="/changePassword"
           element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
         />
-        {/* <Route
-          path='/boardgames'
-          element={<BoardGame boardGames={boardGames}/>}
-        /> */}
       </Routes>
     </>
   )
