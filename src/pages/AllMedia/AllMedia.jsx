@@ -57,7 +57,7 @@ const AllMedia = (props) => {
   const { BGname } = searchBG
   const { MVname } = searchMV
   const { VGname } = searchVG
-  console.log(searchResultsVG.results)
+  
   return ( 
     <>
       <h1>Search for a videogame, movie, or board game.</h1>
@@ -105,7 +105,9 @@ const AllMedia = (props) => {
             key={result.id}
           >
             {result.name} 
-            <img src={result.image_url} alt={result.name} />
+            <Link
+            to='/BoardGameDetails'
+            state={{result}}><img src={result.image_url} alt={result.name} /></Link>
           </div>
         ))}
       </div>
@@ -118,7 +120,9 @@ const AllMedia = (props) => {
         {searchResultsMV?.results?.map((result) => (
           <div key={result.id}>
             {result.title}
-            <img src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${result.poster_path}`} alt={result.title}/>
+            <Link
+            to='/MovieDetails'
+            state={{result}}><img src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${result.poster_path}`} alt={result.title}/></Link>
           </div>
         ))}
       </div>

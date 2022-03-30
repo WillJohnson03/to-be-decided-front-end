@@ -1,6 +1,13 @@
-import { useParams, useRef, useState, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const BoardGameDetails = () => {
+  function removeTags(str) {
+    if ((str === null) || (str === ''))
+    return false
+    else str = str.toString()
+    return str.replace( /(<([^>]+)>)/ig, '')
+  }
+
   const location = useLocation()
   const boardGame = location.state.result
   console.log(boardGame)
@@ -8,9 +15,9 @@ const BoardGameDetails = () => {
 
     <>
       <div className='boardgame'>
-        <img src={boardGame.background_image} alt="BoardGame" />
+        <img src={boardGame.image_url} alt="BoardGame" />
         <h3>{boardGame.name}</h3>
-        <p>{boardGame.description}</p>
+        <p>{removeTags(boardGame.description)}</p>
       </div>
     </>
    );

@@ -21,6 +21,8 @@ import CreateSquad from './pages/CreateSquad/CreateSquad'
 import Squad from './pages/Squad/Squad';
 import VideoGameDetails from './pages/VideoGameDetails/VideoGameDetails.jsx'
 import EditSquad from './pages/EditSquad/EditSquad';
+import MovieDetails from './pages/MovieDetails/MovieDetails'
+import BoardGameDetails from './pages/BoardGameDetails/BoardGameDetails'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -103,6 +105,34 @@ const App = () => {
     })
   }
 
+  const handleAddMovie = movie => {
+    profileService.addMovie(movie)
+    .then(updatedProfile => {
+      setProfile(updatedProfile)
+    })
+  }
+
+  const handleRemoveMovie = id => {
+    profileService.removeMovie(id)
+    .then(updatedProfile => {
+      setProfile(updatedProfile)
+    })
+  }
+
+  const handleAddBoardGame = boardgame => {
+    profileService.addBoardGame(boardgame)
+    .then(updatedProfile => {
+      setProfile(updatedProfile)
+    })
+  }
+
+  const handleRemoveBoardGame = id => {
+    profileService.removeBoardGame(id)
+    .then(updatedProfile => {
+      setProfile(updatedProfile)
+    })
+  }
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -164,6 +194,24 @@ const App = () => {
               profiles={profiles}
             />
           }
+        />
+        <Route path='/MovieDetails'
+          element={
+            <MovieDetails 
+              handleAddMovie={handleAddMovie}
+              handleRemoveMovie={handleRemoveMovie}
+              profiles={profiles}
+            />
+          }
+        />
+        <Route path='/BoardGameDetails' 
+          element={
+          <BoardGameDetails
+            handleAddBoardGame={handleAddBoardGame}
+            handleRemoveBoardGame={handleRemoveBoardGame}
+            profiles={profiles}
+          />
+        }
         />
       </Routes>
     </>
