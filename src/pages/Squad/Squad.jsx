@@ -28,8 +28,7 @@ const Squad = (props) => {
 	}
 
 	const handleChange = (evt) => {
-		setFormData({...formData, squadMembers: formData.squadMembers.concat(evt.target.value)})
-
+		setFormData({...formData, [evt.target.name]: evt.target.value})
 	}
 
   return (
@@ -61,7 +60,7 @@ const Squad = (props) => {
                 Delete
               </button>
               <form  method="POST" onSubmit={handleSubmit}>
-              <select name="userId" onChange={handleChange}>
+              <select name="newMember" onChange={handleChange}>
                   {props.profiles.map(profile=>( 
                   <option value={profile._id} key={profile._id}>{profile.name}</option>
                   ))}
