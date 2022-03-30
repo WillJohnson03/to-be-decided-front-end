@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { getProfile } from '../../services/profileService'
 import { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
 
 const Profile = () => {
   const [profile, setProfile] = useState([])
