@@ -3,7 +3,7 @@ import { getProfile } from '../../services/profileService'
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
-const Profile = (props) => {
+const Profile = () => {
   const [profile, setProfile] = useState([])
   const { id } = useParams()
 
@@ -12,8 +12,9 @@ const Profile = (props) => {
       .then(profileData => {
         setProfile(profileData)
       })
-  }, [])
+  }, [id])
   console.log(profile.movie);
+  
   return (
     <>
       <div>

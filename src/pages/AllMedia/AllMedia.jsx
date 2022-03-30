@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {  searchBoardGame } from '../../services/boardgame-api-calls';
 import {  searchMovie } from '../../services/movies-api-calls';
 import { searchVideoGame } from '../../services/game-api-calls';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const AllMedia = (props) => {
   const [searchBG, setSearchBG] = useState({name: ''})
