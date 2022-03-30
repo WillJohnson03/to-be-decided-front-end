@@ -20,7 +20,7 @@ const BoardGameDetails = () => {
         <p>{removeTags(boardGame.description)}</p>
       </div>
     </>
-   );
+  );
 }
 
 export default BoardGameDetails;

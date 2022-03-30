@@ -101,13 +101,15 @@ const AllMedia = (props) => {
       <div>
         <h1>Board Game Results:</h1>
         {searchResultsBG?.games?.map((result, index) => (
-          <div
-            key={result.id}
-          >
-            {result.name} 
-            <Link
-            to='/BoardGameDetails'
-            state={{result}}><img src={result.image_url} alt={result.name} /></Link>
+          <div className="card-container">
+            <div className="boardgame card">
+              <div key={result.id}>
+                <Link to='/BoardGameDetails' state={{result}}><img className="card-img-top" src={result.image_url} alt={result.name} /></Link>
+                <div className="card-body">
+                  <h3 className="card-title">{result.name}</h3>
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -118,11 +120,15 @@ const AllMedia = (props) => {
       <div>
           <h1>Movie Results:</h1>
         {searchResultsMV?.results?.map((result) => (
-          <div key={result.id}>
-            {result.title}
-            <Link
-            to='/MovieDetails'
-            state={{result}}><img src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${result.poster_path}`} alt={result.title}/></Link>
+          <div className="card-container">
+            <div className="movie card">
+              <div key={result.id}>
+                <Link to='/MovieDetails' state={{result}}><img className="card-img-top" src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${result.poster_path}`} alt={result.title}/></Link>
+                <div className="card-body">
+                  <h3 className="card-title">{result.title}</h3>
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -133,11 +139,15 @@ const AllMedia = (props) => {
       <div>
         <h1>Video Game results:</h1>
         {searchResultsVG?.results?.map((result) => (
-          <div key={result.id}>
-            {result.name}: {result.slug}
-            <Link 
-            to='/VideoGameDetails'
-            state={{result}}><img src={result.background_image} alt={result.slug} /></Link>
+          <div className="card-container">
+            <div className="videogame card">
+              <div key={result.id}>
+                <Link to='/VideoGameDetails' state={{result}}><img className="card-img-top" src={result.background_image} alt={result.slug} /></Link>
+                <div className="card-body">
+                  <h3 className="card-title">{result.name}</h3>
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
