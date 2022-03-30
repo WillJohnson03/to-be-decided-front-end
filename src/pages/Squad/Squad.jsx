@@ -20,10 +20,10 @@ const Squad = (props) => {
 	const handleSubmit = evt => {
 		evt.preventDefault()
 		const newSquadMember = new FormData()
-		newMember.append('name', formData.name)
-		newMember.append('avatar', formData.avatar)
-		newMember.append('_id', formData._id) 
-    newMember.append('squadMembers', formData.squadMembers)
+		newSquadMember.append('name', formData.name)
+		newSquadMember.append('avatar', formData.avatar)
+		newSquadMember.append('_id', formData._id) 
+    newSquadMember.append('squadMembers', formData.squadMembers)
     props.addUserToSquad(newSquadMember)
 	}
 
