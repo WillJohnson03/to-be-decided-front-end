@@ -21,7 +21,7 @@ const BoardGameDetails = ({handleAddBoardGame}) => {
         <button className='add-boardGame card-text' onClick={() => handleAddBoardGame(boardGame)}>Add bg</button>
       </div>
     </>
-   );
+  );
 }
 
 export default BoardGameDetails;
