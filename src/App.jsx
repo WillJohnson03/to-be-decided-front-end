@@ -85,6 +85,16 @@ const App = () => {
     })
   }
 
+  const addUserToSquad = (newSquadMemberID, squadID) => {
+    console.log(newSquadMemberID)
+    squadService.addUser(newSquadMemberID, squadID)
+    .then(updatedSquad => {
+      const newSquadsArray = squads.map(squad => squad._id === updatedSquad._id ? updatedSquad : squad)
+      setSquads(newSquadsArray)
+      navigate(`/squads`)
+    })
+  }
+
   const handleDeleteSquad = id => {
     squadService.deleteOne(id)
     .then(deletedSquad => setSquads(squads.filter(squad => squad._id !== deletedSquad._id)))
@@ -170,7 +180,8 @@ const App = () => {
         />
         <Route
           path='/squad/:id' 
-          element={<Squad squads={squads} profiles={profiles} user={user} handleDeleteSquad={handleDeleteSquad} />}
+          element={<Squad squads={squads} profiles={profiles} user={user} 
+          addUserToSquad={addUserToSquad}handleDeleteSquad={handleDeleteSquad} />}
         ></Route>
         <Route
           path='/squad/:id/edit'

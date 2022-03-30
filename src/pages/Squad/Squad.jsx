@@ -1,12 +1,10 @@
 import { Link, useParams } from 'react-router-dom'
 import { getSquad } from '../../services/squadService'
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
 
 const Squad = (props) => {
-  const location = useLocation()
   const [squad, setSquad] = useState({})
-  const [formData, setFormData] = useState(location.state)
+  const [formData, setFormData] = useState([props.profiles])
   const { id } = useParams()
 
   useEffect(() => {
@@ -15,20 +13,15 @@ const Squad = (props) => {
         setSquad(squadData)
       })
   }, [id])
-  
 
 	const handleSubmit = evt => {
 		evt.preventDefault()
-		const newSquadMember = new FormData()
-		newSquadMember.append('name', formData.name)
-		newSquadMember.append('avatar', formData.avatar)
-		newSquadMember.append('_id', formData._id) 
-    newSquadMember.append('squadMembers', formData.squadMembers)
-    props.addUserToSquad(newSquadMember)
+ 
+    props.addUserToSquad(formData.id, squad._id)
 	}
 
 	const handleChange = (evt) => {
-		setFormData({...formData, [evt.target.name]: evt.target.value})
+		setFormData({[evt.target.name]: evt.target.value})
 	}
 
   return (
@@ -59,7 +52,7 @@ const Squad = (props) => {
                 Delete
               </button>
               <form  method="POST" onSubmit={handleSubmit}>
-              <select name="newMember" onChange={handleChange}>
+              <select name="id" onChange={handleChange}>
                   {props.profiles.map(profile=>( 
                   <option value={profile._id} key={profile._id}>{profile.name}</option>
                   ))}
@@ -71,7 +64,12 @@ const Squad = (props) => {
           <>
           </>
         }
-      </div>
+          {squad.squadMembers?.map(member=>(
+        <div key={member._id}className='card-container'>
+            <h1>{member.name}</h1>
+        </div>
+          ))}
+        </div>
     </>
   );
 }
