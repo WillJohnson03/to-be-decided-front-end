@@ -19,12 +19,12 @@ const Squad = (props) => {
 
 	const handleSubmit = evt => {
 		evt.preventDefault()
-		const newMember = new FormData()
+		const newSquadMember = new FormData()
 		newMember.append('name', formData.name)
 		newMember.append('avatar', formData.avatar)
 		newMember.append('_id', formData._id) 
     newMember.append('squadMembers', formData.squadMembers)
-    props.addUserToSquad(newMember)
+    props.addUserToSquad(newSquadMember)
 	}
 
 	const handleChange = (evt) => {
@@ -34,7 +34,6 @@ const Squad = (props) => {
   return (
     <>
       <div>
-      {console.log(formData)}
         <h3>{squad.name}</h3>
         <div>
           {squad.creator?.name ?
