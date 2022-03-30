@@ -10,7 +10,7 @@ async function getAllProfiles() {
 }
 
 function getProfile(id) {
-  console.log(id);
+  // console.log(id);
   return fetch(`${BASE_URL}/${id}`, {
     headers: { Authorization: `Bearer ${tokenService.getToken()}` },
   })

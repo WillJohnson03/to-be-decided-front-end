@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getProfile } from '../../services/profileService'
 import { useState, useEffect } from 'react'
 
@@ -12,6 +12,7 @@ const Profile = () => {
         setProfile(profileData)
       })
   }, [id])
+  // console.log(profile.movie);
   
   function removeTags(str) {
     if ((str === null) || (str === ''))
