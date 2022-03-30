@@ -41,7 +41,16 @@ function addBoardGame(boardGame) {
   .then(res => res.json())
 }
 
-
+function addMovie(movie) {
+  return fetch(`${BASE_URL}/addMovie`, {
+    method: 'POST',
+    headers: {'Authorization': `Bearer ${tokenService.getToken()}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(movie)
+  })
+  .then(res => res.json())
+}
 
 function removeVideoGame(videoGameName) {
   return fetch(`${BASE_URL}/${videoGameName}`, {
@@ -63,13 +72,23 @@ function removeBoardGame(boardGameName) {
   .then(res => res.json())
 }
 
-
+function removeMovie(movieName) {
+  return fetch(`${BASE_URL}/${movieName}`, {
+    method: "PATCH",
+    headers: { 
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+    }
+  })
+  .then(res => res.json())
+}
 
 export { 
   getAllProfiles,
   addVideoGame,
   addBoardGame,
+  addMovie,
   removeVideoGame,
   removeBoardGame,
+  removeMovie,
   getProfile,
 }
