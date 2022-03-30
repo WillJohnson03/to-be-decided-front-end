@@ -12,7 +12,7 @@ const Profile = () => {
         setProfile(profileData)
       })
   }, [id])
-  console.log(profile.movie);
+  // console.log(profile.movie);
   
   return (
     <>
