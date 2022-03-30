@@ -13,14 +13,14 @@ const BoardGameDetails = ({handleAddBoardGame}) => {
   console.log(boardGame)
   return ( 
 
-    <>
-      <div className='boardgame'>
-        <img src={boardGame.image_url} alt="BoardGame" />
-        <h3>{boardGame.name}</h3>
+    <div className="card-container">
+      <div className="boardgame card">
+        <img className="card-imp-top" src={boardGame.image_url} alt="BoardGame" />
+        <h3 className="card-title">{boardGame.name}</h3>
         <p>{removeTags(boardGame.description)}</p>
         <button className='add-boardGame card-text' onClick={() => handleAddBoardGame(boardGame)}>Add bg</button>
       </div>
-    </>
+    </div>
   );
 }
 
