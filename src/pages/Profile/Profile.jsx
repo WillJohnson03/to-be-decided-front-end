@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { getProfile } from '../../services/profileService'
 import { useState, useEffect } from 'react'
 
-const Profile = (props) => {
+const Profile = () => {
   const [profile, setProfile] = useState([])
   const { id } = useParams()
 
@@ -11,7 +11,7 @@ const Profile = (props) => {
       .then(profileData => {
         setProfile(profileData)
       })
-  }, [])
+  }, [id])
   
   return (
     <>
