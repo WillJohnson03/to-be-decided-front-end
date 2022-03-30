@@ -91,47 +91,50 @@ const App = () => {
     navigate('/squads')
   }
 
+  
+  
   const handleAddVideoGame = videoGame => {
     profileService.addVideoGame(videoGame)
     .then(updatedProfile => {
       setProfile(updatedProfile)
     })
   }
-
-  const handleRemoveVideoGame = id => {
-    profileService.removeVideoGame(id)
-    .then(updatedProfile => {
-      setProfile(updatedProfile)
-    })
-  }
-
+  
   const handleAddMovie = movie => {
     profileService.addMovie(movie)
     .then(updatedProfile => {
       setProfile(updatedProfile)
     })
   }
-
-  const handleRemoveMovie = id => {
-    profileService.removeMovie(id)
-    .then(updatedProfile => {
-      setProfile(updatedProfile)
-    })
-  }
-
+  
   const handleAddBoardGame = boardgame => {
     profileService.addBoardGame(boardgame)
     .then(updatedProfile => {
       setProfile(updatedProfile)
     })
   }
+  
+  // const handleRemoveVideoGame = id => {
+    //   profileService.removeVideoGame(id)
+    //   .then(updatedProfile => {
+      //     setProfile(updatedProfile)
+      //   })
+      // }
 
-  const handleRemoveBoardGame = id => {
-    profileService.removeBoardGame(id)
-    .then(updatedProfile => {
-      setProfile(updatedProfile)
-    })
-  }
+  // const handleRemoveMovie = id => {
+  //   profileService.removeMovie(id)
+  //   .then(updatedProfile => {
+  //     setProfile(updatedProfile)
+  //   })
+  // }
+
+
+  // const handleRemoveBoardGame = id => {
+  //   profileService.removeBoardGame(id)
+  //   .then(updatedProfile => {
+  //     setProfile(updatedProfile)
+  //   })
+  // }
 
   return (
     <>
@@ -190,7 +193,7 @@ const App = () => {
           element={
             <VideoGameDetails 
               handleAddVideoGame={handleAddVideoGame} 
-              handleRemoveVideoGame={handleRemoveVideoGame}
+              // handleRemoveVideoGame={handleRemoveVideoGame}
               profiles={profiles}
             />
           }
@@ -199,7 +202,7 @@ const App = () => {
           element={
             <MovieDetails 
               handleAddMovie={handleAddMovie}
-              handleRemoveMovie={handleRemoveMovie}
+              // handleRemoveMovie={handleRemoveMovie}
               profiles={profiles}
             />
           }
@@ -208,7 +211,7 @@ const App = () => {
           element={
           <BoardGameDetails
             handleAddBoardGame={handleAddBoardGame}
-            handleRemoveBoardGame={handleRemoveBoardGame}
+            // handleRemoveBoardGame={handleRemoveBoardGame}
             profiles={profiles}
           />
         }

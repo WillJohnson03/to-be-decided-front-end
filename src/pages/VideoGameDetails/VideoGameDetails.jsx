@@ -12,7 +12,7 @@ const VideoGameDetails = ({handleRemoveVideoGame, handleAddVideoGame}) => {
         <img className='card-img-top' src={videoGame.background_image} alt="videoGame" />
         <div className='card-body'>
           <h3 className='card-title'>{videoGame.slug}</h3>
-          <button className='add-game' onClick={() => handleAddVideoGame(videoGame)}>Add VideoGame</button>
+          <button className='add-game card-text' onClick={() => handleAddVideoGame(videoGame)}>Add VideoGame</button>
         </div>
       </div>
     </div>
