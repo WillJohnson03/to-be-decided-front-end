@@ -52,43 +52,43 @@ function addMovie(movie) {
   .then(res => res.json())
 }
 
-function removeVideoGame(videoGameName) {
-  return fetch(`${BASE_URL}/${videoGameName}`, {
-    method: "PATCH",
-    headers: { 
-      'Authorization': `Bearer ${tokenService.getToken()}`,
-    }
-  })
-  .then(res => res.json())
-}
+// function removeVideoGame(videoGameName) {
+//   return fetch(`${BASE_URL}/${videoGameName}`, {
+//     method: "PATCH",
+//     headers: { 
+//       'Authorization': `Bearer ${tokenService.getToken()}`,
+//     }
+//   })
+//   .then(res => res.json())
+// }
 
-function removeBoardGame(boardGameName) {
-  return fetch(`${BASE_URL}/${boardGameName}`, {
-    method: "PATCH",
-    headers: { 
-      'Authorization': `Bearer ${tokenService.getToken()}`,
-    }
-  })
-  .then(res => res.json())
-}
+// function removeBoardGame(boardGameName) {
+//   return fetch(`${BASE_URL}/${boardGameName}`, {
+//     method: "PATCH",
+//     headers: { 
+//       'Authorization': `Bearer ${tokenService.getToken()}`,
+//     }
+//   })
+//   .then(res => res.json())
+// }
 
-function removeMovie(movieName) {
-  return fetch(`${BASE_URL}/${movieName}`, {
-    method: "PATCH",
-    headers: { 
-      'Authorization': `Bearer ${tokenService.getToken()}`,
-    }
-  })
-  .then(res => res.json())
-}
+// function removeMovie(movieName) {
+//   return fetch(`${BASE_URL}/${movieName}`, {
+//     method: "PATCH",
+//     headers: { 
+//       'Authorization': `Bearer ${tokenService.getToken()}`,
+//     }
+//   })
+//   .then(res => res.json())
+// }
 
 export { 
   getAllProfiles,
   addVideoGame,
   addBoardGame,
   addMovie,
-  removeVideoGame,
-  removeBoardGame,
-  removeMovie,
+  // removeVideoGame,
+  // removeBoardGame,
+  // removeMovie,
   getProfile,
 }
