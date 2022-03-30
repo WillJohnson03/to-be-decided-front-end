@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getProfile } from '../../services/profileService'
 import { useState, useEffect } from 'react'
 
@@ -12,7 +12,13 @@ const Profile = () => {
         setProfile(profileData)
       })
   }, [id])
-  console.log(profile.movie);
+  
+  function removeTags(str) {
+    if ((str === null) || (str === ''))
+    return false
+    else str = str.toString()
+    return str.replace( /(<([^>]+)>)/ig, '')
+  }
   
   return (
     <>
@@ -53,7 +59,7 @@ const Profile = () => {
               </div>
             </div>
           )
-          )}
+        )}
       </div>
       <div>
         <h3>Video Game List</h3>
@@ -75,9 +81,65 @@ const Profile = () => {
                           </button>
                         </div>
                         <div className="modal-body">
-                          <h5>hi</h5>
+                          <h5>Detials Coming Soon</h5>
                           <br /> 
-                          Release date: <span>hi</span>
+                          {videoGames?.released ? 
+                            <p>Release date: <span>{videoGames.released}</span></p> 
+                            :
+                            <p>TBA</p>
+                          }
+                        </div>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+      </div>
+      <div>
+        <h3>Board Game List</h3>
+          {profile.boardGame?.map((boardGames, index) =>
+              <div className='boardgame-container card-container' key={boardGames._id}>
+                <div  className='card'>
+                <img className="card-img-top" src={boardGames.image_url} alt={boardGames.name}/>
+                <div className='card-body'>
+                  <h5 className="card-title">{boardGames.name}</h5>
+                  <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#${boardGames._id}ModalCenter`}>Details
+                  </button>
+                  <div className="modal fade" id={`${boardGames._id}ModalCenter`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered" role="document">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h5 className="modal-title" id="exampleModalLongTitle">{boardGames.name}</h5>
+                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div className="modal-body">
+                          {boardGames.description ? 
+                            <p>{removeTags(boardGames.description)}</p>
+                            : 
+                            <p>Details coming soon</p>
+                          }
+                          <br /> 
+                          {boardGames?.released ? 
+                            <p>Release date: <span>{boardGames.released}</span></p> 
+                            :
+                            <p>TBA</p>
+                          }
+                        </div>
+                        <div>
+                          <div>
+                            <p>{`Players ${boardGames.min_players}-${boardGames.max_players}`}</p>
+                            <p>{`Playtime: ${boardGames.min_playtime}-${boardGames.max_playtime} min`}</p>
+                          </div>
+                          <div>
+                            <a href={boardGames.rules_url} target='blank'>rules</a>
+                          </div>
                         </div>
                         <div className="modal-footer">
                           <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
