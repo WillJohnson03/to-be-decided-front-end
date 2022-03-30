@@ -166,11 +166,11 @@ const App = () => {
           element={<AllMedia />} />
         <Route
           path="/squads"
-          element={<Squads squads={squads} user={user} />}
+          element={<Squads squads={squads} user={user}  />}
         />
         <Route
           path='/squad/:id' 
-          element={<Squad squads={squads} user={user} handleDeleteSquad={handleDeleteSquad} />}
+          element={<Squad squads={squads} profiles={profiles} user={user} handleDeleteSquad={handleDeleteSquad} />}
         ></Route>
         <Route
           path='/squad/:id/edit'
