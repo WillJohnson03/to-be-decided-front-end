@@ -48,13 +48,12 @@ export function update(squad) {
   .then(res => res.json())
 }
 
-export function addUserToSquad(squad) {
-  return fetch(`${BASE_URL}/${squad.get('_id')}/addUser`, {
+export function addUser(memberID, squadID) {
+  return fetch(`${BASE_URL}/${squadID}/addUser/${memberID}`, {
     method: 'PUT',
     headers: {
       'Authorization': `Bearer ${tokenService.getToken()}`
     },
-    body: squad
   })
   .then(res => res.json())
 }
