@@ -1,7 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import { getSquad } from '../../services/squadService'
 import { useState, useEffect } from 'react'
-import userEvent from '@testing-library/user-event'
 
 const Squad = (props) => {
   const [squad, setSquad] = useState({})
@@ -11,17 +10,23 @@ const Squad = (props) => {
       .then(squadData => {
         setSquad(squadData)
       })
-  }, [])
+  }, [id])
+  
 
   return (
     <>
       <div>
         <h3>{squad.name}</h3>
+        <div>
+          {squad.creator?.name ?
+          <p>{squad?.creator.name}'s Squad</p>
+          : <p>Loading info</p>}
+        </div>
         {squad.avatar ?
         <img src={squad.avatar} alt={squad.name} />
         : <img className="card-img-top" src="https://picsum.photos/286/180" alt="https://picsum.photos/179/200" />
         }
-        {props.user.profile === squad.creator ?
+        {props.user.profile === squad.creator?._id ?
             <div>
               <Link
                 to={`/squad/${squad._id}/edit`}
@@ -38,7 +43,6 @@ const Squad = (props) => {
             </div>
           :
           <>
-            
           </>
         }
       </div>
