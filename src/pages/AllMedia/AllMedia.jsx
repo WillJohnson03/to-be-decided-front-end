@@ -1,103 +1,151 @@
 import { useState } from 'react';
-import {  searchBoardGame } from '../../services/boardgame-api-calls';
-import {  searchMovie } from '../../services/movies-api-calls';
+import { searchBoardGame } from '../../services/boardgame-api-calls';
+import { searchMovie } from '../../services/movies-api-calls';
 import { searchVideoGame } from '../../services/game-api-calls';
 import { Link } from 'react-router-dom';
 
 const AllMedia = (props) => {
-  const [searchBG, setSearchBG] = useState({name: ''})
-  const [searchMV, setSearchMV] = useState({name: ''})
-  const [searchVG, setSearchVG] = useState({name: ''})
+  const [searchBG, setSearchBG] = useState({ name: '' })
+  const [searchMV, setSearchMV] = useState({ name: '' })
+  const [searchVG, setSearchVG] = useState({ name: '' })
+  const [searchRandom, setSearchRandom] = useState({ name: '' })
   const [searchResultsBG, setSearchResultsBG] = useState([])
   const [searchResultsMV, setSearchResultsMV] = useState([])
   const [searchResultsVG, setSearchResultsVG] = useState([])
-  
+  const [movie, setMovie] = useState({})
+  const [videoGame, setVideoGame] = useState({})
+  const [boardGame, setBoardGame] = useState({})
+
   const handleSearchBoardGame = evt => {
-    setSearchBG({...searchBG, [evt.target.name]: evt.target.value})
+    setSearchBG({ ...searchBG, [evt.target.name]: evt.target.value })
   }
   const handleSearchMovie = evt => {
-    setSearchMV({...searchMV, [evt.target.name]: evt.target.value})
+    setSearchMV({ ...searchMV, [evt.target.name]: evt.target.value })
   }
 
   const handleSearchVideoGame = evt => {
-    setSearchVG({...searchVG, [evt.target.name]: evt.target.value})
+    setSearchVG({ ...searchVG, [evt.target.name]: evt.target.value })
   }
-  
-  const handleSubmitBoardGame = async e => {
-    e.preventDefault()
+
+  const handleRandomMedia = async evt => {
+    evt.preventDefault()
     try {
-      searchBoardGame(searchBG.name)
-      .then(boardGameSearchData => {setSearchResultsBG(boardGameSearchData)})
+      const foundBoardGame = await searchBoardGame(searchBG.name)
+      const randomBoardGame = foundBoardGame.games[Math.floor(Math.random() * foundBoardGame.games.length)]
+      console.log("Boardgames", foundBoardGame);
+      console.log(randomBoardGame);
+      setBoardGame(randomBoardGame)
+      
+      const foundMovie = await searchMovie(searchMV.name)
+      const randomMovie = foundMovie.results[Math.floor(Math.random() * foundMovie.results.length)]
+      console.log("Movie:", foundMovie);
+      console.log(randomMovie);
+      setMovie(randomMovie)
+
+      const foundVideoGame = await searchVideoGame(searchVG.name)
+      const randomVideoGame = foundVideoGame.results[Math.floor(Math.random() * foundVideoGame.results.length)]
+      console.log("Videogames",foundVideoGame);
+      console.log(randomVideoGame);
+      setVideoGame(randomVideoGame)
+
     } catch (error) {
       console.log(error)
     }
   }
 
-  const handleSubmitVideoGame = async e => {
-    e.preventDefault()
-    try {
-      searchVideoGame(searchVG.name)
-      .then(videoGameSearchData => {setSearchResultsVG(videoGameSearchData)})
-    } catch (error) {
-      console.log(error)
-    }
+
+const handleSubmitBoardGame = async e => {
+  e.preventDefault()
+  try {
+    searchBoardGame(searchBG.name)
+      .then(boardGameSearchData => { setSearchResultsBG(boardGameSearchData) })
+  } catch (error) {
+    console.log(error)
   }
+}
 
-  const handleSubmitMovie = async e => {
-    e.preventDefault()
-    try {
-      searchMovie(searchMV.name)
-      .then(movieSearchData => {setSearchResultsMV(movieSearchData)})
-    } catch (error) {
-      console.log(error)
-    }
+const handleSubmitVideoGame = async e => {
+  e.preventDefault()
+  try {
+    searchVideoGame(searchVG.name)
+      .then(videoGameSearchData => { setSearchResultsVG(videoGameSearchData) })
+  } catch (error) {
+    console.log(error)
   }
+}
+
+const handleSubmitMovie = async e => {
+  e.preventDefault()
+  try {
+    searchMovie(searchMV.name)
+      .then(movieSearchData => { setSearchResultsMV(movieSearchData) })
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 
-  const { BGname } = searchBG
-  const { MVname } = searchMV
-  const { VGname } = searchVG
-  
-  return ( 
-    <>
-      <h1>Search for a videogame, movie, or board game.</h1>
-      <form
+const { BGname } = searchBG
+const { MVname } = searchMV
+const { VGname } = searchVG
+
+return (
+  <>
+    <h1>Search for a videogame, movie, or board game.</h1>
+    <form
       autoComplete='off'
       onSubmit={handleSubmitBoardGame}
-      >
-      <input 
+    >
+      <input
         type="text"
-        name="name" 
+        name="name"
         value={BGname}
         onChange={handleSearchBoardGame}
       />
       <button>Search Board Game</button>
-      </form>
-      <form
+    </form>
+    <form
       autoComplete='off'
       onSubmit={handleSubmitMovie}
-      >
-      <input 
+    >
+      <input
         type="text"
-        name="name" 
+        name="name"
         value={MVname}
         onChange={handleSearchMovie}
       />
       <button>Search Movie</button>
-      </form>
-      <form
+    </form>
+    <form
       autoComplete='off'
       onSubmit={handleSubmitVideoGame}
-      >
-      <input 
+    >
+      <input
         type="text"
-        name="name" 
+        name="name"
         value={VGname}
         onChange={handleSearchVideoGame}
       />
       <button>Search Video Game</button>
-      </form>
-        {searchResultsBG?.games?.length ?
+    </form>
+    <form
+      type="text"
+      name="name"
+      value={"VGname, BGname, MVname"}
+      onSubmit={handleRandomMedia}
+    >
+      <button>Get Random</button>
+    </form>
+    <h2>
+      {movie.title}
+    </h2>
+    <h2>
+      {boardGame.name}
+    </h2>
+    <h2>
+      {videoGame.name}
+    </h2>
+    {searchResultsBG?.games?.length ?
       <div>
         <h1>Board Game Results:</h1>
         {searchResultsBG?.games?.map((result, index) => (
@@ -113,12 +161,12 @@ const AllMedia = (props) => {
           </div>
         ))}
       </div>
-        :
-        <></>
-      }   
-      {searchResultsMV?.results?.length ?
+      :
+      <></>
+    }
+    {searchResultsMV?.results?.length ?
       <div>
-          <h1>Movie Results:</h1>
+        <h1>Movie Results:</h1>
         {searchResultsMV?.results?.map((result) => (
           <div key={result.id} className="card-container">
             <div className="movie card">
@@ -134,8 +182,8 @@ const AllMedia = (props) => {
       </div>
       :
       <></>
-      }
-      {searchResultsVG?.results?.length ?
+    }
+    {searchResultsVG?.results?.length ?
       <div>
         <h1>Video Game results:</h1>
         {searchResultsVG?.results?.map((result) => (
@@ -153,9 +201,9 @@ const AllMedia = (props) => {
       </div>
       :
       <></>
-      }
-    </>
-  );
+    }
+  </>
+);
 }
 
 export default AllMedia;
