@@ -145,8 +145,8 @@ const Profile = (props) => {
                             <p>Details coming soon</p>
                           }
                           <br /> 
-                          {boardGames?.released ? 
-                            <p>Release date: <span>{boardGames.released}</span></p> 
+                          {boardGames?.year_published ? 
+                            <p>Year Published: <span>{boardGames.year_published}</span></p> 
                             :
                             <p>TBA</p>
                           }
