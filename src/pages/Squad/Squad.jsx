@@ -24,6 +24,12 @@ const Squad = (props) => {
 		setFormData({[evt.target.name]: evt.target.value})
 	}
 
+  console.log(
+    squad.creator?.boardGame.map(bg => (
+      bg._id
+    ))
+  )
+
   return (
     <>
       <div>
@@ -31,8 +37,8 @@ const Squad = (props) => {
         <h3>{squad.name}</h3>
         <div>
           {squad.creator?.name ?
-          <p>{squad?.creator.name}'s Squad</p>
-          : <p>Loading info</p>}
+          <h4>{squad?.creator.name}'s Squad</h4>
+          :<p>Loading info</p>}          
         </div>
         {squad.avatar ?
         <img src={squad.avatar} alt={squad.name} />
@@ -74,6 +80,35 @@ const Squad = (props) => {
           ))}
         <p>Squad Collection:</p>
           {squad.creator?.videogames?map(videogame)}
+        </div>
+        <div>
+          {squad.creator?.boardGame.length ?
+          <div>
+            <p>{squad.creator?.name}'s Board Games</p>
+            {squad.creator?.boardGame.map(bg => (
+            <div key={bg._id}>{bg.name}</div>
+            ))}<br></br> 
+          </div>
+          :
+          <div></div>}
+          {squad.creator?.movie.length ?
+          <div>
+            <p>{squad.creator?.name}'s Movie</p>
+            {squad.creator?.movie.map(film => (
+            <div key={film._id}>{film.title}</div>
+            ))}<br></br>
+          </div>
+          :
+          <div></div>}
+          {squad.creator?.videoGame.length ?
+          <div>
+            <p>{squad.creator?.name}'s Video Games</p>
+            {squad.creator?.videoGame.map(vg => (
+            <div key={vg._id}>{vg.name}</div>
+            ))}<br></br>
+          </div>
+          :
+          <div></div>}
         </div>
     </>
   );
