@@ -36,6 +36,15 @@ const App = () => {
     .then(squads => setSquads(squads))
   }, [])
 
+    useEffect(() => {
+    if (user) {
+      profileService.getProfile(user.profile)
+      .then(profileData => {
+        setProfile(profileData)
+      })
+    }
+  }, [user]) 
+
   const handleLogout = () => {
     authService.logout()
     setUser(null)
