@@ -41,7 +41,7 @@ const SignupForm = props => {
     <form
       autoComplete="off"
       onSubmit={handleSubmit}
-      className='signup-container'
+      className='signup-form-container'
     >
       <div className='name-container'>
         <label htmlFor="name" className='name-label'>Name</label>
@@ -54,7 +54,7 @@ const SignupForm = props => {
           onChange={handleChange}
         />
       </div>
-      <div className='email-container'>
+      <div className='signup-email-container'>
         <label htmlFor="email" className='email-label'>Email</label>
         <input
           type="text"
@@ -65,7 +65,7 @@ const SignupForm = props => {
           onChange={handleChange}
         />
       </div>
-      <div className='password-container'>
+      <div className='signup-password-container'>
         <label htmlFor="password" className='password-label'>Password</label>
         <input
           type="password"
@@ -76,7 +76,7 @@ const SignupForm = props => {
           onChange={handleChange}
         />
       </div>
-      <div className='confirm-container'>
+      <div className='signup-confirm-container'>
         <label htmlFor="confirm" className='confirm-label'>
           Confirm Password
         </label>
@@ -89,12 +89,12 @@ const SignupForm = props => {
           onChange={handleChange}
         />
       </div>
-      <div className='button-container'>
+      <div className='signup-button-container'>
         <button disabled={isFormInvalid()} className='signup-btn'>
           Sign Up
         </button>
         <Link to="/">
-          <button className='cancel-button'>Cancel</button>
+          <button className='signup-cancel-button'>Cancel</button>
         </Link>
       </div>
     </form>

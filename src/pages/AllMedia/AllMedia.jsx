@@ -84,61 +84,71 @@ const { MVname } = searchMV
 const { VGname } = searchVG
 
 return (
-  <>
-    <h1>Search for a videogame, movie, or board game.</h1>
-    <form
-      autoComplete='off'
-      onSubmit={handleSubmitBoardGame}
-    >
-      <input
+  <div className='all-media-container'>
+    <div className='search-title'>
+      <h1>Search for a videogame, movie, or board game.</h1>
+    </div>
+    <div className='all-media-search'>
+      <form
+        autoComplete='off'
+        onSubmit={handleSubmitBoardGame}
+        className='boardgame-search-form'
+      >
+        <input
+          type="text"
+          name="name"
+          value={BGname}
+          onChange={handleSearchBoardGame}
+          />
+        <button className='search-boardgame-btn'>Search Board Game</button>
+      </form>
+      <form
+        autoComplete='off'
+        onSubmit={handleSubmitMovie}
+        className='movie-search-form'
+        >
+        <input
+          type="text"
+          name="name"
+          value={MVname}
+          onChange={handleSearchMovie}
+          />
+        <button className='search-movie-btn'>Search Movie</button>
+      </form>
+      <form  
+        autoComplete='off'
+        onSubmit={handleSubmitVideoGame}
+        className='videogame-search-form'
+        >
+        <input
+          type="text"
+          name="name"
+          value={VGname}
+          onChange={handleSearchVideoGame}
+          />
+        <button className='search-vidoegame-btn'>Search Video Game</button>
+      </form>
+      </div>
+      <div className='get-random'>
+      <form
         type="text"
         name="name"
-        value={BGname}
-        onChange={handleSearchBoardGame}
-      />
-      <button>Search Board Game</button>
-    </form>
-    <form
-      autoComplete='off'
-      onSubmit={handleSubmitMovie}
-    >
-      <input
-        type="text"
-        name="name"
-        value={MVname}
-        onChange={handleSearchMovie}
-      />
-      <button>Search Movie</button>
-    </form>
-    <form
-      autoComplete='off'
-      onSubmit={handleSubmitVideoGame}
-    >
-      <input
-        type="text"
-        name="name"
-        value={VGname}
-        onChange={handleSearchVideoGame}
-      />
-      <button>Search Video Game</button>
-    </form>
-    <form
-      type="text"
-      name="name"
-      value={"VGname, BGname, MVname"}
-      onSubmit={handleRandomMedia}
-    >
-      <button>Get Random</button>
-    </form>
-    <h2>
-      {movie.title}
-    </h2>
-    <h2>
-      {boardGame.name}
-    </h2>
-    <h2>
-      {videoGame.name}
-    </h2>
+        value={"VGname, BGname, MVname"}
+        onSubmit={handleRandomMedia}
+        className='get-random-search-form'
+        >
+        <button className='get-random-btn'>Get Random</button>
+      </form>
+      <h2>
+        {movie.title}
+      </h2>
+      <h2>
+        {boardGame.name}
+      </h2>
+      <h2>
+        {videoGame.name}
+      </h2>
+    </div>
     {searchResultsBG?.games?.length ?
       <div>
         <h1>Board Game Results:</h1>
@@ -202,7 +212,7 @@ return (
       :
       <></>
     }
-  </>
+  </div>
 );
 }
 

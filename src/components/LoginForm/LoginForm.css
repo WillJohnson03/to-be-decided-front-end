@@ -7,7 +7,7 @@
 }
 
 .email-container {
-  margin: 0rem 0 0 0;
+  margin: 1rem 0 0 0;
 }
 .email-label {
   margin: 0 5px 0 0;
@@ -33,7 +33,12 @@
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-top: 15px;
 }
-.cancel-btn {
+
+.login-btn:hover {
+  transition-delay: .1s;
+  box-shadow: none;
+}
+.login-cancel-btn {
   margin: 0 .75rem;
   color: white;
   border: none;
@@ -41,6 +46,10 @@
   border-radius: 5px;
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-top: 15px;
+}
+.login-cancel-btn:hover {
+  transition-delay: .1s;
+  box-shadow: none;
 }
 
 

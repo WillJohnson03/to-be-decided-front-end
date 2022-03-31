@@ -1,4 +1,4 @@
-.signup-container {
+.signup-form-container {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -7,39 +7,39 @@
   
 }
 .name-container{
-  margin: 1rem 0 0 0;
+  margin: 1.5rem 0 0 0;
 }
 
 .name-label {
   margin: 0 5px 0 0;
 }
 
-.email-container {
-  margin: 1rem 0 0 0;
+.signup-email-container {
+  margin: 1.5rem 0 0 0;
 }
 
 .email-label {
   margin: 0 5px 0 0;
 }
 
-.password-container {
-  margin: 1rem 0 0 0;
+.signup-password-container {
+  margin: 1.5rem 0 0 0;
 }
 
 .password-label {
   margin: 0 5px 0 0;
 }
 
-.confirm-container {
-  margin: 1rem 0 0 0;
+.signup-confirm-container {
+  margin: 1.5rem 0 0 0;
 }
 
 .confirm-label {
   margin: 0 5px 0 0;
 }
 
-.button-container {
-  margin: 1rem 0 0 0;
+.signup-button-container {
+  margin: 1.25rem 0 0 0;
   
 }
 
@@ -59,7 +59,7 @@
 }
 
 
-.cancel-button {
+.signup-cancel-button {
   margin: 0 1rem;
   color: white;
   border: none;
@@ -69,11 +69,7 @@
   margin-top: 15px;
 }
 
-.cancel-button:hover {
+.signup-cancel-button:hover {
   transition-delay: .1s;
   box-shadow: none;
-}
-
-.inputContainer {
-  margin-bottom: 1rem;
 }

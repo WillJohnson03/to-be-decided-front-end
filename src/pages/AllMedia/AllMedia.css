@@ -1,0 +1,113 @@
+
+.all-media-container {
+  background-color: #404EED;
+  padding: 1.5rem 2.5rem;
+  margin: 1.5rem 2rem;
+  border-radius: 5px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.search-title >h1{
+  font-size: 3vw;
+  }
+
+.all-media-search {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  justify-content: center;
+  font-size:2vmin;
+
+}
+
+@media screen and (max-width: 1200px ) {
+  .all-media-search {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 900px) {
+  .all-media-search {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+.boardgame-search-form {
+min-height: 1rem;
+width: fit-content;
+display: inline;
+}
+
+.get-random {
+  display: flex;
+  justify-content: center;
+  font-size: 2vmin;
+}
+
+.get-random-btn {
+  margin: 0 .75rem;
+  padding: 0 .5rem;
+  color: white;
+  border: none;
+  background-color: #292d5a;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 15px;
+}
+
+.get-random-btn:hover {
+  transition-delay: .1s;
+  box-shadow: none;
+}
+
+.search-boardgame-btn {
+  margin: 0 .75rem;
+  padding: 0 .5rem;
+  color: white;
+  border: none;
+  background-color: #292d5a;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 15px;
+}
+
+.search-boardgame-btn:hover {
+  transition-delay: .1s;
+  box-shadow: none;
+}
+.search-movie-btn {
+  margin: 0 .75rem;
+  padding: 0 .5rem;
+  color: white;
+  border: none;
+  background-color: #292d5a;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 15px;
+}
+
+.search-movie-btn:hover {
+  transition-delay: .1s;
+  box-shadow: none;
+}
+
+.search-vidoegame-btn {
+  margin: 0 .75rem;
+  padding: 0 .5rem;
+  color: white;
+  border: none;
+  background-color: #292d5a;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 15px;
+}
+
+.search-vidoegame-btn:hover {
+  transition-delay: .1s;
+  box-shadow: none;
+}
