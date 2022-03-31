@@ -1,9 +1,11 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams, useLocation } from 'react-router-dom'
 import { getProfile } from '../../services/profileService'
 import { useState, useEffect } from 'react'
 
-const Profile = () => {
-  const [profile, setProfile] = useState([])
+const Profile = (pros) => {
+  const location = useLocation()
+  const [profile, setProfile] = useState({})
+  const [formData, setFormData] = useState(location.state)
   const { id } = useParams()
 
   useEffect(() => {
@@ -12,13 +14,23 @@ const Profile = () => {
         setProfile(profileData)
       })
   }, [id])
-  // console.log(profile.movie);
+  console.log(profile.photo);
   
   return (
     <>
       <div>
-      <h3>{profile.name}</h3>
-      </div>
+        <h3>{profile.name}</h3>
+      {profile.photo ?
+      <img src={profile.photo} alt={profile.name} />
+      : <img className="card-img-top" src="https://picsum.photos/286/180" alt="https://picsum.photos/179/200" />
+      }
+      <Link
+        to={`/profile/${profile._id}/edit`}
+        state={{profile}}
+      >
+        Edit
+      </Link>
+      </div>      
       <div>
         <h3>Movie list</h3>
           {profile.movie?.map((movies, index) => (

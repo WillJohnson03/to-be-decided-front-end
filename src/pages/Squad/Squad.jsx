@@ -1,7 +1,6 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useLocation } from 'react-router-dom'
 import { getSquad } from '../../services/squadService'
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
 
 const Squad = (props) => {
   const location = useLocation()

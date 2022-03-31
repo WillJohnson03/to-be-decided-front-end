@@ -23,6 +23,7 @@ import VideoGameDetails from './pages/VideoGameDetails/VideoGameDetails.jsx'
 import EditSquad from './pages/EditSquad/EditSquad';
 import MovieDetails from './pages/MovieDetails/MovieDetails'
 import BoardGameDetails from './pages/BoardGameDetails/BoardGameDetails'
+import EditProfile from './pages/EditProfile/EditProfile';
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -82,6 +83,15 @@ const App = () => {
       const newSquadsArray = squads.map(squad => squad._id === updatedSquad._id ? updatedSquad : squad)
       setSquads(newSquadsArray)
       navigate('/squads')
+    })
+  }
+
+  const handleEditProfile = updatedProfileData => {
+    profileService.update(updatedProfileData)
+    .then(updatedProfile => {
+      const newProfilesArray = profiles.map(profile => profile._id === updatedProfile._id ? updatedProfile: profile)
+      setProfile(newProfilesArray)
+      navigate('/profiles')
     })
   }
 
@@ -159,8 +169,18 @@ const App = () => {
         />
         <Route
           path='/profile/:id' element={< Profile profiles={profiles} user={user} />}
-        >
-        </Route>
+        />
+        <Route
+          path='/profile/:id/edit'
+          element={
+            <EditProfile
+              handleEditProfile={handleEditProfile}
+              profiles={profiles}
+              profile={profile}
+              user={user}
+            />
+          }
+        />
         <Route
           path="/AllMedia"
           element={<AllMedia />} />
@@ -171,7 +191,7 @@ const App = () => {
         <Route
           path='/squad/:id' 
           element={<Squad squads={squads} profiles={profiles} user={user} handleDeleteSquad={handleDeleteSquad} />}
-        ></Route>
+        />
         <Route
           path='/squad/:id/edit'
           element={
