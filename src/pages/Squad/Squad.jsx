@@ -1,4 +1,4 @@
-import { Link, useParams, useLocation } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getSquad } from '../../services/squadService'
 import { useState, useEffect } from 'react'
 
@@ -16,19 +16,12 @@ const Squad = (props) => {
 
 	const handleSubmit = evt => {
 		evt.preventDefault()
- 
     props.addUserToSquad(formData.id, squad._id)
 	}
 
 	const handleChange = (evt) => {
 		setFormData({[evt.target.name]: evt.target.value})
 	}
-
-  console.log(
-    squad.creator?.boardGame.map(bg => (
-      bg._id
-    ))
-  )
 
   return (
     <>

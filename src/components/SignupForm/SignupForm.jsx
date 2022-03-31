@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import styles from './SignupForm.module.css'
+import './SignupForm.css'
 import * as authService from '../../services/authService'
 
 const SignupForm = props => {
@@ -41,10 +41,10 @@ const SignupForm = props => {
     <form
       autoComplete="off"
       onSubmit={handleSubmit}
-      className={styles.container}
+      className='signup-container'
     >
-      <div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>Name</label>
+      <div className='name-container'>
+        <label htmlFor="name" className='name-label'>Name</label>
         <input
           type="text"
           autoComplete="off"
@@ -54,8 +54,8 @@ const SignupForm = props => {
           onChange={handleChange}
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="email" className={styles.label}>Email</label>
+      <div className='email-container'>
+        <label htmlFor="email" className='email-label'>Email</label>
         <input
           type="text"
           autoComplete="off"
@@ -65,8 +65,8 @@ const SignupForm = props => {
           onChange={handleChange}
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="password" className={styles.label}>Password</label>
+      <div className='password-container'>
+        <label htmlFor="password" className='password-label'>Password</label>
         <input
           type="password"
           autoComplete="off"
@@ -76,8 +76,8 @@ const SignupForm = props => {
           onChange={handleChange}
         />
       </div>
-      <div className={styles.inputContainer}>
-        <label htmlFor="confirm" className={styles.label}>
+      <div className='confirm-container'>
+        <label htmlFor="confirm" className='confirm-label'>
           Confirm Password
         </label>
         <input
@@ -89,12 +89,12 @@ const SignupForm = props => {
           onChange={handleChange}
         />
       </div>
-      <div className={styles.inputContainer}>
-        <button disabled={isFormInvalid()} className={styles.button}>
+      <div className='button-container'>
+        <button disabled={isFormInvalid()} className='signup-btn'>
           Sign Up
         </button>
         <Link to="/">
-          <button>Cancel</button>
+          <button className='cancel-button'>Cancel</button>
         </Link>
       </div>
     </form>

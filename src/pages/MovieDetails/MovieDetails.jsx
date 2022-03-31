@@ -4,7 +4,7 @@ const MovieDetails = ({handleAddMovie, profile}) => {
 
   const location = useLocation()
   const movie = location.state.result
-  console.log(movie)
+
   return ( 
 
     <div className="card-container">
@@ -19,7 +19,7 @@ const MovieDetails = ({handleAddMovie, profile}) => {
       </div>
       </div>
     </div>
-   );
+  );
 }
 
 export default MovieDetails;
