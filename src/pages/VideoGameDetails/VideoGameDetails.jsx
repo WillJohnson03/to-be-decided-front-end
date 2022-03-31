@@ -13,7 +13,7 @@ const VideoGameDetails = ({handleAddVideoGame, profile}) => {
         <div className='card-body'>
           <h3 className='card-title'>{videoGame.slug}</h3>
           <Link
-          to={`/profile/${profile._id}`}
+          to={`/allmedia`}
           ><button className='add-game card-text' onClick={() => handleAddVideoGame(videoGame)}>Add VideoGame</button></Link>
         </div>
       </div>

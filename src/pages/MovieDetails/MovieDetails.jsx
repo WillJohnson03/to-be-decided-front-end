@@ -14,7 +14,7 @@ const MovieDetails = ({handleAddMovie, profile}) => {
         <h3 className='card-title'>{movie.title}</h3>
         <p>{movie.overview}</p>
         <Link
-        to={`/profile/${profile._id}`}
+        to={`/allmedia`}
         ><button className='add-moviecard-text' onClick={() => handleAddMovie(movie)}>Add Movie</button></Link>
       </div>
       </div>
