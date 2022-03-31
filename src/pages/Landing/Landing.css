@@ -54,7 +54,7 @@
 }
 
 .landing-signup:hover {
-  border: 2px solid #b1b1b1;
+  border: 2px #b1b1b1;
   border-radius: 5px;
   box-shadow: none;
 }
