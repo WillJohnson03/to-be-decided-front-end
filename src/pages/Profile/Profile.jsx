@@ -1,11 +1,9 @@
-import { Link, useParams, useLocation } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getProfile } from '../../services/profileService'
 import { useState, useEffect } from 'react'
 
 const Profile = (props) => {
-  const location = useLocation()
   const [profile, setProfile] = useState({})
-  const [formData, setFormData] = useState(location.state)
   const { id } = useParams()
 
   useEffect(() => {
@@ -22,8 +20,6 @@ const Profile = (props) => {
     return str.replace( /(<([^>]+)>)/ig, '')
   }
 
-  console.log(profile._id)
-  console.log(props.user.profile)
   
   return (
     <>

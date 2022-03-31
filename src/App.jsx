@@ -1,29 +1,26 @@
 import './App.css'
-import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
-// import * as boardGameApiCalls from './services/boardgame-api-calls'
-// import * as videoGameApiCalls from './services/game-api-calls'
-// import * as movieApiCalls from './services/movies-api-calls'
+import React, { useState, useEffect } from 'react';
+import * as authService from './services/authService'
+import * as profileService from './services/profileService'
 import * as squadService from './services/squadService'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
+import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
+import Profile from './pages/Profile/Profile'
 import ProfileDetails from './pages/ProfileDetails/ProfileDetails';
+import EditProfile from './pages/EditProfile/EditProfile'
 import Squads from './pages/Squads/Squads'
-import ChangePassword from './pages/ChangePassword/ChangePassword'
-import * as authService from './services/authService'
-import * as profileService from './services/profileService'
-import AllMedia from './pages/AllMedia/AllMedia'
-import Profile from './pages/Profile/Profile';
 import CreateSquad from './pages/CreateSquad/CreateSquad'
-import Squad from './pages/Squad/Squad';
-import VideoGameDetails from './pages/VideoGameDetails/VideoGameDetails.jsx'
-import EditSquad from './pages/EditSquad/EditSquad';
+import Squad from './pages/Squad/Squad'
+import EditSquad from './pages/EditSquad/EditSquad'
+import AllMedia from './pages/AllMedia/AllMedia'
+import VideoGameDetails from './pages/VideoGameDetails/VideoGameDetails'
 import MovieDetails from './pages/MovieDetails/MovieDetails'
 import BoardGameDetails from './pages/BoardGameDetails/BoardGameDetails'
-import EditProfile from './pages/EditProfile/EditProfile';
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
@@ -31,10 +28,6 @@ const App = () => {
   const [profiles, setProfiles] = useState([])
   const navigate = useNavigate()
   const [profile, setProfile] = useState({})
-  // const [boardGames, setBoardGames] = useState([])
-  // const [videoGames, setVideoGames] = useState([])
-  // const [movies, setMovies] = useState([])
-  // const { id } = useParams()
 
   useEffect(() => {
     profileService.getAllProfiles()
@@ -42,25 +35,6 @@ const App = () => {
     squadService.getAllSquads()
     .then(squads => setSquads(squads))
   }, [])
-
-  // useEffect(() => {
-  //   if (user) {
-  //     profileService.getProfile(user.profile)
-  //     .then(profileData => {
-  //       setProfile(profileData)
-  //     })
-  //   }
-  // }, [user])  
-
-  // useEffect(() => {
-  //   videoGameApiCalls.getVideoGameList()
-  //   .then(videoGameData => setVideoGames(videoGameData))
-  //   boardGameApiCalls.getBoardGameList()
-  //   .then(boardGameData => setBoardGames(boardGameData))
-  //   movieApiCalls.getMoviesList()
-  //   .then(movieData => setMovies(movieData))
-  // }, [])
-
 
   const handleLogout = () => {
     authService.logout()
@@ -133,28 +107,6 @@ const App = () => {
       setProfile(updatedProfile)
     })
   }
-  
-  // const handleRemoveVideoGame = id => {
-    //   profileService.removeVideoGame(id)
-    //   .then(updatedProfile => {
-      //     setProfile(updatedProfile)
-      //   })
-      // }
-
-  // const handleRemoveMovie = id => {
-  //   profileService.removeMovie(id)
-  //   .then(updatedProfile => {
-  //     setProfile(updatedProfile)
-  //   })
-  // }
-
-
-  // const handleRemoveBoardGame = id => {
-  //   profileService.removeBoardGame(id)
-  //   .then(updatedProfile => {
-  //     setProfile(updatedProfile)
-  //   })
-  // }
 
   return (
     <>

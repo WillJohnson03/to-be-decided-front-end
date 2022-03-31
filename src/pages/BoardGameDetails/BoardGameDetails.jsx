@@ -11,7 +11,6 @@ const BoardGameDetails = ({handleAddBoardGame, profile}) => {
 
   const location = useLocation()
   const boardGame = location.state.result
-  console.log(boardGame)
   return ( 
 
     <div className="card-container">

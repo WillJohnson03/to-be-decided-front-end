@@ -20,7 +20,7 @@ function Squads(props) {
       </div>
     </div>
     </>
-   );
+  );
 }
- 
+
 export default Squads;

@@ -8,7 +8,6 @@ const AllMedia = (props) => {
   const [searchBG, setSearchBG] = useState({ name: '' })
   const [searchMV, setSearchMV] = useState({ name: '' })
   const [searchVG, setSearchVG] = useState({ name: '' })
-  const [searchRandom, setSearchRandom] = useState({ name: '' })
   const [searchResultsBG, setSearchResultsBG] = useState([])
   const [searchResultsMV, setSearchResultsMV] = useState([])
   const [searchResultsVG, setSearchResultsVG] = useState([])
@@ -32,20 +31,14 @@ const AllMedia = (props) => {
     try {
       const foundBoardGame = await searchBoardGame(searchBG.name)
       const randomBoardGame = foundBoardGame.games[Math.floor(Math.random() * foundBoardGame.games.length)]
-      console.log("Boardgames", foundBoardGame);
-      console.log(randomBoardGame);
       setBoardGame(randomBoardGame)
       
       const foundMovie = await searchMovie(searchMV.name)
       const randomMovie = foundMovie.results[Math.floor(Math.random() * foundMovie.results.length)]
-      console.log("Movie:", foundMovie);
-      console.log(randomMovie);
       setMovie(randomMovie)
 
       const foundVideoGame = await searchVideoGame(searchVG.name)
       const randomVideoGame = foundVideoGame.results[Math.floor(Math.random() * foundVideoGame.results.length)]
-      console.log("Videogames",foundVideoGame);
-      console.log(randomVideoGame);
       setVideoGame(randomVideoGame)
 
     } catch (error) {
