@@ -11,7 +11,7 @@ const NavBar = ({ user, handleLogout }) => {
               type="button" 
               data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
               aria-label="Toggle navigation">
-              <span className="icon navbar-toggler-icon"><i class="fa-solid fa-bars fa-xl"></i></span>
+              <span className="icon navbar-toggler-icon"><i className="fa-solid fa-bars fa-xl"></i></span>
             </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
@@ -42,7 +42,7 @@ const NavBar = ({ user, handleLogout }) => {
             data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false"
             aria-label="Toggle navigation">
-            <span className="icon navbar-toggler-icon"><i class="fa-solid fa-bars fa-xl"></i></span>
+            <span className="icon navbar-toggler-icon"><i className="fa-solid fa-bars fa-xl"></i></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">

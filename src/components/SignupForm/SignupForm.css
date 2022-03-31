@@ -1,0 +1,70 @@
+.signup-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  
+}
+.name-container{
+  margin: 1rem 0 0 0;
+}
+
+.name-label {
+  margin: 0 5px 0 0;
+}
+
+.email-container {
+  margin: 1rem 0 0 0;
+}
+
+.email-label {
+  margin: 0 5px 0 0;
+}
+
+.password-container {
+  margin: 1rem 0 0 0;
+}
+
+.password-label {
+  margin: 0 5px 0 0;
+}
+
+.confirm-container {
+  margin: 1rem 0 0 0;
+}
+
+.confirm-label {
+  margin: 0 5px 0 0;
+}
+
+.button-container {
+  margin: 1rem 0 0 0;
+  
+}
+
+.signup-btn {
+  margin: 0 1rem;
+  color: white;
+  border: none;
+  background-color: #292d5a;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 15px;
+}
+
+.cancel-button {
+  margin: 0 1rem;
+  color: white;
+  border: none;
+  background-color: #292d5a;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 15px;
+}
+
+
+
+.inputContainer {
+  margin-bottom: 1rem;
+}

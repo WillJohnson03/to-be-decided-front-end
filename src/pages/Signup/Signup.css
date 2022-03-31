@@ -1,5 +1,40 @@
-.container {
+.signup-form-main {
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin: 10rem;
+  text-align: center;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.signup-container {
+  background-color: #404EED;
+  padding: 1.5rem 2.5rem;
+  margin: 1.5rem 0 0 0;
+  border-radius: 5px;
+  /* box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  max-width: 35rem;
+  min-width: 30rem;
+  
+}
+
+.signup-msg-container {
+  background-color: #404EED;
+  max-width: 35rem;
+  min-width: 30rem;
+}
+
+.signup {
+  background-color: #404EED;
+  
+
+
+}
+
+.msg{
+
+}
+
+.signup-form {
+  
 }
