@@ -164,7 +164,13 @@ return (
           <div key={result.id} className="card-container">
             <div className="movie card">
               <div>
-                <Link to='/MovieDetails' state={{result}}><img className="card-img-top" src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${result.poster_path}`} alt={result.title}/></Link>
+                {result.poster_path === null ?
+                <div>
+                  <Link to='/MovieDetails' state={{result}}>No image for this title</Link> 
+                </div> :
+                <div>
+                  <Link to='/MovieDetails' state={{result}}><img className="card-img-top" src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${result.poster_path}`} alt={result.title}/></Link>
+                </div>}
                 <div className="card-body">
                   <h3 className="card-title">{result.title}</h3>
                 </div>
