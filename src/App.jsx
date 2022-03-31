@@ -226,6 +226,7 @@ const App = () => {
               handleAddVideoGame={handleAddVideoGame} 
               // handleRemoveVideoGame={handleRemoveVideoGame}
               profiles={profiles}
+              profile={profile}
             />
           }
         />
@@ -235,6 +236,7 @@ const App = () => {
               handleAddMovie={handleAddMovie}
               // handleRemoveMovie={handleRemoveMovie}
               profiles={profiles}
+              profile={profile}
             />
           }
         />
@@ -244,6 +246,7 @@ const App = () => {
             handleAddBoardGame={handleAddBoardGame}
             // handleRemoveBoardGame={handleRemoveBoardGame}
             profiles={profiles}
+            profile={profile}
           />
         }
         />
