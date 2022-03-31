@@ -5,7 +5,10 @@ const ProfileDetails = (props) => {
   return ( 
     <div className='card-container'>
       <div className='card'>
-        <img className="card-img-top" src="https://picsum.photos/286/180" alt="https://picsum.photos/179/200" />
+      {props.profile.photo ?
+        <img src={props.profile.photo} alt={props.propfile?.name} />
+        : <img className="card-img-top" src="https://picsum.photos/286/180" alt="https://picsum.photos/179/200" />
+        }
         <div className='card-body'>
           <h5 className="card-title" >{props.profile.name}</h5>
           <p className="card-text">

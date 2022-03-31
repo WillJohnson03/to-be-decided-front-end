@@ -17,7 +17,17 @@ function getProfile(id) {
   .then(res => res.json())
 }
 
-
+function update(profile) {
+  console.log(profile)
+  return fetch(`${BASE_URL}/${profile.get('_id')}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    },
+    body: profile
+  })
+  .then(res => res.json())
+}
 
 function addVideoGame(videoGame) {
   return fetch(`${BASE_URL}/addVideoGame`, {
@@ -84,6 +94,7 @@ function addMovie(movie) {
 
 export { 
   getAllProfiles,
+  update,
   addVideoGame,
   addBoardGame,
   addMovie,
