@@ -2,7 +2,7 @@ import { Link, useParams, useLocation } from 'react-router-dom'
 import { getProfile } from '../../services/profileService'
 import { useState, useEffect } from 'react'
 
-const Profile = (pros) => {
+const Profile = (props) => {
   const location = useLocation()
   const [profile, setProfile] = useState({})
   const [formData, setFormData] = useState(location.state)
@@ -14,7 +14,6 @@ const Profile = (pros) => {
         setProfile(profileData)
       })
   }, [id])
-  console.log(profile.photo);
   
   function removeTags(str) {
     if ((str === null) || (str === ''))
@@ -22,6 +21,9 @@ const Profile = (pros) => {
     else str = str.toString()
     return str.replace( /(<([^>]+)>)/ig, '')
   }
+
+  console.log(profile._id)
+  console.log(props.user.profile)
   
   return (
     <>
@@ -31,12 +33,16 @@ const Profile = (pros) => {
       <img src={profile.photo} alt={profile.name} />
       : <img className="card-img-top" src="https://picsum.photos/286/180" alt="https://picsum.photos/179/200" />
       }
+      {props.user.profile === profile._id?
       <Link
         to={`/profile/${profile._id}/edit`}
         state={{profile}}
       >
         Edit
       </Link>
+      :
+      <></>
+      }
       </div>      
       <div>
         <h3>Movie list</h3>
