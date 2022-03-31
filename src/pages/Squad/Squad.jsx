@@ -27,6 +27,7 @@ const Squad = (props) => {
   return (
     <>
       <div>
+        {console.log(squad.creator)}
         <h3>{squad.name}</h3>
         <div>
           {squad.creator?.name ?
@@ -53,6 +54,7 @@ const Squad = (props) => {
               </button>
               <form  method="POST" onSubmit={handleSubmit}>
               <select name="id" onChange={handleChange}>
+                <option value=''>Choose A User</option>
                   {props.profiles.map(profile=>( 
                   <option value={profile._id} key={profile._id}>{profile.name}</option>
                   ))}
@@ -64,11 +66,14 @@ const Squad = (props) => {
           <>
           </>
         }
+        <p>Squad Members:</p>
           {squad.squadMembers?.map(member=>(
         <div key={member._id}className='card-container'>
             <h1>{member.name}</h1>
         </div>
           ))}
+        <p>Squad Collection:</p>
+          {squad.creator?.videogames?map(videogame)}
         </div>
     </>
   );
