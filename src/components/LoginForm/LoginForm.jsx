@@ -57,7 +57,7 @@ const LoginForm = props => {
       <div className='btn-container'>
         <button className='login-btn'>Log In</button>
         <Link to="/">
-          <button className='cancel-btn'>Cancel</button>
+          <button className='login-cancel-btn'>Cancel</button>
         </Link>
       </div>
     </form>
