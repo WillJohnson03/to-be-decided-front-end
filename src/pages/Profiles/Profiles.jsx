@@ -1,7 +1,4 @@
 import './Profiles.css'
-// import { useState, useEffect } from 'react'
-// import { NavLink } from 'react-router-dom'
-// import * as profileService from '../../services/profileService'
 import ProfileDetails from '../ProfileDetails/ProfileDetails'
 
 

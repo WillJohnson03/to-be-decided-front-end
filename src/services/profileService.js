@@ -10,7 +10,6 @@ async function getAllProfiles() {
 }
 
 function getProfile(id) {
-  // console.log(id);
   return fetch(`${BASE_URL}/${id}`, {
     headers: { Authorization: `Bearer ${tokenService.getToken()}` },
   })
@@ -18,7 +17,6 @@ function getProfile(id) {
 }
 
 function update(profile) {
-  console.log(profile)
   return fetch(`${BASE_URL}/${profile.get('_id')}`, {
     method: 'PUT',
     headers: {
@@ -62,44 +60,11 @@ function addMovie(movie) {
   .then(res => res.json())
 }
 
-// function removeVideoGame(videoGameName) {
-//   return fetch(`${BASE_URL}/${videoGameName}`, {
-//     method: "PATCH",
-//     headers: { 
-//       'Authorization': `Bearer ${tokenService.getToken()}`,
-//     }
-//   })
-//   .then(res => res.json())
-// }
-
-// function removeBoardGame(boardGameName) {
-//   return fetch(`${BASE_URL}/${boardGameName}`, {
-//     method: "PATCH",
-//     headers: { 
-//       'Authorization': `Bearer ${tokenService.getToken()}`,
-//     }
-//   })
-//   .then(res => res.json())
-// }
-
-// function removeMovie(movieName) {
-//   return fetch(`${BASE_URL}/${movieName}`, {
-//     method: "PATCH",
-//     headers: { 
-//       'Authorization': `Bearer ${tokenService.getToken()}`,
-//     }
-//   })
-//   .then(res => res.json())
-// }
-
 export { 
   getAllProfiles,
   update,
   addVideoGame,
   addBoardGame,
   addMovie,
-  // removeVideoGame,
-  // removeBoardGame,
-  // removeMovie,
   getProfile,
 }

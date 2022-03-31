@@ -17,12 +17,10 @@ const EditProfile = (props) => {
 
   const handleSubmit = evt => {
 		evt.preventDefault()
-    console.log(formData)
 		const profileFormData = new FormData()
 		profileFormData.append('name', formData.name)
 		profileFormData.append('photo', formData.photo)
 		profileFormData.append('_id', formData._id)
-    console.log(profileFormData)
 		props.handleEditProfile(profileFormData)
 	}
 

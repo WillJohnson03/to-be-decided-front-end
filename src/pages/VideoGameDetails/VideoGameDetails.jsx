@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 const VideoGameDetails = ({handleAddVideoGame, profile}) => {
   const location = useLocation()
   const videoGame = location.state.result
-  console.log(videoGame)
+  
   return ( 
 
     <div className="card-container">
