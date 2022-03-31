@@ -1,0 +1,19 @@
+.landing-main {
+  margin: 10rem;
+}
+
+.landing-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 10rem;
+}
+
+.landing-login {
+  border: 2px solid black;
+}
+
+#edit-btn {
+  width: 20px;
+  padding-left: 20px;
+}
