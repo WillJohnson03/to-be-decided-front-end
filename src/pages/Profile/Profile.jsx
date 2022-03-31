@@ -40,8 +40,9 @@ const Profile = (props) => {
       <></>
       }
       </div>      
-      <div>
-        <h3>Movie list</h3>
+      {profile.movie?.length ? 
+        <div>
+          <h3>Movie list</h3>
           {profile.movie?.map((movies, index) => (
               <div className='card-container' key={movies._id}>
                 <div  className='card'>
@@ -75,98 +76,106 @@ const Profile = (props) => {
             </div>
           )
         )}
-      </div>
+        </div>:
+        <div></div>}
+      
+      {profile.videoGame?.length ?
       <div>
-        <h3>Video Game List</h3>
-          {profile.videoGame?.map((videoGames, index) =>
-              <div className='videogame-container card-container' key={videoGames._id}>
-                <div  className='card'>
-                <img className="card-img-top" src={videoGames.background_image} alt={videoGames.name}/>
-                <div className='card-body'>
-                  <h5 className="card-title">{videoGames.name}</h5>
-                  <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#${videoGames._id}ModalCenter`}>Details
-                  </button>
-                  <div className="modal fade" id={`${videoGames._id}ModalCenter`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div className="modal-dialog modal-dialog-centered" role="document">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="exampleModalLongTitle">{videoGames.name}</h5>
-                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div className="modal-body">
-                          <h5>Detials Coming Soon</h5>
-                          <br /> 
-                          {videoGames?.released ? 
-                            <p>Release date: <span>{videoGames.released}</span></p> 
-                            :
-                            <p>TBA</p>
-                          }
-                        </div>
-                        <div className="modal-footer">
-                          <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
+      <h3>Video Game List</h3>
+        {profile.videoGame?.map((videoGames, index) =>
+            <div className='videogame-container card-container' key={videoGames._id}>
+              <div  className='card'>
+              <img className="card-img-top" src={videoGames.background_image} alt={videoGames.name}/>
+              <div className='card-body'>
+                <h5 className="card-title">{videoGames.name}</h5>
+                <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#${videoGames._id}ModalCenter`}>Details
+                </button>
+                <div className="modal fade" id={`${videoGames._id}ModalCenter`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div className="modal-dialog modal-dialog-centered" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLongTitle">{videoGames.name}</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div className="modal-body">
+                        <h5>Detials Coming Soon</h5>
+                        <br /> 
+                        {videoGames?.released ? 
+                          <p>Release date: <span>{videoGames.released}</span></p> 
+                          :
+                          <p>TBA</p>
+                        }
+                      </div>
+                      <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          )}
-      </div>
+          </div>
+        )}
+    </div> :
+    <div></div>}
+
+      {profile.boardGame?.length ?
       <div>
-        <h3>Board Game List</h3>
-          {profile.boardGame?.map((boardGames, index) =>
-              <div className='boardgame-container card-container' key={boardGames._id}>
-                <div  className='card'>
-                <img className="card-img-top" src={boardGames.image_url} alt={boardGames.name}/>
-                <div className='card-body'>
-                  <h5 className="card-title">{boardGames.name}</h5>
-                  <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#${boardGames._id}ModalCenter`}>Details
-                  </button>
-                  <div className="modal fade" id={`${boardGames._id}ModalCenter`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div className="modal-dialog modal-dialog-centered" role="document">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="exampleModalLongTitle">{boardGames.name}</h5>
-                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div className="modal-body">
-                          {boardGames.description ? 
-                            <p>{removeTags(boardGames.description)}</p>
-                            : 
-                            <p>Details coming soon</p>
-                          }
-                          <br /> 
-                          {boardGames?.year_published ? 
-                            <p>Year Published: <span>{boardGames.year_published}</span></p> 
-                            :
-                            <p>TBA</p>
-                          }
+      <h3>Board Game List</h3>
+        {profile.boardGame?.map((boardGames, index) =>
+            <div className='boardgame-container card-container' key={boardGames._id}>
+              <div  className='card'>
+              <img className="card-img-top" src={boardGames.image_url} alt={boardGames.name}/>
+              <div className='card-body'>
+                <h5 className="card-title">{boardGames.name}</h5>
+                <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#${boardGames._id}ModalCenter`}>Details
+                </button>
+                <div className="modal fade" id={`${boardGames._id}ModalCenter`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div className="modal-dialog modal-dialog-centered" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLongTitle">{boardGames.name}</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div className="modal-body">
+                        {boardGames.description ? 
+                          <p>{removeTags(boardGames.description)}</p>
+                          : 
+                          <p>Details coming soon</p>
+                        }
+                        <br /> 
+                        {boardGames?.year_published ? 
+                          <p>Year Published: <span>{boardGames.year_published}</span></p> 
+                          :
+                          <p>TBA</p>
+                        }
+                      </div>
+                      <div>
+                        <div>
+                          <p>{`Players ${boardGames.min_players}-${boardGames.max_players}`}</p>
+                          <p>{`Playtime: ${boardGames.min_playtime}-${boardGames.max_playtime} min`}</p>
                         </div>
                         <div>
-                          <div>
-                            <p>{`Players ${boardGames.min_players}-${boardGames.max_players}`}</p>
-                            <p>{`Playtime: ${boardGames.min_playtime}-${boardGames.max_playtime} min`}</p>
-                          </div>
-                          <div>
-                            <a href={boardGames.rules_url} target='blank'>rules</a>
-                          </div>
+                          <a href={boardGames.rules_url} target='blank'>rules</a>
                         </div>
-                        <div className="modal-footer">
-                          <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
+                      </div>
+                      <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          )}
-      </div>
+          </div>
+        )}
+    </div> :
+    <div></div>}
+
     </>
   );
 }
