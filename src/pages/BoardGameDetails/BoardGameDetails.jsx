@@ -19,7 +19,7 @@ const BoardGameDetails = ({handleAddBoardGame, profile}) => {
         <h3 className="card-title">{boardGame.name}</h3>
         <p>{removeTags(boardGame.description)}</p>
         <Link
-        to={`/profile/${profile._id}`}
+        to={`/allmedia`}
         ><button className='add-boardGame card-text' onClick={() => handleAddBoardGame(boardGame)}>Add Board Game</button></Link>
       </div>
     </div>
