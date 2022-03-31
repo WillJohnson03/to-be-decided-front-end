@@ -7,7 +7,7 @@ const ProfileDetails = (props) => {
       <div className='card'>
       {props.profile.photo ?
         <img src={props.profile.photo} alt={props.propfile?.name} />
-        : <img className="card-img-top" src="https://picsum.photos/286/180" alt="https://picsum.photos/179/200" />
+        : <img className="card-img-top" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
         }
         <div className='card-body'>
           <h5 className="card-title" >{props.profile.name}</h5>

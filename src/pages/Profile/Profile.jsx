@@ -27,7 +27,7 @@ const Profile = (props) => {
         <h3>{profile.name}</h3>
       {profile.photo ?
       <img src={profile.photo} alt={profile.name} />
-      : <img className="card-img-top" src="https://picsum.photos/286/180" alt="https://picsum.photos/179/200" />
+      : <img className="card-img-top" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
       }
       {props.user.profile === profile._id?
       <Link

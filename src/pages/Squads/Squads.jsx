@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import SquadDetails from '../SquadDetails/SquadDetails';
-
+import './Squads.css'
 function Squads(props) {
 
   return ( 
@@ -11,7 +11,7 @@ function Squads(props) {
       <Link 
         to="/createsquad"
         >
-      <h2>Create New Squad</h2></Link>
+      <h2 className='createSquad'>Create New Squad</h2></Link>
       <div>
       <div className='card-container'>
         {props.squads.map(squad=>(

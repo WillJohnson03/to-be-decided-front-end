@@ -1,3 +1,4 @@
+import './AllMedia.css'
 import { useState } from 'react';
 import { searchBoardGame } from '../../services/boardgame-api-calls';
 import { searchMovie } from '../../services/movies-api-calls';
