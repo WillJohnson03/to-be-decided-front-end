@@ -1,5 +1,5 @@
 .landing-main {
-  margin: 10rem;
+  margin: 1rem;
 }
 
 .landing-container {
@@ -7,13 +7,60 @@
   align-items: center;
   flex-direction: column;
   margin: 10rem;
+  text-align: center;
 }
 
-.landing-login {
-  border: 2px solid black;
+.user-container {
+  background-color: #404EED;
+  padding: 1.5rem 2.5rem;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  max-width: 35rem;
+  min-width: 30rem;
 }
 
-#edit-btn {
-  width: 20px;
-  padding-left: 20px;
+.user-greeting {
+
+}
+
+.user {
+
+}
+
+.none-user-container {
+  background-color: #404EED;
+  padding: 1.5rem 2.5rem;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  max-width: 35rem;
+  min-width: 30rem;
+}
+
+.non-user {
+  margin: 0 0 2rem;
+}
+
+.landing-login, .landing-signup {
+  background-color: #292d5a;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 15px;
+}
+
+.landing-login:hover {
+  border: 2px #b1b1b1;
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+.landing-signup:hover {
+  border: 2px solid #b1b1b1;
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  color: white;
 }
