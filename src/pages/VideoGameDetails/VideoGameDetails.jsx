@@ -1,7 +1,7 @@
 import './VideoGameDetails.css'
-import { useParams, useRef, useState, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const VideoGameDetails = ({handleRemoveVideoGame, handleAddVideoGame}) => {
+const VideoGameDetails = ({handleAddVideoGame, profile}) => {
   const location = useLocation()
   const videoGame = location.state.result
   console.log(videoGame)
@@ -12,7 +12,9 @@ const VideoGameDetails = ({handleRemoveVideoGame, handleAddVideoGame}) => {
         <img className='card-img-top' src={videoGame.background_image} alt="videoGame" />
         <div className='card-body'>
           <h3 className='card-title'>{videoGame.slug}</h3>
-          <button className='add-game card-text' onClick={() => handleAddVideoGame(videoGame)}>Add VideoGame</button>
+          <Link
+          to={`/profile/${profile._id}`}
+          ><button className='add-game card-text' onClick={() => handleAddVideoGame(videoGame)}>Add VideoGame</button></Link>
         </div>
       </div>
     </div>
