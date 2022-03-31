@@ -1,7 +1,23 @@
-.root {
-  background-color: #50424F;
+body {
+  background-color: #23272aee;
+  color: white;
 }
 
 .navbar {
-  background-color: gray;
+  background-color: #404EED;
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+a:hover {
+  color: #b1b1b1;
 }
