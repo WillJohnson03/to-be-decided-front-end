@@ -1,4 +1,4 @@
-.container {
+.login-form-container {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -6,11 +6,46 @@
   margin-bottom: 50px;
 }
 
-.label,
-.button {
-  margin-right: 0.5rem;
+.email-container {
+  margin: 0rem 0 0 0;
+}
+.email-label {
+  margin: 0 5px 0 0;
 }
 
-.inputContainer {
-  margin-bottom: 1rem;
+.password-container {
+  margin: 1rem 0 0 0;
 }
+
+.password-label {
+  margin: 0 5px 0 0;
+}
+.btn-container {
+  margin: .5rem 0 0 0;
+}
+.login-btn {
+  margin: 0 .75rem;
+  padding: 0 .5rem;
+  color: white;
+  border: none;
+  background-color: #292d5a;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 15px;
+}
+.cancel-btn {
+  margin: 0 .75rem;
+  color: white;
+  border: none;
+  background-color: #292d5a;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 15px;
+}
+
+
+
+
+
+
+

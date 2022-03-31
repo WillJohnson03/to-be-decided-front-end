@@ -1,0 +1,12 @@
+.card-title {
+  font-size: 30px;
+}
+
+.createSquad {
+  border-radius: 5%;
+  margin: 0 auto;
+  height: 45px;
+  width: 250px;
+  background-color: #9901c7;
+  text-decoration: none;
+}
