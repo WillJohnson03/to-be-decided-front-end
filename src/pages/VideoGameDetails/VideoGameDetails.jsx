@@ -7,15 +7,16 @@ const VideoGameDetails = ({handleAddVideoGame, profile}) => {
   
   return ( 
 
-    <div className="card-container">
-      <div className='videogame card'>
-        <img className='card-img-top' src={videoGame.background_image} alt="videoGame" />
-        <div className='card-body'>
-          <h3 className='card-title'>{videoGame.slug}</h3>
-          <Link
-          to={`/allmedia`}
-          ><button className='add-game card-text' onClick={() => handleAddVideoGame(videoGame)}>Add VideoGame</button></Link>
-        </div>
+    <div className="videogame-detail-container card-container">
+      <div className='videogame-detail-card card'>
+        <img className='videogame-detail-img card-img-top' src={videoGame.background_image} alt="videoGame" />
+        <h3 className='videogame-detail-title card-title'>{videoGame.slug}</h3>
+        <p className='videogame-overview'>Detials Coming Soon</p>
+        <Link
+        to={`/allmedia`}
+        >
+          <button className='add-videogame' onClick={() => handleAddVideoGame(videoGame)}>Add VideoGame</button>
+        </Link>
       </div>
     </div>
   );

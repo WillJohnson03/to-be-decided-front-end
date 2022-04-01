@@ -84,86 +84,90 @@ const { MVname } = searchMV
 const { VGname } = searchVG
 
 return (
-  <div className='all-media-container'>
-    <div className='search-title'>
-      <h1>Search for a videogame, movie, or board game.</h1>
-    </div>
-    <div className='all-media-search'>
-      <form
+  <div>
+    <div className='all-media-container'>
+      <div className='search-title'>
+        <h1>Search for a videogame, movie, or board game.</h1>
+      </div>
+      <div className='all-media-search'>
+        <form
         autoComplete='off'
         onSubmit={handleSubmitBoardGame}
         className='boardgame-search-form'
-      >
-        <input
+        >
+          <input
           type="text"
           name="name"
           value={BGname}
           onChange={handleSearchBoardGame}
           />
-        <button className='search-boardgame-btn'>Search Board Game</button>
-      </form>
-      <form
-        autoComplete='off'
-        onSubmit={handleSubmitMovie}
-        className='movie-search-form'
+          <button className='search-boardgame-btn'>Search Board Game</button>
+        </form>
+        <form
+          autoComplete='off'
+          onSubmit={handleSubmitMovie}
+          className='movie-search-form'
         >
-        <input
-          type="text"
-          name="name"
-          value={MVname}
-          onChange={handleSearchMovie}
+          <input
+            type="text"
+            name="name"
+            value={MVname}
+            onChange={handleSearchMovie}
           />
-        <button className='search-movie-btn'>Search Movie</button>
-      </form>
-      <form  
-        autoComplete='off'
-        onSubmit={handleSubmitVideoGame}
-        className='videogame-search-form'
+          <button className='search-movie-btn'>Search Movie</button>
+        </form>
+        <form  
+          autoComplete='off'
+          onSubmit={handleSubmitVideoGame}
+          className='videogame-search-form'
         >
-        <input
-          type="text"
-          name="name"
-          value={VGname}
-          onChange={handleSearchVideoGame}
+          <input
+            type="text"
+            name="name"
+            value={VGname}
+            onChange={handleSearchVideoGame}
           />
-        <button className='search-vidoegame-btn'>Search Video Game</button>
-      </form>
+          <button className='search-vidoegame-btn'>Search Video Game</button>
+        </form>
       </div>
       <div className='get-random'>
-      <form
-        type="text"
-        name="name"
-        value={"VGname, BGname, MVname"}
-        onSubmit={handleRandomMedia}
-        className='get-random-search-form'
+        <form
+          type="text"
+          name="name"
+          value={"VGname, BGname, MVname"}
+          onSubmit={handleRandomMedia}
+          className='get-random-search-form'
         >
-        <button className='get-random-btn'>Get Random</button>
-      </form>
-      <h2>
-        {movie.title}
-      </h2>
-      <h2>
-        {boardGame.name}
-      </h2>
-      <h2>
-        {videoGame.name}
-      </h2>
+          <button className='get-random-btn'>Get Random</button>
+        </form>
+        <h2>
+          {movie.title}
+        </h2>
+        <h2>
+          {boardGame.name}
+        </h2>
+        <h2>
+          {videoGame.name}
+        </h2>
+      </div>
     </div>
     {searchResultsBG?.games?.length ?
       <div>
         <h1>Board Game Results:</h1>
-        {searchResultsBG?.games?.map((result, index) => (
-          <div key={result.id} className="card-container">
-            <div className="boardgame card">
-              <div>
-                <Link to='/BoardGameDetails' state={{result}}><img className="card-img-top" src={result.image_url} alt={result.name} /></Link>
-                <div className="card-body">
-                  <h3 className="card-title">{result.name}</h3>
+        <div className="card-container">
+          {searchResultsBG?.games?.map((result, index) => (
+            <div key={result.id} >
+              <div className="boardgame card">
+                <div>
+                  <Link to='/BoardGameDetails' state={{result}}><img className="boardgame-img card-img-top" src={result.image_url} alt={result.name} /></Link>
+                  <div className="card-body">
+                    <h3 className="boardgame-search-title card-title">{result.name}</h3>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       :
       <></>
@@ -171,24 +175,26 @@ return (
     {searchResultsMV?.results?.length ?
       <div>
         <h1>Movie Results:</h1>
-        {searchResultsMV?.results?.map((result) => (
-          <div key={result.id} className="card-container">
-            <div className="movie card">
-              <div>
-                {result.poster_path === null ?
+        <div className="card-container">
+          {searchResultsMV?.results?.map((result) => (
+            <div key={result.id} className="card-container">
+              <div className="movie card">
                 <div>
-                  <Link to='/MovieDetails' state={{result}}>No image for this title</Link> 
-                </div> :
-                <div>
-                  <Link to='/MovieDetails' state={{result}}><img className="card-img-top" src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${result.poster_path}`} alt={result.title}/></Link>
-                </div>}
-                <div className="card-body">
-                  <h3 className="card-title">{result.title}</h3>
+                  {result.poster_path === null ?
+                  <div>
+                    <Link to='/MovieDetails' state={{result}}>No image for this title</Link> 
+                  </div> :
+                  <div>
+                    <Link to='/MovieDetails' state={{result}}><img className="movie-img card-img-top" src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${result.poster_path}`} alt={result.title}/></Link>
+                  </div>}
+                  <div className="card-body">
+                    <h3 className="movie-search-title card-title">{result.title}</h3>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       :
       <></>
@@ -196,18 +202,20 @@ return (
     {searchResultsVG?.results?.length ?
       <div>
         <h1>Video Game results:</h1>
-        {searchResultsVG?.results?.map((result) => (
-          <div key={result.id} className="card-container">
-            <div className="videogame card">
-              <div>
-                <Link to='/VideoGameDetails' state={{result}}><img className="card-img-top" src={result.background_image} alt={result.slug} /></Link>
-                <div className="card-body">
-                  <h3 className="card-title">{result.name}</h3>
+        <div className="card-container">
+          {searchResultsVG?.results?.map((result) => (
+            <div key={result.id} className="card-container">
+              <div className="videogame card">
+                <div>
+                  <Link to='/VideoGameDetails' state={{result}}><img className="videogame-img card-img-top" src={result.background_image} alt={result.slug} /></Link>
+                  <div className="card-body">
+                    <h3 className="videogame-search-title card-title">{result.name}</h3>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       :
       <></>
