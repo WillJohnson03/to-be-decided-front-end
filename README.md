@@ -2,8 +2,12 @@
 
 [![TBD Landing Page](https://i.imgur.com/qINJxrQ.png)](https://tobedecided.herokuapp.com/)
 
+[![TBD Movie Search](https://i.imgur.com/pYesSkU.png)](https://tobedecided.herokuapp.com/)
+
 ## Info
 TBD is the web app that helps you and your squad decide what to do, because indecision happens. Whether it’s a movie night, game night, or video games with your friends sometime we all just need a little help.
+
+## [Trello](https://trello.com/b/EufolsEI/unit-3-project)
 
 ## [Go use TBD](https://tobedecided.herokuapp.com/)
 
@@ -14,7 +18,12 @@ TBD is the web app that helps you and your squad decide what to do, because inde
 
 ## Ice Box 🧊
 
-- [ ] sample icebox item
+- [ ] Edit and media displayed on profiles
+- [ ] Add in app poll for squads to vote for activities
+- [ ] Add method to rate and review activities
+- [ ] Add a way to narrow done choices by genre or category
+- [ ] Add option to filter by number of players
+- [ ] Add in app invite and function to invite through email.
 
 ## Team Shelf Mates
 
@@ -22,3 +31,10 @@ TBD is the web app that helps you and your squad decide what to do, because inde
 - [![Zack's Github](https://img.shields.io/badge/github-%23121011.svg?-the-badge&logo=github&logoColor=white)](https://github.com/zackbeckwith) Zack Beckwith - Scrum Lord and API Master
 - [![Will's Github](https://img.shields.io/badge/github-%23121011.svg?-the-badge&logo=github&logoColor=white)](https://github.com/WillJohnson03) Will Johnso - GIT Commander and Documenter
 - [![Wolf's Github](https://img.shields.io/badge/github-%23121011.svg?-the-badge&logo=github&logoColor=white)](https://github.com/wolfsige) Wolf Tripp - Database Manager
+
+## Credits
+- https://heropatterns.com/
+- https://www.geeksforgeeks.org/
+- https://rawg.io
+- https://www.themoviedb.org/
+- https://www.boardgameatlas.com/
