@@ -1,32 +1,161 @@
-.squad-pic {
-  max-height: 150px;
-  max-width: 150px;
-  border: 5px solid #292d5a;
-  border-radius: 10%;
-  margin: 10px auto;
+.squad { 
+  background-color: #404EED;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  margin: 3rem;
+  grid-auto-flow: row;
+  justify-items: center;
+  grid-template-areas:
+    "squad-info member-container"
+    "squad-media squad-media ";
 }
 
-.squad-members {
-  font-size: 25px;
-  text-decoration: underline;
-}
 
-.member {
-  font-size: 15px;
+.squad-info {  
   display: flex;
-  margin: 0 auto;
   flex-direction: column;
 }
 
-.mediatitle {
-  font-size: 25px;
+.member-container {
+  grid-area: member-container;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.squad-members-title >h2 { 
+  display: flex;
+  font-size: 3rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 1px  rgba(0, 0, 0, 0.6), 0 6px 20px  rgba(0, 0, 0, 0.19);
   text-decoration: underline;
 }
 
-.squad-info {
-  margin: 25px auto;
-  background-color: #404EED;
-  width: fit-content;
+.creator-edit { 
+  grid-area: creator-edit; 
+}
+
+.squad-members { 
+  grid-area: squad-members; 
+}
+
+img {
+  width: 250px;
+  height: 250px;
+}
+
+.squad-name > h2 { 
+  font-size: 3rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 1px  rgba(0, 0, 0, .6), 0 6px 20px  rgba(0, 0, 0, 0.19);
+  text-decoration-line: underline;
+}
+
+.squad-pic {
+  grid-area: squad-pic; 
+}
+
+.squad-creator > h4 { 
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  grid-area: squad-creator; 
+}
+
+.squad-media { 
+  grid-area: squad-media;
+}
+
+.squad-boardgame-list {
+  grid-area: boardgame;
+}
+
+.squad-boardgame-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 1px  rgba(0, 0, 0, .6), 0 6px 20px  rgba(0, 0, 0, 0.19);
+  text-decoration-line: underline;
+}
+.squad-movie-list {
+  grid-area: movie;
+}
+
+.squad-movie-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 1px  rgba(0, 0, 0, .6), 0 6px 20px  rgba(0, 0, 0, 0.19);
+  text-decoration-line: underline;
+}
+
+.squad-videogame-list {
+  grid-area: videogame;
+}
+
+.squad-videogame-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-shadow: 2px 2px 1px  rgba(0, 0, 0, .6), 0 6px 20px  rgba(0, 0, 0, 0.19);
+  text-decoration-line: underline;
+}
+
+li {
+  list-style: none;
+  ;
+}
+
+.edit-link {
+  margin: 0 .75rem;
+  padding:.15rem .7rem; 
+  color: white;
+  border: none;
+  background-color: #292d5a;
+  border-radius: 5px;
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 3%;
+}
+
+.edit-link:hover {
+  transition-delay: .1s;
+  box-shadow: none;
+  text-decoration-line: none;
+}
+
+.delete-squad-btn {
+  margin: 0 .75rem;
+  padding: 0 .5rem;
+  color: white;
+  border: none;
+  background-color: #292d5a;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 15px;
+}
+
+.delete-squad-btn:hover {
+  background-color: red;
+}
+
+.add-user-squad-form {
+  margin: .5rem;
+}
+
+.member-dropdown {
+  border-radius: 5px;
+}
+
+.add-user-squad-btn {
+  margin: 0 .75rem;
+  padding: 0 .5rem;
+  color: white;
+  border: none;
+  background-color: #292d5a;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 15px;
+}
+
+.add-user-squad-btn:hover {
+  transition-delay: .1s;
+  box-shadow: none;
 }

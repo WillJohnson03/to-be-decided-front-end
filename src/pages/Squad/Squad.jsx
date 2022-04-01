@@ -1,7 +1,7 @@
+import './Squad.css'
 import { Link, useParams } from 'react-router-dom'
 import { getSquad } from '../../services/squadService'
 import { useState, useEffect } from 'react'
-import './Squad.css'
 const Squad = (props) => {
   const [squad, setSquad] = useState({})
   const [formData, setFormData] = useState([props.profiles])
@@ -24,12 +24,12 @@ const Squad = (props) => {
 	}
 
   return (
-    <>
+    <div className='moviegame'>
       <div className='squad'>
         <div className="squad-info">
           <div className='squad-title'>
             <div className='squad-name'>
-              <h3>{squad.name}</h3>
+              <h2>{squad.name}</h2>
             </div>
             <div className='squad-creator'>
               {squad.creator?.name ?
@@ -43,29 +43,31 @@ const Squad = (props) => {
             : <img className="card-img-top squad-pic" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
             }
           </div>
-          <div classname='creator-edit'>
+          <div className='creator-edit'>
             {props.user.profile === squad.creator?._id ?
               <div>
                 <Link
                   to={`/squad/${squad._id}/edit`}
                   state={{squad}}
+                  className='edit-link'
                 >
                   Edit
                 </Link>
-                <button
+                <button 
+                  className='delete-squad-btn'
                   onClick={()=> props.handleDeleteSquad
                   (squad._id)}
                 >
                   Delete
                 </button>
-                <form  method="POST" onSubmit={handleSubmit}>
-                <select name="id" onChange={handleChange}>
+                <form className='add-user-squad-form' method="POST" onSubmit={handleSubmit}>
+                <select className='member-dropdown' name="id" onChange={handleChange}>
                   <option value=''>Choose A User</option>
                     {props.profiles.map(profile=>( 
                     <option value={profile._id} key={profile._id}>{profile.name}</option>
                     ))}
                   </select>
-                  <button type="submit" className="btn btn-primary">Add User to Squad</button>
+                  <button  type="submit" className="add-user-squad-btn">Add User to Squad</button>
                 </form>
               </div>
               :
@@ -73,55 +75,70 @@ const Squad = (props) => {
               </>
             }
           </div>
+        </div>
+        <div className='member-container'>
           <div className='squad-members-title'>
-            <p className='squad-members'>Squad Members:</p>
+            <h2>Squad Members</h2>
           </div>
           <div>
             {squad.squadMembers?.map(member=>(
-              <div key={member._id}>
-                <h1 className='member'>{member.name}</h1>
+              <div key={member._id}
+              className='card-container'>
+                <h3>{member.name}</h3> 
               </div>
             ))}
           </div>
-        <div className='squad-media'>
+        </div>
+        <div id='thing' className='squad-media'>
+          <div className='squad-boardgame-list'>
+
           {squad.creator?.boardGame.length ?
-            <div>
-              <p className='mediatitle'>
-                {squad?.name}'s Board Games
-              </p>
+            <div >
+                <h4 className='squad-boardgame-title'>{squad?.name}'s Board Games</h4>
+              <ul>
               {squad.creator?.boardGame.map(bg => (
-                <div key={bg._id}>
+                <li key={bg._id}>
                   {bg.name}
-                </div>
+                </li>
               ))}
+              </ul>
             </div>
             :
-          <div>
-            <p className='mediatitle'>This squad has no board games!</p>
-          </div>
-          }
-          {squad.creator?.movie.length ?
             <div>
-              <p className='mediatitle'>{squad?.name}'s Movies</p>
-                {squad.creator?.movie.map(film => (
-                <div key={film._id}>
-                  {film.title}
-                </div>
-                ))}
-            </div>
-            :
-          <div>
-            <p className='mediatitle'>This squad has no movies!</p>
+            <p>This squad has no board games!</p>
           </div>
           }
+          </div>
+          <div className='squad-movie-list'>
+            {squad.creator?.movie.length ?
+              <div>
+                <h4 className='squad-movie-title'>{squad?.name}'s Movies</h4>
+                <ul>
+
+                  {squad.creator?.movie.map(film => (
+                    <li key={film._id}>
+                    {film.title}
+                  </li>
+                  ))}
+                  </ul>
+              </div>
+              :
+            <div>
+              <p>This squad has no movies!</p>
+            </div>
+            }
+          </div>
+          <div className='squad-videogame-list'>
           {squad.creator?.videoGame.length ?
             <div>
-              <p className='mediatitle'>{squad?.name}'s Video Games</p>
+              <h4 className='squad-videogame-title'>{squad?.name}'s Video Games</h4>
+              <ul>
               {squad.creator?.videoGame.map(vg => (
                 <div key={vg._id}>
                   {vg.name}
                 </div>
               ))}
+              </ul>
             </div>
           :
           <div>
@@ -131,7 +148,7 @@ const Squad = (props) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

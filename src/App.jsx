@@ -79,7 +79,6 @@ const App = () => {
   }  
   
   const addUserToSquad = (newSquadMemberID, squadID) => {
-    console.log(newSquadMemberID)
     squadService.addUser(newSquadMemberID, squadID)
     .then(updatedSquad => {
       const newSquadsArray = squads.map(squad => squad._id === updatedSquad._id ? updatedSquad : squad)
