@@ -1,12 +1,37 @@
+.boardgame-detail-container {
+  display: flex;
+  justify-content: center;
+}
 
-
-
-.add-boardgame-card-text {
-  background-color: #404EED;
-  padding: 1.5rem 2.5rem;
-  margin: 1.5rem 0 0 0;
+.add-boardGame {
+  margin: 0 1rem 1.5rem;
+  color: white;
+  border: none;
+  background-color: #292d5a;
   border-radius: 5px;
-  max-width: 35rem;
-  min-width: 30rem;
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.add-boardGame:hover {
+  transition-delay: .1s;
+  box-shadow: none;
+}
+
+.boardgame-detail-card {
+  width: 40rem;
+  display: flex;
+  align-items: center;
+}
+
+.boardgame-detatil-img {
+  margin: 1rem 0 0 0;
+  border-radius: 10px;
+}
+
+.boardgame-detail-title{
+  margin: 2rem 0 0 0;
+}
+
+.boardgame-description {
+  padding: 1.5rem 2rem 0;
 }

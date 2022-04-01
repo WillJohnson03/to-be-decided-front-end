@@ -43,23 +43,23 @@ const Profile = (props) => {
       </div>      
       <h3 className='media-list'>Movie list</h3>
       {profile.movie?.length ? 
-        <div className='card-container'>
-          {profile.movie?.map((movies, index) => (
-              <div  key={movies._id}>
-                <div  className='card'>
-                <img className="movie-img card-img-top" src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movies.poster_path}`} alt={movies.title}/>
-                <div className='card-body'>
-                  <h5 className="card-title">{movies.title}</h5>
-                  <button type="button" className=" details-btn" data-toggle="modal" data-target={`#${movies._id}ModalCenter`}>Details
-                  </button>
-                  <div className="modal fade" id={`${movies._id}ModalCenter`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div className="modal-dialog modal-dialog-centered" role="document">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="exampleModalLongTitle">{movies.title}</h5>
-                          <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
+      <div className='card-container'>
+        {profile.movie?.map((movies, index) => (
+          <div  key={movies._id}>
+            <div  className='card'>
+              <img className="movie-img card-img-top" src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movies.poster_path}`} alt={movies.title}/>
+              <div className='card-body'>
+                <h5 className="card-title">{movies.title}</h5>
+                <button type="button" className=" details-btn" data-toggle="modal" data-target={`#${movies._id}ModalCenter`}>Details
+                </button>
+                <div className="modal fade" id={`${movies._id}ModalCenter`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div className="modal-dialog modal-dialog-centered" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLongTitle">{movies.title}</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
                         </div>
                         <div className="modal-body">
                           {movies.overview} 
@@ -74,11 +74,11 @@ const Profile = (props) => {
                   </div>
                 </div>
               </div>
-            </div>
-          )
-        )}
-        </div>:
-        <div>No movies yet.</div>}
+          </div>
+        ))}
+      </div>
+      :
+      <div>No movies yet.</div>}
       
       <h3 className='media-list'>Video Game List</h3>
       {profile.videoGame?.length ?

@@ -111,3 +111,48 @@ display: inline;
   transition-delay: .1s;
   box-shadow: none;
 }
+
+.card-container{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  
+}
+@media screen and (max-width: 1700px ) {
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 1400px ) {
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 1050px ) {
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card-container {
+    display: grid;
+    grid-template-columns:1fr;
+  }
+}
+
+.boardgame-search-title {
+  font-size: 3.5vmin;
+}
+
+.videogame-search-title {
+  font-size: 3.5vmin;
+}
+
+.movie-search-title {
+  font-size: 3.5vmin;
+}
