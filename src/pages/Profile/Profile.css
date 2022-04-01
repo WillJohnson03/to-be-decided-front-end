@@ -5,18 +5,19 @@
   text-shadow: 2px 2px 1px  rgba(0, 0, 0, .6), 0 6px 20px  rgba(0, 0, 0, 0.19);
 }
 
-.card-container{
+.card-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   justify-items: center;
-  
 }
+
 @media screen and (max-width: 1700px ) {
   .card-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 @media screen and (max-width: 1400px ) {
   .card-container {
     display: grid;
@@ -37,8 +38,6 @@
     grid-template-columns:1fr;
   }
 }
-
-
 
 .modal-content {
   background-color: #404EED;
@@ -78,8 +77,8 @@
 .close-btn:hover {
   transition-delay: .1s;
   box-shadow: none;
-  
 }
+
 .profile-detail-img {
   border-radius: 10%;
   width: 30vmin;
@@ -88,8 +87,6 @@
 .movie-img {
   border-radius: 5%;
   height: 37vmin;
-  
-;
 }
 
 .videogame-img {
@@ -109,7 +106,7 @@
   border-radius: 19px;
 }
 
-.media-list{
+.media-list {
   margin: 3.5rem 0 0 0;
 }
 
@@ -124,8 +121,7 @@
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.profile-edit:hover{
-  
+.profile-edit:hover {
   border: 2px #b1b1b1;
   border-radius: 5px;
   box-shadow: none;
