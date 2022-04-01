@@ -37,10 +37,10 @@ const Squad = (props) => {
               :<p>Loading info...</p>}          
             </div>
           </div>
-          <div className='squad-pic'>
+          <div>
             {squad.avatar ?
             <img src={squad.avatar} alt={squad.name} />
-            : <img className="card-img-top" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
+            : <img className="card-img-top squad-pic" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
             }
           </div>
           <div className='creator-edit'>
@@ -80,7 +80,7 @@ const Squad = (props) => {
           <div className='squad-members-title'>
             <h2>Squad Members</h2>
           </div>
-          <div className='squad-members'>
+          <div>
             {squad.squadMembers?.map(member=>(
               <div key={member._id}
               className='card-container'>
@@ -142,7 +142,7 @@ const Squad = (props) => {
             </div>
           :
           <div>
-            <p>This squad has no video games!</p>
+            <p className='mediatitle'>This squad has no video games!</p>
           </div>
           }
           </div>
