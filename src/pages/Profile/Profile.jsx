@@ -24,22 +24,24 @@ const Profile = (props) => {
   
   return (
     <>
-      <div>
+      <div className='profile-div'>
         <h3 className='profile-name'>{profile.name}</h3>
-      {profile.photo ?
-      <img className='profile-detail-img' src={profile.photo} alt={profile.name} />
-      : <img className="profile-img card-img-top" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
-      }
-      {props.user.profile === profile._id?
-      <Link
-        to={`/profile/${profile._id}/edit`}
-        state={{profile}}
-      >
-        Edit
-      </Link>
-      :
-      <></>
-      }
+        {profile.photo ?
+        <img className='profile-detail-img' src={profile.photo} alt={profile.name} />
+        : <img className="profile-detail-img card-img-top" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
+        }
+        {props.user.profile === profile._id?
+        <div className="profile-edit">
+          <Link
+            to={`/profile/${profile._id}/edit`}
+            state={{profile}}
+            >
+            Edit
+            </Link>
+        </div>
+        :
+        <></>
+        }
       </div>      
       <h3 className='media-list'>Movie list</h3>
       {profile.movie?.length ? 
