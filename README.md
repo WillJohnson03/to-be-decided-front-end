@@ -18,7 +18,7 @@ TBD is the web app that helps you and your squad decide what to do, because inde
 
 ## Ice Box 🧊
 
-- [ ] Edit and media displayed on profiles
+- [ ] Add ability to edit and delite media displayed on profiles
 - [ ] Add in app poll for squads to vote for activities
 - [ ] Add method to rate and review activities
 - [ ] Add a way to narrow done choices by genre or category
