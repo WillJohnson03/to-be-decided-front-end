@@ -37,10 +37,10 @@ const Squad = (props) => {
               :<p>Loading info...</p>}          
             </div>
           </div>
-          <div className='squad-pic'>
+          <div>
             {squad.avatar ?
             <img src={squad.avatar} alt={squad.name} />
-            : <img className="card-img-top" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
+            : <img className="card-img-top squad-pic" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
             }
           </div>
           <div classname='creator-edit'>
