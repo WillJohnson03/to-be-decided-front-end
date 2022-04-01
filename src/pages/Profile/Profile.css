@@ -1,0 +1,112 @@
+.profile-name {
+  margin: 1.5rem 0 1rem;
+}
+
+.card-container{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  
+}
+@media screen and (max-width: 1700px ) {
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 1400px ) {
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 1050px ) {
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card-container {
+    display: grid;
+    grid-template-columns:1fr;
+  }
+}
+
+
+
+.modal-content {
+  background-color: #404EED;
+  padding: 1.5rem 2.5rem;
+  margin: 1.5rem 0 0 0;
+  border-radius: 5px;
+  max-width: 35rem;
+  min-width: 30rem;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.details-btn {
+  margin: 0 1rem;
+  color: white;
+  border: none;
+  background-color: #292d5a;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 15px;
+}
+
+.details-btn:hover {
+  transition-delay: .1s;
+  box-shadow: none;
+}
+
+.close-btn {
+  margin: 0 1rem;
+  color: white;
+  border: none;
+  background-color: #292d5a;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 15px;
+}
+
+.close-btn:hover {
+  transition-delay: .1s;
+  box-shadow: none;
+  
+}
+.profile-detail-img {
+  border-radius: 10%;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.movie-img {
+  border-radius: 5%;
+  height: 37vmin;
+  
+;
+}
+
+.videogame-img {
+  border-radius: 5%;
+  height: 27vmin;
+}
+
+.boardgame-img {
+  border-radius: 5%;
+  height: 30vmin;
+}
+
+.card {
+  width: 35vmin;
+  background-color: #404EED;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 4%;
+}
+
+.media-list{
+  margin: 3.5rem 0 0 0;
+}
+

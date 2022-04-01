@@ -1,0 +1,12 @@
+
+
+
+.add-boardgame-card-text {
+  background-color: #404EED;
+  padding: 1.5rem 2.5rem;
+  margin: 1.5rem 0 0 0;
+  border-radius: 5px;
+  max-width: 35rem;
+  min-width: 30rem;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
