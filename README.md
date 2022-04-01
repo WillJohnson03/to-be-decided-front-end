@@ -1,6 +1,6 @@
 # ![TBD Logo](public/favicon-TBD.png) To Be Decided
 
-[![TBD Landing Page](https://i.imgur.com/qINJxrQ.png)](https://tobedecided.herokuapp.com/)
+[![TBD Landing Page](https://i.imgur.com/qINJxrQ.png)](https://i.imgur.com/g0LPBPG.png)
 
 [![TBD Movie Search](https://i.imgur.com/pYesSkU.png)](https://tobedecided.herokuapp.com/)
 
