@@ -74,20 +74,19 @@ const Squad = (props) => {
             }
           </div>
           <div className='squad-members-title'>
-            <p>Squad Members:</p>
+            <p className='squad-members'>Squad Members:</p>
           </div>
-          <div className='squad-members'>
+          <div>
             {squad.squadMembers?.map(member=>(
-              <div key={member._id}className='card-container'>
-                <h1>{member.name}</h1>
+              <div key={member._id}>
+                <h1 className='member'>{member.name}</h1>
               </div>
             ))}
           </div>
-        </div>
         <div className='squad-media'>
           {squad.creator?.boardGame.length ?
             <div>
-              <p>
+              <p className='mediatitle'>
                 {squad?.name}'s Board Games
               </p>
               {squad.creator?.boardGame.map(bg => (
@@ -98,12 +97,12 @@ const Squad = (props) => {
             </div>
             :
           <div>
-            <p>This squad has no board games!</p>
+            <p className='mediatitle'>This squad has no board games!</p>
           </div>
           }
           {squad.creator?.movie.length ?
             <div>
-              <p>{squad?.name}'s Movies</p>
+              <p className='mediatitle'>{squad?.name}'s Movies</p>
                 {squad.creator?.movie.map(film => (
                 <div key={film._id}>
                   {film.title}
@@ -112,12 +111,12 @@ const Squad = (props) => {
             </div>
             :
           <div>
-            <p>This squad has no movies!</p>
+            <p className='mediatitle'>This squad has no movies!</p>
           </div>
           }
           {squad.creator?.videoGame.length ?
             <div>
-              <p>{squad?.name}'s Video Games</p>
+              <p className='mediatitle'>{squad?.name}'s Video Games</p>
               {squad.creator?.videoGame.map(vg => (
                 <div key={vg._id}>
                   {vg.name}
@@ -126,9 +125,10 @@ const Squad = (props) => {
             </div>
           :
           <div>
-            <p>This squad has no video games!</p>
+            <p className='mediatitle'>This squad has no video games!</p>
           </div>
           }
+          </div>
         </div>
       </div>
     </>
