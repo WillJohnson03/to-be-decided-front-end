@@ -13,7 +13,7 @@ export function getSquad(id) {
   return fetch(`${BASE_URL}/${id}`, {
     headers: { Authorization: `Bearer ${tokenService.getToken()}` },
   })
-  .then(res => res.json())
+    .then(res => res.json())
 }
 
 export function create(squad) {
@@ -24,7 +24,7 @@ export function create(squad) {
     },
     body: squad
   })
-  .then(res => res.json())
+    .then(res => res.json())
 }
 
 export function deleteOne(id) {
@@ -34,7 +34,7 @@ export function deleteOne(id) {
       'Authorization': `Bearer ${tokenService.getToken()}`
     },
   })
-  .then(res => res.json())
+    .then(res => res.json())
 }
 
 export function update(squad) {
@@ -45,7 +45,7 @@ export function update(squad) {
     },
     body: squad
   })
-  .then(res => res.json())
+    .then(res => res.json())
 }
 
 export function addUser(memberID, squadID) {
@@ -55,5 +55,5 @@ export function addUser(memberID, squadID) {
       'Authorization': `Bearer ${tokenService.getToken()}`
     },
   })
-  .then(res => res.json())
+    .then(res => res.json())
 }

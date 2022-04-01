@@ -4,9 +4,7 @@
   flex-direction: column;
   margin: 10rem;
   text-align: center;
-  
 }
-
 
 .signup-container {
   background-color: #404EED;
@@ -26,12 +24,4 @@
 
 .signup {
   background-color: #404EED;
-}
-
-.msg{
-
-}
-
-.signup-form {
-  
 }

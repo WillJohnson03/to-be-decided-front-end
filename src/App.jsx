@@ -33,17 +33,17 @@ const App = () => {
     profileService.getAllProfiles()
       .then(profiles => setProfiles(profiles))
     squadService.getAllSquads()
-    .then(squads => setSquads(squads))
+      .then(squads => setSquads(squads))
   }, [])
 
-    useEffect(() => {
+  useEffect(() => {
     if (user) {
       profileService.getProfile(user.profile)
-      .then(profileData => {
-        setProfile(profileData)
-      })
+        .then(profileData => {
+          setProfile(profileData)
+        })
     }
-  }, [user]) 
+  }, [user])
 
   const handleLogout = () => {
     authService.logout()
@@ -62,58 +62,56 @@ const App = () => {
 
   const handleEditSquad = updatedSquadData => {
     squadService.update(updatedSquadData)
-    .then(updatedSquad => {
-      const newSquadsArray = squads.map(squad => squad._id === updatedSquad._id ? updatedSquad : squad)
-      setSquads(newSquadsArray)
-      navigate('/squads')
-    })
+      .then(updatedSquad => {
+        const newSquadsArray = squads.map(squad => squad._id === updatedSquad._id ? updatedSquad : squad)
+        setSquads(newSquadsArray)
+        navigate('/squads')
+      })
   }
 
   const handleEditProfile = updatedProfileData => {
     profileService.update(updatedProfileData)
-    .then(updatedProfile => {
-      const newProfilesArray = profiles.map(profile => profile._id === updatedProfile._id ? updatedProfile: profile)
-      setProfile(newProfilesArray)
-      navigate('/profiles')
-    })
-  }  
-  
+      .then(updatedProfile => {
+        const newProfilesArray = profiles.map(profile => profile._id === updatedProfile._id ? updatedProfile : profile)
+        setProfile(newProfilesArray)
+        navigate('/profiles')
+      })
+  }
+
   const addUserToSquad = (newSquadMemberID, squadID) => {
     squadService.addUser(newSquadMemberID, squadID)
-    .then(updatedSquad => {
-      const newSquadsArray = squads.map(squad => squad._id === updatedSquad._id ? updatedSquad : squad)
-      setSquads(newSquadsArray)
-      navigate(`/squads`)
-    })
+      .then(updatedSquad => {
+        const newSquadsArray = squads.map(squad => squad._id === updatedSquad._id ? updatedSquad : squad)
+        setSquads(newSquadsArray)
+        navigate(`/squads`)
+      })
   }
 
   const handleDeleteSquad = id => {
     squadService.deleteOne(id)
-    .then(deletedSquad => setSquads(squads.filter(squad => squad._id !== deletedSquad._id)))
+      .then(deletedSquad => setSquads(squads.filter(squad => squad._id !== deletedSquad._id)))
     navigate('/squads')
   }
 
-  
-  
   const handleAddVideoGame = videoGame => {
     profileService.addVideoGame(videoGame)
-    .then(updatedProfile => {
-      setProfile(updatedProfile)
-    })
+      .then(updatedProfile => {
+        setProfile(updatedProfile)
+      })
   }
-  
+
   const handleAddMovie = movie => {
     profileService.addMovie(movie)
-    .then(updatedProfile => {
-      setProfile(updatedProfile)
-    })
+      .then(updatedProfile => {
+        setProfile(updatedProfile)
+      })
   }
-  
+
   const handleAddBoardGame = boardgame => {
     profileService.addBoardGame(boardgame)
-    .then(updatedProfile => {
-      setProfile(updatedProfile)
-    })
+      .then(updatedProfile => {
+        setProfile(updatedProfile)
+      })
   }
 
   return (
@@ -131,11 +129,19 @@ const App = () => {
         />
         <Route
           path="/profiles"
-          element={user ? <Profiles profiles={profiles} user={user} /> : <Navigate to="/login" />}
+          element={user ?
+            <Profiles profiles={profiles} user={user} />
+            :
+            <Navigate to="/login" />
+          }
         />
         <Route
           path="/profiles"
-          element={user ? <ProfileDetails profiles={profiles} user={user} /> : <Navigate to="/login" />}
+          element={user ?
+            <ProfileDetails profiles={profiles} user={user} />
+            :
+            <Navigate to="/login" />
+          }
         />
         <Route
           path='/profile/:id' element={< Profile profiles={profiles} user={user} />}
@@ -156,13 +162,13 @@ const App = () => {
           element={<AllMedia />} />
         <Route
           path="/squads"
-          element={<Squads squads={squads} user={user}  />}
+          element={<Squads squads={squads} user={user} />}
         />
         <Route
-          path='/squad/:id' 
-          element={<Squad squads={squads} profiles={profiles} user={user} 
-          addUserToSquad={addUserToSquad}handleDeleteSquad={handleDeleteSquad} />}
-        ></Route>
+          path='/squad/:id'
+          element={<Squad squads={squads} profiles={profiles} user={user}
+            addUserToSquad={addUserToSquad} handleDeleteSquad={handleDeleteSquad} />}
+        />
         <Route
           path='/squad/:id/edit'
           element={
@@ -174,17 +180,20 @@ const App = () => {
         />
         <Route
           path="/createsquad"
-          element={<CreateSquad user={user} handleAddSquad={handleAddSquad} navigate={navigate}/>}
+          element={<CreateSquad user={user} handleAddSquad={handleAddSquad} navigate={navigate} />}
         />
         <Route
           path="/changePassword"
-          element={user ? <ChangePassword handleSignupOrLogin={handleSignupOrLogin} /> : <Navigate to="/login" />}
+          element={user ?
+            <ChangePassword handleSignupOrLogin={handleSignupOrLogin} />
+            :
+            <Navigate to="/login" />
+          }
         />
-        <Route path='/VideoGameDetails' 
+        <Route path='/VideoGameDetails'
           element={
-            <VideoGameDetails 
-              handleAddVideoGame={handleAddVideoGame} 
-              // handleRemoveVideoGame={handleRemoveVideoGame}
+            <VideoGameDetails
+              handleAddVideoGame={handleAddVideoGame}
               profiles={profiles}
               profile={profile}
             />
@@ -192,23 +201,21 @@ const App = () => {
         />
         <Route path='/MovieDetails'
           element={
-            <MovieDetails 
+            <MovieDetails
               handleAddMovie={handleAddMovie}
-              // handleRemoveMovie={handleRemoveMovie}
               profiles={profiles}
               profile={profile}
             />
           }
         />
-        <Route path='/BoardGameDetails' 
+        <Route path='/BoardGameDetails'
           element={
-          <BoardGameDetails
-            handleAddBoardGame={handleAddBoardGame}
-            // handleRemoveBoardGame={handleRemoveBoardGame}
-            profiles={profiles}
-            profile={profile}
-          />
-        }
+            <BoardGameDetails
+              handleAddBoardGame={handleAddBoardGame}
+              profiles={profiles}
+              profile={profile}
+            />
+          }
         />
       </Routes>
     </>
