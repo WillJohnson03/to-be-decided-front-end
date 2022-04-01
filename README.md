@@ -7,9 +7,9 @@
 ## Info
 TBD is the web app that helps you and your squad decide what to do, because indecision happens. Whether it’s a movie night, game night, or video games with your friends sometime we all just need a little help.
 
-## <a href="https://trello.com/b/EufolsEI/unit-3-project" target="_blank">Trello</a>
+## [Trello](https://trello.com/b/EufolsEI/unit-3-project)
 
-## <a href="http:https://tobedecided.herokuapp.com/" target="_blank">Go Use TBD</a>
+## [Go use TBD](https://tobedecided.herokuapp.com/)
 
  ## Technologies Used 💾
 
