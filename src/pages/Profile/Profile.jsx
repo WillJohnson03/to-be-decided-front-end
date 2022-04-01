@@ -1,3 +1,4 @@
+import './Profile.css'
 import { Link, useParams } from 'react-router-dom'
 import { getProfile } from '../../services/profileService'
 import { useState, useEffect } from 'react'
@@ -24,10 +25,10 @@ const Profile = (props) => {
   return (
     <>
       <div>
-        <h3>{profile.name}</h3>
+        <h3 className='profile-name'>{profile.name}</h3>
       {profile.photo ?
-      <img src={profile.photo} alt={profile.name} />
-      : <img className="card-img-top" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
+      <img className='profile-detail-img' src={profile.photo} alt={profile.name} />
+      : <img className="profile-img card-img-top" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
       }
       {props.user.profile === profile._id?
       <Link
@@ -40,16 +41,16 @@ const Profile = (props) => {
       <></>
       }
       </div>      
+      <h3 className='media-list'>Movie list</h3>
       {profile.movie?.length ? 
-        <div>
-          <h3>Movie list</h3>
+        <div className='card-container'>
           {profile.movie?.map((movies, index) => (
-              <div className='card-container' key={movies._id}>
+              <div  key={movies._id}>
                 <div  className='card'>
-                <img className="card-img-top" src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movies.poster_path}`} alt={movies.title}/>
+                <img className="movie-img card-img-top" src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movies.poster_path}`} alt={movies.title}/>
                 <div className='card-body'>
                   <h5 className="card-title">{movies.title}</h5>
-                  <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#${movies._id}ModalCenter`}>Details
+                  <button type="button" className=" details-btn" data-toggle="modal" data-target={`#${movies._id}ModalCenter`}>Details
                   </button>
                   <div className="modal fade" id={`${movies._id}ModalCenter`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered" role="document">
@@ -66,7 +67,7 @@ const Profile = (props) => {
                           Release date: <span>{movies.release_date}</span>
                         </div>
                         <div className="modal-footer">
-                          <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" className="close-btn" data-dismiss="modal">Close</button>
                         </div>
                       </div>
                     </div>
@@ -77,18 +78,18 @@ const Profile = (props) => {
           )
         )}
         </div>:
-        <div></div>}
+        <div>No movies yet.</div>}
       
+      <h3 className='media-list'>Video Game List</h3>
       {profile.videoGame?.length ?
-      <div>
-      <h3>Video Game List</h3>
+      <div className='videogame-container card-container'>
         {profile.videoGame?.map((videoGames, index) =>
-            <div className='videogame-container card-container' key={videoGames._id}>
+            <div  key={videoGames._id}>
               <div  className='card'>
-              <img className="card-img-top" src={videoGames.background_image} alt={videoGames.name}/>
+              <img className="videogame-img card-img-top" src={videoGames.background_image} alt={videoGames.name}/>
               <div className='card-body'>
                 <h5 className="card-title">{videoGames.name}</h5>
-                <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#${videoGames._id}ModalCenter`}>Details
+                <button type="button" className=" details-btn" data-toggle="modal" data-target={`#${videoGames._id}ModalCenter`}>Details
                 </button>
                 <div className="modal fade" id={`${videoGames._id}ModalCenter`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div className="modal-dialog modal-dialog-centered" role="document">
@@ -119,18 +120,17 @@ const Profile = (props) => {
           </div>
         )}
     </div> :
-    <div></div>}
-
+    <div>No video games yet</div>}
+    <h3 className='media-list'>Board Game List</h3>  
       {profile.boardGame?.length ?
-      <div>
-      <h3>Board Game List</h3>
+      <div className='boardgame-container card-container'>
         {profile.boardGame?.map((boardGames, index) =>
-            <div className='boardgame-container card-container' key={boardGames._id}>
+            <div key={boardGames._id}>
               <div  className='card'>
-              <img className="card-img-top" src={boardGames.image_url} alt={boardGames.name}/>
+              <img className="boardgame-img card-img-top" src={boardGames.image_url} alt={boardGames.name}/>
               <div className='card-body'>
                 <h5 className="card-title">{boardGames.name}</h5>
-                <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#${boardGames._id}ModalCenter`}>Details
+                <button type="button" className=" details-btn" data-toggle="modal" data-target={`#${boardGames._id}ModalCenter`}>Details
                 </button>
                 <div className="modal fade" id={`${boardGames._id}ModalCenter`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div className="modal-dialog modal-dialog-centered" role="document">
@@ -174,7 +174,7 @@ const Profile = (props) => {
           </div>
         )}
     </div> :
-    <div></div>}
+    <div>No board games yet.</div>}
 
     </>
   );

@@ -10,11 +10,11 @@ body {
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.card > img {
+.profile-img {
   width: 75%;
   height: 75%;
   padding-top: 10px;
-  border-radius: 15%;
+  border-radius: 10%;
   margin: 0 auto;
 }
 
@@ -73,4 +73,8 @@ body {
 
 input {
   border-radius: 5px;
+}
+
+.add-boardgame-card-text {
+  color: black;
 }

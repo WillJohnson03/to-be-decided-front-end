@@ -1,3 +1,4 @@
+import './BoardGameDetails.css'
 import { Link, useLocation } from "react-router-dom";
 
 

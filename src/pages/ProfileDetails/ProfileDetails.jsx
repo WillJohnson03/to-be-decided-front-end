@@ -6,8 +6,8 @@ const ProfileDetails = (props) => {
     <div className='card-container'>
       <div className='card'>
       {props.profile.photo ?
-        <img src={props.profile.photo} alt={props.propfile?.name} />
-        : <img className="card-img-top" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
+        <img className='profile-img'src={props.profile.photo} alt={props.propfile?.name} />
+        : <img className="profile-img card-img-top" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
         }
         <div className='card-body'>
           <h5 className="card-title" >{props.profile.name}</h5>
