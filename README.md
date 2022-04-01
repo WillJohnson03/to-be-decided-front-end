@@ -2,7 +2,7 @@
 
 [![TBD Landing Page](https://i.imgur.com/qINJxrQ.png)](https://tobedecided.herokuapp.com/)
 
-[![TBD Movie Search](https://i.imgur.com/g0LPBPG.png)](https://tobedecided.herokuapp.com/)
+[![TBD Movie Search](https://i.imgur.com/aK9cFtK.png)](https://tobedecided.herokuapp.com/)
 
 ## Info
 TBD is the web app that helps you and your squad decide what to do, because indecision happens. Whether it’s a movie night, game night, or video games with your friends sometime we all just need a little help.
