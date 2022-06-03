@@ -38,3 +38,4 @@ TBD is the web app that helps you and your squad decide what to do, because inde
 - https://rawg.io
 - https://www.themoviedb.org/
 - https://www.boardgameatlas.com/
+- <a href='https://www.freepik.com/vectors/landscape-silhouette'>Landscape silhouette vector created by kjpargeter - www.freepik.com</a>
