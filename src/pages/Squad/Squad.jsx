@@ -14,14 +14,14 @@ const Squad = (props) => {
       })
   }, [id])
 
-	const handleSubmit = evt => {
-		evt.preventDefault()
+  const handleSubmit = evt => {
+    evt.preventDefault()
     props.addUserToSquad(formData.id, squad._id)
-	}
+  }
 
-	const handleChange = (evt) => {
-		setFormData({[evt.target.name]: evt.target.value})
-	}
+  const handleChange = (evt) => {
+    setFormData({ [evt.target.name]: evt.target.value })
+  }
 
   return (
     <div className='moviegame'>
@@ -33,14 +33,15 @@ const Squad = (props) => {
             </div>
             <div className='squad-creator'>
               {squad.creator?.name ?
-              <h4>{squad?.creator.name}'s Squad</h4>
-              :<p>Loading info...</p>}          
+                <h4>{squad?.creator.name}'s Squad</h4>
+                : <p>Loading Info...</p>
+              }
             </div>
           </div>
           <div>
             {squad.avatar ?
-            <img src={squad.avatar} alt={squad.name} />
-            : <img className="card-img-top squad-pic" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
+              <img src={squad.avatar} alt={squad.name} />
+              : <img className="card-img-top squad-pic" src="https://i.imgur.com/3FLcsWl.png" alt="https://i.imgur.com/3FLcsWl.png" />
             }
           </div>
           <div className='creator-edit'>
@@ -48,26 +49,26 @@ const Squad = (props) => {
               <div>
                 <Link
                   to={`/squad/${squad._id}/edit`}
-                  state={{squad}}
+                  state={{ squad }}
                   className='edit-link'
                 >
                   Edit
                 </Link>
-                <button 
+                <button
                   className='delete-squad-btn'
-                  onClick={()=> props.handleDeleteSquad
-                  (squad._id)}
+                  onClick={() => props.handleDeleteSquad
+                    (squad._id)}
                 >
                   Delete
                 </button>
                 <form className='add-user-squad-form' method="POST" onSubmit={handleSubmit}>
-                <select className='member-dropdown' name="id" onChange={handleChange}>
-                  <option value=''>Choose A User</option>
-                    {props.profiles.map(profile=>( 
-                    <option value={profile._id} key={profile._id}>{profile.name}</option>
+                  <select className='member-dropdown' name="id" onChange={handleChange}>
+                    <option value=''>Choose A User</option>
+                    {props.profiles.map(profile => (
+                      <option value={profile._id} key={profile._id}>{profile.name}</option>
                     ))}
                   </select>
-                  <button  type="submit" className="add-user-squad-btn">Add User to Squad</button>
+                  <button type="submit" className="add-user-squad-btn">Add User to Squad</button>
                 </form>
               </div>
               :
@@ -81,70 +82,68 @@ const Squad = (props) => {
             <h2>Squad Members</h2>
           </div>
           <div>
-            {squad.squadMembers?.map(member=>(
+            {squad.squadMembers?.map(member => (
               <div key={member._id}
-              className='card-container'>
-                <h3>{member.name}</h3> 
+                className='card-container'>
+                <h3>{member.name}</h3>
               </div>
             ))}
           </div>
         </div>
         <div id='thing' className='squad-media'>
           <div className='squad-boardgame-list'>
-
-          {squad.creator?.boardGame.length ?
-            <div >
-                <h4 className='squad-boardgame-title'>{squad?.name}'s Board Games</h4>
-              <ul>
-              {squad.creator?.boardGame.map(bg => (
-                <li key={bg._id}>
-                  {bg.name}
-                </li>
-              ))}
-              </ul>
-            </div>
-            :
-            <div>
-            <p>This squad has no board games!</p>
-          </div>
-          }
+            {squad.creator?.boardGame.length ?
+              <div >
+                <h4 className='squad-boardgame-title'>{squad?.name}'s Boardgames</h4>
+                <ul>
+                  {squad.creator?.boardGame.map(bg => (
+                    <li key={bg._id}>
+                      {bg.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              :
+              <div>
+                <p>This squad has no boardgames!</p>
+              </div>
+            }
           </div>
           <div className='squad-movie-list'>
             {squad.creator?.movie.length ?
               <div>
                 <h4 className='squad-movie-title'>{squad?.name}'s Movies</h4>
                 <ul>
-
                   {squad.creator?.movie.map(film => (
                     <li key={film._id}>
-                    {film.title}
-                  </li>
+                      {film.title}
+                    </li>
                   ))}
-                  </ul>
+                </ul>
               </div>
               :
-            <div>
-              <p>This squad has no movies!</p>
-            </div>
+              <div>
+                <p>This squad has no movies!</p>
+              </div>
             }
           </div>
           <div className='squad-videogame-list'>
-          {squad.creator?.videoGame.length ?
-            <div>
-              <h4 className='squad-videogame-title'>{squad?.name}'s Video Games</h4>
-              <ul>
-              {squad.creator?.videoGame.map(vg => (
-                <div key={vg._id}>
-                  {vg.name}
-                </div>
-              ))}
-              </ul>
-            </div>
-          :
-          <div>
-            <p className='mediatitle'>This squad has no video games!</p>
-          </div>
-          }
+            {squad.creator?.videoGame.length ?
+              <div>
+                <h4 className='squad-videogame-title'>{squad?.name}'s Video Games</h4>
+                <ul>
+                  {squad.creator?.videoGame.map(vg => (
+                    <div key={vg._id}>
+                      {vg.name}
+                    </div>
+                  ))}
+                </ul>
+              </div>
+              :
+              <div>
+                <p className='mediatitle'>This squad has no video games!</p>
+              </div>
+            }
           </div>
         </div>
       </div>
